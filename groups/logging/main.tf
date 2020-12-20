@@ -12,17 +12,17 @@ module "logging" {
   source = "./module-logging"
 
   ami_version_pattern = var.ami_version_pattern
-  application_subnet  = data.terraform_remote_state.management_vpc.outputs.management_private_subnet_ids["${var.region}a"]
   environment         = var.environment
   instance_hostname   = var.instance_hostname
   instance_type       = var.instance_type
   lvm_block_devices   = var.lvm_block_devices
   region              = var.region
-  service             = var.service
-  ssh_cidrs           = concat(values(data.terraform_remote_state.management_vpc.outputs.vpn_cidrs), values(data.terraform_remote_state.management_vpc.outputs.internal_cidrs))
   root_volume_size    = var.root_volume_size
+  service             = var.service
+  ssh_cidrs           = local.ssh_cidrs
   ssh_keyname         = var.ssh_keyname
-  vpc_id              = data.terraform_remote_state.management_vpc.outputs.management_vpc_id
+  subnet_id           = local.subnet_id
+  vpc_id              = local.vpc_id
 }
 
 data "terraform_remote_state" "management_vpc" {
@@ -35,5 +35,10 @@ data "terraform_remote_state" "management_vpc" {
 }
 
 locals {
-  application_subnet_cidr_list = [data.terraform_remote_state.management_vpc.outputs.management_private_subnet_cidrs["${var.region}a"]]
+  internal_cidrs = values(data.terraform_remote_state.management_vpc.outputs.internal_cidrs)
+  vpn_cidrs = values(data.terraform_remote_state.management_vpc.outputs.vpn_cidrs)
+
+  ssh_cidrs = concat(local.internal_cidrs, local.vpn_cidrs)
+  subnet_id = data.terraform_remote_state.management_vpc.outputs.management_private_subnet_ids["${var.region}a"]
+  vpc_id = data.terraform_remote_state.management_vpc.outputs.management_vpc_id
 }

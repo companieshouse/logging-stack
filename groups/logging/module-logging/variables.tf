@@ -3,11 +3,6 @@ variable "ami_version_pattern" {
   description = "The pattern to match AMI version to"
 }
 
-variable "application_subnet" {
-  type        = string
-  description = "The application subnet in which to create resources"
-}
-
 variable "environment" {
   type        = string
   description = "The environment name to be used when creating AWS resources"
@@ -56,6 +51,11 @@ variable "ssh_cidrs" {
 variable "ssh_keyname" {
   type        = string
   description = "The SSH keypair name to use for remote connectivity"
+}
+
+variable "subnet_id" {
+  type        = string
+  description = "The id of the subnet in which to create resources"
 }
 
 variable "vpc_id" {

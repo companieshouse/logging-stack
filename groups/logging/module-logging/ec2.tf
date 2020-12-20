@@ -1,11 +1,11 @@
 data "aws_ami" "elasticsearch" {
   owners      = ["self"]
   most_recent = true
-  name_regex  = "^elasticsearch-ami-\\d.\\d.\\d"
+  name_regex  = "^elasticsearch-ami-${var.ami_version_pattern}$"
 
   filter {
     name   = "name"
-    values = ["elasticsearch-ami-${var.ami_version_pattern}"]
+    values = ["elasticsearch-ami-*"]
   }
 }
 
@@ -20,7 +20,7 @@ locals {
 resource "aws_instance" "logging" {
   ami                    = data.aws_ami.elasticsearch.id
   instance_type          = var.instance_type
-  subnet_id              = var.application_subnet
+  subnet_id              = var.subnet_id
   key_name               = var.ssh_keyname
   vpc_security_group_ids = [aws_security_group.logging.id]
   user_data_base64       = "${data.template_cloudinit_config.config.rendered}"

@@ -1,5 +1,6 @@
+ami_version_pattern = "latest"
 environment = "test-1"
-
+instance_hostname = "logging.dev"
 lvm_block_devices = [{
   aws_volume_size_gb: "20",
   filesystem_resize_tool: "xfs_growfs",
@@ -9,5 +10,3 @@ lvm_block_devices = [{
 
 # TODO provision keypair
 ssh_keyname = "development-infrastructure-eu-west-2"
-
-instance_hostname = "logging.dev"

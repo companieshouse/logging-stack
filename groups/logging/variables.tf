@@ -1,6 +1,6 @@
 variable "ami_version_pattern" {
   type        = string
-  default     = "*"
+  default     = "\\d.\\d.\\d"
   description = "The pattern to match AMI version to"
 }
 

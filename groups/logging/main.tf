@@ -8,8 +8,8 @@ terraform {
   }
 }
 
-module "logging" {
-  source = "./module-logging"
+module "elasticsearch" {
+  source = "./module-elasticsearch"
 
   ami_version_pattern = var.ami_version_pattern
   environment         = var.environment

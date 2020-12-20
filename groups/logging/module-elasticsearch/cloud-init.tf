@@ -17,7 +17,6 @@ data "template_cloudinit_config" "config" {
   part {
     content_type = "text/cloud-config"
     content = templatefile("${path.module}/cloud-init/templates/bootstrap-commands.yml.tpl", {
-      instance_hostname       = var.instance_hostname
       lvm_block_devices       = var.lvm_block_devices
       root_volume_device_node = data.aws_ami.elasticsearch.root_device_name
     })

@@ -43,7 +43,7 @@ variable "root_volume_size" {
 
 variable "service" {
   type        = string
-  default     = "logging"
+  default     = "elasticsearch"
   description = "The service name to be used when creating AWS resources"
 }
 

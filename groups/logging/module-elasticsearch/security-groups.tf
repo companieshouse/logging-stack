@@ -1,4 +1,4 @@
-resource "aws_security_group" "logging" {
+resource "aws_security_group" "elasticsearch" {
   name   ="${var.service}-${var.environment}-security-group"
   vpc_id = var.vpc_id
 

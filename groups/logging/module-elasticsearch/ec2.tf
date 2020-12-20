@@ -17,12 +17,12 @@ locals {
   ]
 }
 
-resource "aws_instance" "logging" {
+resource "aws_instance" "elasticsearch" {
   ami                    = data.aws_ami.elasticsearch.id
   instance_type          = var.instance_type
   subnet_id              = var.subnet_id
   key_name               = var.ssh_keyname
-  vpc_security_group_ids = [aws_security_group.logging.id]
+  vpc_security_group_ids = [aws_security_group.elasticsearch.id]
   user_data_base64       = "${data.template_cloudinit_config.config.rendered}"
 
   root_block_device {

@@ -3,6 +3,11 @@ variable "ami_version_pattern" {
   description = "The pattern to match AMI version to"
 }
 
+variable "elastic_search_client_cidrs" {
+  type        = list(string)
+  description = "A list of CIDR blocks to permit Elasticsearch client access from"
+}
+
 variable "environment" {
   type        = string
   description = "The environment name to be used when creating AWS resources"
@@ -26,6 +31,11 @@ variable "lvm_block_devices" {
     lvm_physical_volume_device_node: string,
   }))
   description = "A list of objects representing LVM block devices; each LVM volume group is assumed to contain a single physical volume and each logical volume is assumed to belong to a single volume group; the filesystem for each logical volume will be expanded to use all available space within the volume group using the filesystem resize tool specified; block device configuration applies only on resource creation"
+}
+
+variable "prometheus_cidrs" {
+  type        = list(string)
+  description = "A list of CIDR blocks to permit Prometheus access from"
 }
 
 variable "region" {

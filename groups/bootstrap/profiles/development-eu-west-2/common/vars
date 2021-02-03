@@ -1,12 +1,13 @@
+# TODO - This should be passed in automatically
+account_name = "development"
 ami_version_pattern = "latest"
-environment = "test-1"
-instance_hostname = "elasticsearch.development"
+environment = "common"
 lvm_block_devices = [{
-  aws_volume_size_gb: "100",
+  aws_volume_size_gb: "20",
   filesystem_resize_tool: "xfs_growfs",
   lvm_logical_volume_device_node: "/dev/data/elasticsearch",
   lvm_physical_volume_device_node: "/dev/xvdb"
 }]
-
 # TODO provision keypair
 ssh_keyname = "development-devops"
+team = "platform"

@@ -1,3 +1,12 @@
+provider "aws" {
+  region  = var.region
+  version = "~> 2.0"
+}
+
+terraform {
+  backend "s3" {}
+}
+
 data "aws_ami" "elasticsearch" {
   owners      = ["self"]
   most_recent = true
@@ -9,28 +18,21 @@ data "aws_ami" "elasticsearch" {
   }
 }
 
-locals {
-  root_block_device = tolist(data.aws_ami.elasticsearch.block_device_mappings)[index(data.aws_ami.elasticsearch.block_device_mappings.*.device_name, data.aws_ami.elasticsearch.root_device_name)]
-  lvm_block_devices = [
-    for block_device in data.aws_ami.elasticsearch.block_device_mappings :
-      block_device if block_device.device_name != data.aws_ami.elasticsearch.root_device_name
-  ]
-}
-
-resource "aws_instance" "elasticsearch" {
+resource "aws_instance" "bootstrap" {
   ami                    = data.aws_ami.elasticsearch.id
+  iam_instance_profile   = data.aws_iam_instance_profile.elastic_search_node.name
   instance_type          = var.instance_type
-  subnet_id              = var.subnet_id
   key_name               = var.ssh_keyname
-  vpc_security_group_ids = [aws_security_group.elasticsearch.id]
+  subnet_id              = local.subnet_id
   user_data_base64       = "${data.template_cloudinit_config.config.rendered}"
+  vpc_security_group_ids = [data.aws_security_group.elasticsearch.id]
 
   root_block_device {
-    volume_size = var.root_volume_size != 0 ? var.root_volume_size : local.root_block_device.ebs.volume_size
+    volume_size = var.root_volume_size != 0 ? var.root_volume_size : local.ami_root_block_device.ebs.volume_size
   }
 
   dynamic "ebs_block_device" {
-    for_each = local.lvm_block_devices
+    for_each = local.ami_lvm_block_devices
     iterator = block_device
     content {
       device_name = block_device.value.device_name
@@ -43,14 +45,10 @@ resource "aws_instance" "elasticsearch" {
   }
 
   tags = {
-    Name         = "${var.service}-${var.environment}"
-    Environment  = var.environment
-    Service      = var.service
-  }
-
-  volume_tags = {
-    Name         = "${var.service}-${var.environment}-ebs-volume"
-    Environment  = var.environment
-    Service      = var.service
+    Environment             = var.environment
+    HostName                = "${var.service}-${var.environment}-bootstrap.${local.dns_zone_name}"
+    ElasticSearchMasterNode = "true"
+    Name                    = "${var.service}-${var.environment}-bootstrap"
+    Service                 = var.service
   }
 }

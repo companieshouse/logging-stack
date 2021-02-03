@@ -1,0 +1,4 @@
+# TODO - This should be passed in automatically
+account_name = "development"
+environment = "common"
+team = "platform"

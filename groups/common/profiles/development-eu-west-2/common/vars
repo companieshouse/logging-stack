@@ -1,4 +1,6 @@
-# TODO - This should be passed in automatically
+team = "platform"
+
+# TODO - Remove these once they're provided automatically
 account_name = "development"
 environment = "common"
-team = "platform"
+repository_name = "logging-terraform"

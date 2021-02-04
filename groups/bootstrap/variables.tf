@@ -47,6 +47,11 @@ variable "region" {
   description = "The AWS region in which resources will be administered"
 }
 
+variable "repository_name" {
+  type        = string
+  description = "The name of the repository in which we're operating"
+}
+
 variable "root_volume_size" {
   type        = number
   default     = 0

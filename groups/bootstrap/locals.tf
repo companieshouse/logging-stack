@@ -1,5 +1,5 @@
 data "vault_generic_secret" "secrets" {
-  path = "team-${var.team}/${var.account_name}/${var.region}/${var.service}"
+  path = "team-${var.team}/${var.account_name}/${var.region}/${var.repository_name}"
 }
 
 locals {

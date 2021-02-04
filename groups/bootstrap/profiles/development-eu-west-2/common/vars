@@ -1,7 +1,4 @@
-# TODO - This should be passed in automatically
-account_name = "development"
 ami_version_pattern = "latest"
-environment = "common"
 lvm_block_devices = [{
   aws_volume_size_gb: "20",
   filesystem_resize_tool: "xfs_growfs",
@@ -11,3 +8,8 @@ lvm_block_devices = [{
 # TODO provision keypair
 ssh_keyname = "development-devops"
 team = "platform"
+
+# TODO - Remove these once they're provided automatically
+account_name = "development"
+environment = "common"
+repository_name = "logging-terraform"

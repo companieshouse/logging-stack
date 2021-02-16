@@ -3,6 +3,11 @@ variable "ami_version_pattern" {
   description = "The pattern with which to match AMIs"
 }
 
+variable "data_cold_heap_size_gigabytes" {
+  type        = string
+  description = "The heap allocation for cold nodes in gigabytes"
+}
+
 variable "data_cold_instance_count" {
   type        = number
   description = "The number of cold data instances to provision"
@@ -33,6 +38,11 @@ variable "data_cold_root_volume_size" {
   description = "The size of the root volume for cold data nodes in GiB; set this value to 0 to preserve the size specified in the AMI metadata. This value should not be smaller than the size specified in the AMI metadata and used by the root volume snapshot. The filesystem will be expanded automatically to use all available space for the volume and an XFS filesystem is assumed"
 }
 
+variable "data_hot_heap_size_gigabytes" {
+  type        = string
+  description = "The heap allocation for hot nodes in gigabytes"
+}
+
 variable "data_hot_instance_count" {
   type        = number
   description = "The number of hot data instances to provision"
@@ -61,6 +71,11 @@ variable "data_hot_roles" {
 variable "data_hot_root_volume_size" {
   type        = number
   description = "The size of the root volume for hot data nodes in GiB; set this value to 0 to preserve the size specified in the AMI metadata. This value should not be smaller than the size specified in the AMI metadata and used by the root volume snapshot. The filesystem will be expanded automatically to use all available space for the volume and an XFS filesystem is assumed"
+}
+
+variable "data_warm_heap_size_gigabytes" {
+  type        = string
+  description = "The heap allocation for warm nodes in gigabytes"
 }
 
 variable "data_warm_instance_count" {

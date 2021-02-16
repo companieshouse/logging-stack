@@ -32,6 +32,14 @@ variable "instance_type" {
   description = "The instance type to use"
 }
 
+variable "instance_type_heap_allocation" {
+  type        = map(string)
+  default     = {
+    "t3.medium" = "2"
+  }
+  description = "A map used to determine the Java heap allocation in gigabytes, based on instance type. I.e. 50% of what's available"
+}
+
 variable "lvm_block_devices" {
   type = list(object({
     aws_volume_size_gb: string,

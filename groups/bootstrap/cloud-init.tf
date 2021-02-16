@@ -7,6 +7,7 @@ data "template_cloudinit_config" "config" {
     content = templatefile("${path.module}/cloud-init/templates/system-config.yml.tpl", {
       instance_hostname = "${var.service}-${var.environment}-bootstrap.${local.dns_zone_name}"
     })
+    merge_type = var.user_data_merge_strategy
   }
 
   part {
@@ -25,9 +26,20 @@ data "template_cloudinit_config" "config" {
 
   part {
     content_type = "text/cloud-config"
+    content = templatefile("${path.module}/cloud-init/templates/jvm.options.tpl", {
+      elastic_search_service_user   = var.elastic_search_service_user
+      elastic_search_service_group  = var.elastic_search_service_group
+      heap_size_gigabytes           = local.heap_size_gigabytes
+    })
+    merge_type = var.user_data_merge_strategy
+  }
+
+  part {
+    content_type = "text/cloud-config"
     content = templatefile("${path.module}/cloud-init/templates/bootstrap-commands.yml.tpl", {
       lvm_block_devices       = var.lvm_block_devices
       root_volume_device_node = data.aws_ami.elasticsearch.root_device_name
     })
+    merge_type = var.user_data_merge_strategy
   }
 }

@@ -9,11 +9,13 @@ data "template_cloudinit_config" "data_hot" {
     content = templatefile("${path.module}/cloud-init/templates/system-config.yml.tpl", {
       instance_hostname = "${var.service}-${var.environment}-data-hot-${count.index + 1}.${var.dns_zone_name}"
     })
+    merge_type = var.user_data_merge_strategy
   }
 
   part {
     content_type = "text/cloud-config"
     content = templatefile("${path.module}/cloud-init/templates/elasticsearch.yml.tpl", {
+      box_type                      = "hot"
       discovery_availability_zones  = var.discovery_availability_zones
       elastic_search_service_user   = var.elastic_search_service_user
       elastic_search_service_group  = var.elastic_search_service_group
@@ -26,10 +28,21 @@ data "template_cloudinit_config" "data_hot" {
 
   part {
     content_type = "text/cloud-config"
+    content = templatefile("${path.module}/cloud-init/templates/jvm.options.tpl", {
+      elastic_search_service_user   = var.elastic_search_service_user
+      elastic_search_service_group  = var.elastic_search_service_group
+      heap_size_gigabytes           = var.data_hot_heap_size_gigabytes
+    })
+    merge_type = var.user_data_merge_strategy
+  }
+
+  part {
+    content_type = "text/cloud-config"
     content = templatefile("${path.module}/cloud-init/templates/bootstrap-commands.yml.tpl", {
       lvm_block_devices       = var.data_hot_lvm_block_devices
       root_volume_device_node = data.aws_ami.elasticsearch.root_device_name
     })
+    merge_type = var.user_data_merge_strategy
   }
 }
 

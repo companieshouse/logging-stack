@@ -136,6 +136,16 @@ variable "environment" {
   description = "The environment name to be used when creating AWS resources"
 }
 
+variable "instance_type_heap_allocation" {
+  type        = map(string)
+  default     = {
+    "t3.medium" = "2",
+    "t3.large" = "4"
+    "r5.large" = "8"
+  }
+  description = "A map used to determine the Java heap allocation in gigabytes, based on instance type. I.e. 50% of what's available"
+}
+
 variable "kibana_ami_version_pattern" {
   type        = string
   default     = "\\d.\\d.\\d"

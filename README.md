@@ -1,1 +1,1 @@
-# logging-terraform
+# logging-stack

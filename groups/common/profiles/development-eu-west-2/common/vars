@@ -3,4 +3,4 @@ team = "platform"
 # TODO - Remove these once they're provided automatically
 account_name = "development"
 environment = "common"
-repository_name = "logging-terraform"
+repository_name = "logging-stack"

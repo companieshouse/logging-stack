@@ -1,0 +1,43 @@
+---
+
+- name: Add Kibana environment [{{ item.name }}]
+  uri:
+    url: "{{ kibana_url }}/api/spaces/space"
+    method: POST
+    body: "{{ lookup('template', 'roles/kibana/templates/environment_space.json.j2') }}"
+    status_code: 200
+    body_format: json
+    headers:
+      Content-Type: application/json
+      kbn-xsrf: true
+  with_items:
+    "{{ environments }}"
+  when:
+    item.name not in existing_spaces
+
+- name: Update Kibana environment [{{ item.name }}]
+  uri:
+    url: "{{ kibana_url }}/api/spaces/space/{{ item.name }}"
+    method: PUT
+    body: "{{ lookup('template', 'roles/kibana/templates/environment_space.json.j2') }}"
+    status_code: 200
+    body_format: json
+    headers:
+      Content-Type: application/json
+      kbn-xsrf: true
+  with_items:
+    "{{ environments }}"
+  when:
+    item.name in existing_spaces
+
+- name: Delete Kibana environment [{{ item }}]
+  uri:
+    url: "{{ kibana_url }}/api/spaces/space/{{ item }}"
+    method: DELETE
+    status_code: 204
+    headers:
+      kbn-xsrf: true
+  with_items:
+    "{{ existing_spaces }}"
+  when:
+    item not in ( environments | map(attribute='name')| list )

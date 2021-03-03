@@ -1,0 +1,13 @@
+---
+
+# Kibana API
+kibana_url: "{{ lookup('env', 'KIBANA_URL') }}"
+
+# Configured environments
+environments:
+  - name: devops1
+    initials: D1
+  - name: devops2
+    initials: D2
+  - name: cidev
+    initials: CI

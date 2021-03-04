@@ -2,7 +2,7 @@
 
 - import_tasks: list-environment-spaces.yml
 
-- name: Create aplication-logs index pattern within {{ item.name }} space
+- name: Create application-logs index pattern for environments
   uri:
     url: "{{ kibana_url }}/s/{{ item.name }}/api/saved_objects/index-pattern/application-logs-*?overwrite=true"
     method: POST

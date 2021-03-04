@@ -1,21 +1,7 @@
 ---
 
-- name: List Kibana environment spaces
-  uri:
-    url: "{{ kibana_url }}/api/spaces/space"
-    method: GET
-    status_code: 200
-    return_content: yes
-  register: list_response
+- import_tasks: manage-environment-spaces.yml
 
-- set_fact:
-    existing_spaces: "{{ list_response.content | from_json | json_query('[].name') | reject('match','Default') | list }}"
+- import_tasks: manage-gateway-logs-index-pattern.yml
 
-- name: Manage Kibana environment spaces
-  include_tasks: manage-environment-spaces.yml
-
-- name: Manage gateway-logs index patterns
-  include_tasks: manage-gateway-logs-index-pattern.yml
-
-- name: Manage application-logs index patterns
-  include_tasks: manage-application-logs-index-pattern.yml
+- import_tasks: manage-application-logs-index-pattern.yml

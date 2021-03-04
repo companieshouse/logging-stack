@@ -1,0 +1,12 @@
+---
+
+- name: List Kibana environment spaces
+  uri:
+    url: "{{ kibana_url }}/api/spaces/space"
+    method: GET
+    status_code: 200
+    return_content: yes
+  register: list_response
+
+- set_fact:
+    environment_spaces: "{{ list_response.content | from_json | json_query('[].name') | reject('match','Default') | list }}"

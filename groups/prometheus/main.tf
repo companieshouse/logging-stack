@@ -49,7 +49,6 @@ module "prometheus" {
   ssh_cidrs                     = local.administration_cidrs
   ssh_keyname                   = var.ssh_keyname
   subnet_ids                    = local.placement_subnet_ids_by_availability_zone
-  # tag_name_regex                = var.tag_name_regex
   user_data_merge_strategy      = var.user_data_merge_strategy
   vpc_id                        = data.aws_vpc.vpc.id
 }

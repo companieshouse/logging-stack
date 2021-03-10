@@ -108,11 +108,6 @@ variable "subnet_ids" {
   type        = list(string)
 }
 
-# variable "tag_name_regex" {
-#   description = "The tag name regex uses to discover EC2 instances"
-#   type = string
-# }
-
 variable "user_data_merge_strategy" {
   description = "Merge strategy to apply to user-data sections for cloud-init"
   type        = string

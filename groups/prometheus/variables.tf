@@ -87,12 +87,6 @@ variable "ssh_keyname" {
   type        = string
 }
 
-# variable "tag_name_regex" {
-#   default     = "Service"
-#   description = "The tag name regex uses to discover EC2 instances"
-#   type = string
-# }
-
 variable "team" {
   description = "The team responsible for administering the instance"
   type        = string

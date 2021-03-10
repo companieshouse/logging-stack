@@ -1,0 +1,18 @@
+---
+
+- import_tasks: list-environment-spaces.yml
+
+- name: Create gateway-logs index pattern for environments
+  uri:
+    url: "{{ kibana_url }}/s/{{ item.name }}/api/saved_objects/index-pattern/gateway-logs-*?overwrite=true"
+    method: POST
+    body: "{{ lookup('template', 'roles/kibana/templates/gateway_logs_index_pattern.json.j2') }}"
+    status_code: 200
+    body_format: json
+    headers:
+      Content-Type: application/json
+      kbn-xsrf: true
+  with_items:
+    "{{ environments}}"
+  when:
+    item.name in environment_spaces

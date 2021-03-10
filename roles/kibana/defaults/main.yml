@@ -1,0 +1,4 @@
+---
+
+# Kibana API
+kibana_url: "{{ lookup('env', 'KIBANA_URL') }}"

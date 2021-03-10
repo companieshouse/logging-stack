@@ -2,6 +2,6 @@
 
 - import_tasks: manage-environment-spaces.yml
 
-- import_tasks: manage-gateway-logs-index-pattern.yml
+- import_tasks: manage-gateway-logs-index-patterns.yml
 
-- import_tasks: manage-application-logs-index-pattern.yml
+- import_tasks: manage-application-logs-index-patterns.yml

@@ -15,4 +15,4 @@ If an environment has not been defined within this role it will be removed from 
 
 ## Running
 
-The playbooks are run within Concourse.
+The playbooks are invoked through the `ansible-runner`.

@@ -18,7 +18,7 @@ resource "aws_instance" "prometheus" {
   key_name               = var.ssh_keyname
   subnet_id              = element(var.subnet_ids, count.index)
   user_data_base64       = data.template_cloudinit_config.prometheus.*.rendered[count.index]
-  vpc_security_group_ids = [aws_security_group.prometheus_instances.id]
+  vpc_security_group_ids = [aws_security_group.prometheus.id]
 
   root_block_device {
     volume_size = var.root_volume_size != 0 ? var.root_volume_size : local.ami_root_block_device.ebs.volume_size

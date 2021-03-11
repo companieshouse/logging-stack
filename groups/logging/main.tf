@@ -63,7 +63,6 @@ module "elasticsearch" {
   master_roles                  = var.master_roles
   master_root_volume_size       = var.master_root_volume_size
   master_lvm_block_devices      = var.master_lvm_block_devices
-  prometheus_cidrs              = local.administration_cidrs
   region                        = var.region
   service                       = var.service
   ssh_cidrs                     = local.administration_cidrs

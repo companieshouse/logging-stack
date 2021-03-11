@@ -1,6 +1,6 @@
-resource "aws_security_group" "prometheus_instances" {
+resource "aws_security_group" "prometheus" {
   description = "Restricts access to prometheus ${var.service} instances"
-  name = "${var.service}-${var.environment}-prometheus-instances"
+  name = "${var.service}-${var.environment}-prometheus"
   vpc_id = var.vpc_id
 
   ingress {

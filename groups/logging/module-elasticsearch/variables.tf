@@ -174,11 +174,6 @@ variable "master_root_volume_size" {
   description = "The size of the root volume for master nodes in GiB; set this value to 0 to preserve the size specified in the AMI metadata. This value should not be smaller than the size specified in the AMI metadata and used by the root volume snapshot. The filesystem will be expanded automatically to use all available space for the volume and an XFS filesystem is assumed"
 }
 
-variable "prometheus_cidrs" {
-  type        = list(string)
-  description = "A list of CIDR blocks to permit Prometheus access from"
-}
-
 variable "region" {
   type        = string
   description = "The AWS region in which resources will be administered"

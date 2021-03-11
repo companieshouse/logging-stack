@@ -7,10 +7,6 @@ terraform {
   backend "s3" {}
 }
 
-data "aws_iam_instance_profile" "grafana_node" {
-  name = "${var.service}-${var.environment}-grafana"
-}
-
 data "aws_route53_zone" "zone" {
   name         = local.dns_zone_name
   private_zone = false
@@ -35,7 +31,6 @@ module "grafana" {
   environment                   = var.environment
   instance_count                = var.grafana_instance_count
   instance_type                 = var.grafana_instance_type
-  instance_profile_name         = data.aws_iam_instance_profile.elastic_search_node.name
   grafana_cidrs                 = local.administration_cidrs
   grafana_service_group         = var.grafana_service_group
   grafana_service_user          = var.grafana_service_user

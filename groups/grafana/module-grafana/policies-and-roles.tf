@@ -17,7 +17,7 @@ data "aws_iam_policy_document" "grafana_discovery_trust" {
 }
 
 
-resource "aws_iam_instance_profile" "grafana_node" {
+resource "aws_iam_instance_profile" "grafana" {
   name = "${var.service}-${var.environment}-grafana"
   role = "${aws_iam_role.grafana_discovery_execution.name}"
 }

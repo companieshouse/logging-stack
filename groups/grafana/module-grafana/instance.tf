@@ -13,7 +13,7 @@ resource "aws_instance" "grafana" {
   count                  = "${var.instance_count}"
 
   ami                    = data.aws_ami.grafana.id
-  iam_instance_profile   = var.instance_profile_name
+  iam_instance_profile   = aws_iam_instance_profile.grafana.name
   instance_type          = var.instance_type
   key_name               = var.ssh_keyname
   subnet_id              = element(var.subnet_ids, count.index)

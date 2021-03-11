@@ -12,7 +12,7 @@ resource "aws_security_group" "prometheus_instances" {
   }
 
   ingress {
-    description = "prometheus"
+    description = "Prometheus"
     from_port   = 9090
     to_port     = 9090
     protocol    = "tcp"
@@ -41,7 +41,7 @@ resource "aws_security_group" "prometheus_load_balancer" {
   vpc_id = var.vpc_id
 
   ingress {
-    description = "prometheus"
+    description = "Prometheus"
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"

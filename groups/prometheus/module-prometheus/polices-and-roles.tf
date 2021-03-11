@@ -17,7 +17,7 @@ data "aws_iam_policy_document" "prometheus_discovery_trust" {
 }
 
 
-resource "aws_iam_instance_profile" "prometheus_node" {
+resource "aws_iam_instance_profile" "prometheus" {
   name = "${var.service}-${var.environment}-prometheus"
   role = "${aws_iam_role.prometheus_discovery_execution.name}"
 }

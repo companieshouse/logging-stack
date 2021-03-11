@@ -42,12 +42,6 @@ variable "prometheus_metrics_port" {
   type = string
 }
 
-variable "prometheus_roles" {
-  default     = []
-  description = "The roles to assign to prometheus nodes"
-  type        = set(string)
-}
-
 variable "prometheus_root_volume_size" {
   default     = 0
   description = "The size of the root volume for prometheus instances in GiB; set this value to 0 to preserve the size specified in the AMI metadata. This value should not be smaller than the size specified in the AMI metadata and used by the root volume snapshot. The filesystem will be expanded automatically to use all available space for the volume and an XFS filesystem is assumed"
@@ -55,9 +49,9 @@ variable "prometheus_root_volume_size" {
 }
 
 variable "prometheus_service_group" {
-  type        = string
   default     = "prometheus"
   description = "The Linux group name for association with prometheus configuration files"
+  type        = string
 }
 
 variable "prometheus_service_user" {

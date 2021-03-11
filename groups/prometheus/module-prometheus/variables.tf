@@ -28,11 +28,6 @@ variable "instance_count" {
   type        = number
 }
 
-variable "instance_profile_name" {
-  description = "The name of the instance profile to associate with the instances"
-  type        = string
-}
-
 variable "instance_type" {
   description = "The instance type to use"
   type        = string
@@ -71,11 +66,6 @@ variable "placement_subnet_ids" {
 variable "prometheus_metrics_port" {
   description = "The metrics port to be used"
   type = string
-}
-
-variable "roles" {
-  description = "The roles to assign to master nodes"
-  type        = set(string)
 }
 
 variable "region" {

@@ -18,9 +18,9 @@ data "template_cloudinit_config" "prometheus" {
   }
 
   part {
-    content_type  = "text/cloud-config"
-    content       = templatefile("${path.module}/cloud-init/files/bootstrap-commands.yml", {
-    hostname      = "${var.environment}-${var.service}-prometheus${count.index+1}"
+    content_type    = "text/cloud-config"
+    content         =  templatefile("${path.module}/cloud-init/files/bootstrap-commands.yml", {
+      hostname      = "${var.environment}-${var.service}-prometheus${count.index+1}"
     })
   }
 }

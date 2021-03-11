@@ -7,10 +7,6 @@ terraform {
   backend "s3" {}
 }
 
-data "aws_iam_instance_profile" "elastic_search_node" {
-  name = "${var.service}-${var.environment}-elastic-search"
-}
-
 data "aws_route53_zone" "zone" {
   name         = local.dns_zone_name
   private_zone = false
@@ -35,7 +31,6 @@ module "prometheus" {
   environment                   = var.environment
   instance_count                = var.prometheus_instance_count
   instance_type                 = var.prometheus_instance_type
-  instance_profile_name         = data.aws_iam_instance_profile.elastic_search_node.name
   prometheus_cidrs              = local.administration_cidrs
   prometheus_service_group      = var.prometheus_service_group
   prometheus_service_user       = var.prometheus_service_user
@@ -43,7 +38,6 @@ module "prometheus" {
   placement_subnet_ids          = data.aws_subnet_ids.placement.ids
   prometheus_metrics_port       = var.prometheus_metrics_port
   region                        = var.region
-  roles                         = var.prometheus_roles
   root_volume_size              = var.prometheus_root_volume_size
   service                       = var.service
   ssh_cidrs                     = local.administration_cidrs

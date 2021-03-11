@@ -1,0 +1,4 @@
+runcmd:
+  - hostnamectl set-hostname ${hostname}
+  - systemctl enable grafana
+  - systemctl start grafana

@@ -46,7 +46,6 @@ resource "aws_lb_target_group" "prometheus" {
     timeout             = 3
     path                = "/graph"
     interval            = 60
-    matcher             = "200-399" #required?
   }
 }
 

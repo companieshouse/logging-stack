@@ -13,7 +13,7 @@ write_files:
           static_configs:
           - targets: ['localhost:9090','localhost:9100']
 
-        - job_name: node
+        - job_name: nodes
           scrape_interval: 60s
           scrape_timeout: 30s
           metrics_path: /metrics

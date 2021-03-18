@@ -1,4 +1,5 @@
-grafana_ami_version_pattern = "1.1.*"
+#TODO
+grafana_ami_version_pattern = "latest"
 
 grafana_lvm_block_devices = [
   {

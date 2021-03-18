@@ -48,6 +48,64 @@ variable "grafana_service_user" {
   type        = string
 }
 
+variable "ldap_auth_host" {
+  description = "The Ldap server host"
+  type        = string
+}
+
+variable "ldap_auth_port" {
+  description = "The LDAP server port"
+  type        = string
+}
+
+variable "ldap_auth_use_ssl" {
+  default     = "false"
+  description = "Ldap ssl configuration"
+  type        = boolean
+}
+
+variable "ldap_auth_start_tls" {
+  default     = "false"
+  description = "Ldap TLS configuration"
+  type        = boolean
+}
+
+variable "ldap_auth_ssl_skip_verify" {
+  default     = "true"
+  description = "Ldap SSL cert validation configuration"
+  type        = boolean
+}
+
+variable "ldap_auth_bind_dn" {
+  description = "Bind DN for searching LDAP users and groups"
+  type        = string
+}
+
+variable "ldap_auth_bind_password" {
+  description = "Bind password for the user specified bind DN"
+  type        = string
+}
+
+variable "ldap_auth_search_filter" {
+  description = "Search user bind dn"
+  type        = string
+}
+
+variable "ldap_auth_search_base_dns" {
+  description = "An array of base dns to search through"
+  type        = string
+}
+
+variable "ldap_grafana_admin_group_dn" {
+  description = "Ldap group used for admin privileges"
+  type        = string
+}
+
+variable "ldap_grafana_viewer_group_dn" {
+  description = "Ldap group used for viewing privileges"
+  type        = string
+}
+
 variable "lvm_block_devices" {
   description = "A list of objects representing LVM block devices; each LVM volume group is assumed to contain a single physical volume and each logical volume is assumed to belong to a single volume group; the filesystem for each logical volume will be expanded to use all available space within the volume group using the filesystem resize tool specified; block device configuration applies only on resource creation"
   type = list(object({

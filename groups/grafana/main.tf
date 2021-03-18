@@ -34,6 +34,17 @@ module "grafana" {
   grafana_cidrs                 = local.administration_cidrs
   grafana_service_group         = var.grafana_service_group
   grafana_service_user          = var.grafana_service_user
+  ldap_auth_host                = local.ldap_auth_host
+  ldap_auth_port                = local.ldap_auth_port
+  ldap_auth_use_ssl             = var.ldap_auth_use_ssl
+  ldap_auth_start_tls           = var.ldap_auth_start_tls
+  ldap_auth_ssl_skip_verify     = var.ldap_auth_ssl_skip_verify
+  ldap_auth_bind_dn             = local.ldap_auth_bind_dn
+  ldap_auth_bind_password       = local.ldap_auth_bind_password
+  ldap_auth_search_filter       = local.ldap_auth_search_filter
+  ldap_auth_search_base_dns     = local.ldap_auth_search_base_dns
+  ldap_grafana_admin_group_dn   = local.ldap_grafana_admin_group_dn
+  ldap_grafana_viewer_group_dn  = local.ldap_grafana_viewer_group_dn
   lvm_block_devices             = var.grafana_lvm_block_devices
   placement_subnet_ids          = data.aws_subnet_ids.placement.ids
   region                        = var.region

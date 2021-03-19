@@ -59,19 +59,16 @@ variable "ldap_auth_port" {
 }
 
 variable "ldap_auth_use_ssl" {
-  default     = "false"
   description = "Ldap ssl configuration"
   type        = bool
 }
 
 variable "ldap_auth_start_tls" {
-  default     = "false"
   description = "Ldap TLS configuration"
   type        = bool
 }
 
 variable "ldap_auth_ssl_skip_verify" {
-  default     = "true"
   description = "Ldap SSL cert validation configuration"
   type        = bool
 }

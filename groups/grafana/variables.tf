@@ -54,6 +54,24 @@ variable "grafana_service_user" {
   type        = string
 }
 
+variable "ldap_auth_use_ssl" {
+  default     = "false"
+  description = "Ldap ssl configuration"
+  type        = bool
+}
+
+variable "ldap_auth_start_tls" {
+  default     = "false"
+  description = "Ldap TLS configuration"
+  type        = bool
+}
+
+variable "ldap_auth_ssl_skip_verify" {
+  default     = "true"
+  description = "Ldap SSL cert validation configuration"
+  type        = bool
+}
+
 variable "region" {
   description = "The AWS region in which resources will be administered"
   type        = string

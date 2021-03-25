@@ -138,10 +138,9 @@ variable "environment" {
   description = "The environment name to be used when creating AWS resources"
 }
 
-# Warning: Never go below 3!
 variable "master_instance_count" {
   type        = number
-  description = "The number of master instances to provision"
+  description = "The number of master instances to provision. WARNING: This should never go below 3"
 }
 
 variable "master_instance_profile_name" {

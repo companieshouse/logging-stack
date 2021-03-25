@@ -4,7 +4,7 @@
 
 - name: Create application-logs index pattern for environments
   uri:
-    url: "{{ kibana_url }}/s/{{ item.name }}/api/saved_objects/index-pattern/application-logs-*?overwrite=true"
+    url: "{{ kibana_url }}/s/{{ item.name }}/api/saved_objects/index-pattern/{{ item.name }}-application-logs-*?overwrite=true"
     method: POST
     body: "{{ lookup('template', 'roles/kibana/templates/application_logs_index_pattern.json.j2') }}"
     status_code: 200

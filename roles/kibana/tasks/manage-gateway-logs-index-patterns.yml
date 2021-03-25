@@ -4,7 +4,7 @@
 
 - name: Create gateway-logs index pattern for environments
   uri:
-    url: "{{ kibana_url }}/s/{{ item.name }}/api/saved_objects/index-pattern/gateway-logs-*?overwrite=true"
+    url: "{{ kibana_url }}/s/{{ item.name }}/api/saved_objects/index-pattern/{{ item.name }}-gateway-logs-*?overwrite=true"
     method: POST
     body: "{{ lookup('template', 'roles/kibana/templates/gateway_logs_index_pattern.json.j2') }}"
     status_code: 200

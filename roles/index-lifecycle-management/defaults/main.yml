@@ -1,0 +1,3 @@
+---
+
+elasticsearch_api_url: "{{ lookup('env', 'ELASTICSEARCH_API_URL') }}"

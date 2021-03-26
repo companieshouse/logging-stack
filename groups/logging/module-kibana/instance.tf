@@ -54,14 +54,14 @@ data "template_cloudinit_config" "kibana" {
 }
 
 resource "aws_instance" "kibana" {
-  count                  = "${var.instance_count}"
+  count                  = var.instance_count
 
   ami                    = data.aws_ami.kibana.id
   iam_instance_profile   = var.instance_profile_name
   instance_type          = var.instance_type
   key_name               = var.ssh_keyname
   subnet_id              = element(var.subnet_ids, count.index)
-  user_data_base64       = "${data.template_cloudinit_config.kibana[count.index].rendered}"
+  user_data_base64       = data.template_cloudinit_config.kibana[count.index].rendered
   vpc_security_group_ids = [
     data.aws_security_group.elasticsearch.id,
     aws_security_group.kibana_instances.id

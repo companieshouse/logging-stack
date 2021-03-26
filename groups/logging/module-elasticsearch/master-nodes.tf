@@ -35,14 +35,14 @@ data "template_cloudinit_config" "master" {
 }
 
 resource "aws_instance" "master" {
-  count                  = "${var.master_instance_count}"
+  count                  = var.master_instance_count
 
   ami                    = data.aws_ami.elasticsearch.id
   iam_instance_profile   = var.master_instance_profile_name
   instance_type          = var.master_instance_type
   key_name               = var.ssh_keyname
   subnet_id              = element(var.subnet_ids, count.index)
-  user_data_base64       = "${data.template_cloudinit_config.master[count.index].rendered}"
+  user_data_base64       = data.template_cloudinit_config.master[count.index].rendered
   vpc_security_group_ids = [data.aws_security_group.elasticsearch.id]
 
   root_block_device {

@@ -47,14 +47,14 @@ data "template_cloudinit_config" "data_warm" {
 }
 
 resource "aws_instance" "data_warm" {
-  count                  = "${var.data_warm_instance_count}"
+  count                  = var.data_warm_instance_count
 
   ami                    = data.aws_ami.elasticsearch.id
   iam_instance_profile   = data.aws_iam_instance_profile.elastic_search_node.name
   instance_type          = var.data_warm_instance_type
   key_name               = var.ssh_keyname
   subnet_id              = element(var.subnet_ids, count.index)
-  user_data_base64       = "${data.template_cloudinit_config.data_warm[count.index].rendered}"
+  user_data_base64       = data.template_cloudinit_config.data_warm[count.index].rendered
   vpc_security_group_ids = [data.aws_security_group.elasticsearch.id]
 
   root_block_device {

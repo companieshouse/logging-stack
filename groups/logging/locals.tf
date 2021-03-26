@@ -3,6 +3,7 @@ data "vault_generic_secret" "secrets" {
 }
 
 locals {
+  concourse_worker_cidrs = jsondecode(data.vault_generic_secret.secrets.data["concourse_worker_cidrs"])
   discovery_availability_zones = join(",", list("${var.region}a", "${var.region}b", "${var.region}c"))
   dns_zone_name = data.vault_generic_secret.secrets.data["dns_zone_name"]
   data_cold_heap_size_gigabytes = var.instance_type_heap_allocation[var.data_cold_instance_type]
@@ -18,4 +19,6 @@ locals {
   administration_cidrs = concat(local.internal_cidrs, local.vpn_cidrs)
   placement_subnet_ids = [for subnet in values(data.aws_subnet.placement) : lookup(subnet, "id")]
   placement_subnet_ids_by_availability_zone = values(zipmap(local.placement_subnet_availability_zones, local.placement_subnet_ids))
+
+  kibana_cidrs = concat(local.administration_cidrs, local.concourse_worker_cidrs)
 }

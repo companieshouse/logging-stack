@@ -84,7 +84,7 @@ module "kibana" {
   instance_count                = var.kibana_instance_count
   instance_type                 = var.kibana_instance_type
   instance_profile_name         = data.aws_iam_instance_profile.elastic_search_node.name
-  kibana_cidrs                  = local.administration_cidrs
+  kibana_cidrs                  = local.kibana_cidrs
   kibana_service_group          = var.kibana_service_group
   kibana_service_user           = var.kibana_service_user
   lvm_block_devices             = var.kibana_lvm_block_devices

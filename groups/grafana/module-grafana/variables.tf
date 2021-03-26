@@ -48,6 +48,11 @@ variable "grafana_service_user" {
   type        = string
 }
 
+variable "grafana_admin_password" {
+  description = "The Grafana admin password used if LDAP connectivity is unavailable"
+  type        = string
+}
+
 variable "ldap_auth_host" {
   description = "The Ldap server host"
   type        = string

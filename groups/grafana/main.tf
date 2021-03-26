@@ -34,6 +34,7 @@ module "grafana" {
   grafana_cidrs                 = local.administration_cidrs
   grafana_service_group         = var.grafana_service_group
   grafana_service_user          = var.grafana_service_user
+  grafana_admin_password        = local.grafana_admin_password
   ldap_auth_host                = local.ldap_auth_host
   ldap_auth_port                = local.ldap_auth_port
   ldap_auth_use_ssl             = var.ldap_auth_use_ssl

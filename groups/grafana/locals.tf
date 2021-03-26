@@ -18,6 +18,7 @@ locals {
   placement_subnet_ids = [for subnet in values(data.aws_subnet.placement) : lookup(subnet, "id")]
   placement_subnet_ids_by_availability_zone = values(zipmap(local.placement_subnet_availability_zones, local.placement_subnet_ids))
 
+  grafana_admin_password          = local.secrets.grafana_admin_password
   ldap_auth_host                  = local.secrets.ldap_auth_host
   ldap_auth_port                  = local.secrets.ldap_auth_port
   ldap_auth_bind_dn               = local.secrets.ldap_auth_bind_dn

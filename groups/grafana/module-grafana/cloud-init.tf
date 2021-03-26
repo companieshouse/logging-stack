@@ -14,7 +14,7 @@ data "template_cloudinit_config" "grafana" {
     # lookup the map key for use as an index into the secret.data map itself. The secret.data
     # map contains a single JSON map, so ideally would
     # be used as the map itself however this does not currently appear to be possible
-    content = templatefile("${path.module}/cloud-init/templates/environment.tpl",
+    content = templatefile("${path.module}/cloud-init/templates/ldap.toml.tpl",
     {
       ldap_auth_host                  = var.ldap_auth_host
       ldap_auth_port                  = var.ldap_auth_port
@@ -30,14 +30,14 @@ data "template_cloudinit_config" "grafana" {
     })
     merge_type = var.user_data_merge_strategy
   }
-  #
-  #  part {
-  #    content_type = "text/cloud-config"
-  #    content = templatefile("${path.module}/cloud-init/templates/grafana.service.tpl", {
-  #      #TODO
-  #    })
-  #    merge_type = var.user_data_merge_strategy
-  #  }
+
+  part {
+    content_type = "text/cloud-config"
+    content      = templatefile("${path.module}/cloud-init/templates/grafana.ini.tpl",{
+      grafana_admin_password        = var.grafana_admin_password
+    })
+    merge_type   = var.user_data_merge_strategy
+  }
 
   part {
     content_type    =   "text/cloud-config"

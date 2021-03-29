@@ -8,9 +8,9 @@ locals {
   concourse_worker_cidrs = jsondecode(local.secrets.concourse_worker_cidrs)
   internal_cidrs = values(data.terraform_remote_state.networking.outputs.internal_cidrs)
   placement_subnet_cidrs = [for subnet in data.aws_subnet.placement_subnets : subnet.cidr_block]
-  placement_subnet_name_patterns = jsondecode(local.secrets["placement_subnet_name_patterns"])
+  placement_subnet_name_patterns = jsondecode(local.secrets.placement_subnet_name_patterns)
   vpn_cidrs = values(data.terraform_remote_state.networking.outputs.vpn_cidrs)
-  vpc_name = local.secrets["vpc_name"]
+  vpc_name = local.secrets.vpc_name
 
   administration_cidrs = concat(local.internal_cidrs, local.vpn_cidrs)
 

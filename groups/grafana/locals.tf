@@ -13,11 +13,6 @@ locals {
   vpc_id = data.aws_vpc.vpc.id
   vpc_name = local.secrets.vpc_name
   vpn_cidrs = values(data.terraform_remote_state.networking.outputs.vpn_cidrs)
-
-  administration_cidrs = concat(local.internal_cidrs, local.vpn_cidrs)
-  placement_subnet_ids = [for subnet in values(data.aws_subnet.placement) : lookup(subnet, "id")]
-  placement_subnet_ids_by_availability_zone = values(zipmap(local.placement_subnet_availability_zones, local.placement_subnet_ids))
-
   grafana_admin_password          = local.secrets.grafana_admin_password
   ldap_auth_host                  = local.secrets.ldap_auth_host
   ldap_auth_port                  = local.secrets.ldap_auth_port
@@ -27,4 +22,8 @@ locals {
   ldap_auth_search_base_dns       = local.secrets.ldap_auth_search_base_dns
   ldap_grafana_admin_group_dn     = local.secrets.ldap_grafana_admin_group_dn
   ldap_grafana_viewer_group_dn    = local.secrets.ldap_grafana_viewer_group_dn
+
+  administration_cidrs = concat(local.internal_cidrs, local.vpn_cidrs)
+  placement_subnet_ids = [for subnet in values(data.aws_subnet.placement) : lookup(subnet, "id")]
+  placement_subnet_ids_by_availability_zone = values(zipmap(local.placement_subnet_availability_zones, local.placement_subnet_ids))
 }

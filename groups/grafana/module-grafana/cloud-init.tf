@@ -10,6 +10,13 @@ data "template_cloudinit_config" "grafana" {
 
   part {
     content_type = "text/cloud-config"
+    content = templatefile("${path.module}/cloud-init/templates/system-config.yml.tpl", {
+      instance_fqdn = "${var.service}-${var.environment}-grafana-${count.index + 1}.${var.dns_zone_name}"
+    })
+  }
+
+  part {
+    content_type = "text/cloud-config"
     # TODO There is a potential Terraform bug here—it should not be necessary to dynamically
     # lookup the map key for use as an index into the secret.data map itself. The secret.data
     # map contains a single JSON map, so ideally would

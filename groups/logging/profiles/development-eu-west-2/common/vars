@@ -1,21 +1,21 @@
 data_cold_lvm_block_devices = [{
   aws_volume_size_gb: "1000",
   filesystem_resize_tool: "xfs_growfs",
-  lvm_logical_volume_device_node: "/dev/data/elasticsearch",
+  lvm_logical_volume_device_node: "/dev/elasticsearch/data",
   lvm_physical_volume_device_node: "/dev/xvdb"
 }]
 
 data_hot_lvm_block_devices = [{
   aws_volume_size_gb: "100",
   filesystem_resize_tool: "xfs_growfs",
-  lvm_logical_volume_device_node: "/dev/data/elasticsearch",
+  lvm_logical_volume_device_node: "/dev/elasticsearch/data",
   lvm_physical_volume_device_node: "/dev/xvdb"
 }]
 
 data_warm_lvm_block_devices = [{
   aws_volume_size_gb: "500",
   filesystem_resize_tool: "xfs_growfs",
-  lvm_logical_volume_device_node: "/dev/data/elasticsearch",
+  lvm_logical_volume_device_node: "/dev/elasticsearch/data",
   lvm_physical_volume_device_node: "/dev/xvdb"
 }]
 
@@ -43,7 +43,7 @@ kibana_lvm_block_devices = [
 master_lvm_block_devices = [{
   aws_volume_size_gb: "20",
   filesystem_resize_tool: "xfs_growfs",
-  lvm_logical_volume_device_node: "/dev/data/elasticsearch",
+  lvm_logical_volume_device_node: "/dev/elasticsearch/data",
   lvm_physical_volume_device_node: "/dev/xvdb"
 }]
 

@@ -1,5 +1,3 @@
-grafana_ami_version_pattern = "1.0.*"
-
 grafana_lvm_block_devices = [
   {
     aws_volume_size_gb: "100",

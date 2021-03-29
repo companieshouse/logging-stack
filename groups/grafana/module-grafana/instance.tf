@@ -24,18 +24,18 @@ resource "aws_instance" "grafana" {
     volume_size = var.root_volume_size != 0 ? var.root_volume_size : local.ami_root_block_device.ebs.volume_size
   }
 
-  # dynamic "ebs_block_device" {
-  #   for_each = local.ami_lvm_block_devices
-  #   iterator = block_device
-  #   content {
-  #     device_name = block_device.value.device_name
-  #     encrypted   = block_device.value.ebs.encrypted
-  #     iops        = block_device.value.ebs.iops
-  #     snapshot_id = block_device.value.ebs.snapshot_id
-  #     volume_size = var.lvm_block_devices[index(var.lvm_block_devices.*.lvm_physical_volume_device_node, block_device.value.device_name)].aws_volume_size_gb
-  #     volume_type = block_device.value.ebs.volume_type
-  #   }
-  # }
+  dynamic "ebs_block_device" {
+    for_each = local.ami_lvm_block_devices
+    iterator = block_device
+    content {
+      device_name = block_device.value.device_name
+      encrypted   = block_device.value.ebs.encrypted
+      iops        = block_device.value.ebs.iops
+      snapshot_id = block_device.value.ebs.snapshot_id
+      volume_size = var.lvm_block_devices[index(var.lvm_block_devices.*.lvm_physical_volume_device_node, block_device.value.device_name)].aws_volume_size_gb
+      volume_type = block_device.value.ebs.volume_type
+    }
+  }
 
   tags = {
     Environment = var.environment

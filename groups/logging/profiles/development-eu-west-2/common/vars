@@ -1,0 +1,58 @@
+data_cold_lvm_block_devices = [{
+  aws_volume_size_gb: "1000",
+  filesystem_resize_tool: "xfs_growfs",
+  lvm_logical_volume_device_node: "/dev/data/elasticsearch",
+  lvm_physical_volume_device_node: "/dev/xvdb"
+}]
+
+data_hot_lvm_block_devices = [{
+  aws_volume_size_gb: "100",
+  filesystem_resize_tool: "xfs_growfs",
+  lvm_logical_volume_device_node: "/dev/data/elasticsearch",
+  lvm_physical_volume_device_node: "/dev/xvdb"
+}]
+
+data_warm_lvm_block_devices = [{
+  aws_volume_size_gb: "500",
+  filesystem_resize_tool: "xfs_growfs",
+  lvm_logical_volume_device_node: "/dev/data/elasticsearch",
+  lvm_physical_volume_device_node: "/dev/xvdb"
+}]
+
+# TODO - Swap to versioned version
+elastic_search_ami_version_pattern = "latest"
+
+# TODO - Swap to versioned version
+kibana_ami_version_pattern = "latest"
+
+kibana_lvm_block_devices = [
+  {
+    aws_volume_size_gb: "20",
+    filesystem_resize_tool: "xfs_growfs",
+    lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+    lvm_physical_volume_device_node: "/dev/xvdb"
+  },
+  {
+    aws_volume_size_gb: "20",
+    filesystem_resize_tool: "xfs_growfs",
+    lvm_logical_volume_device_node: "/dev/kibana/data",
+    lvm_physical_volume_device_node: "/dev/xvdc"
+  }
+]
+
+master_lvm_block_devices = [{
+  aws_volume_size_gb: "20",
+  filesystem_resize_tool: "xfs_growfs",
+  lvm_logical_volume_device_node: "/dev/data/elasticsearch",
+  lvm_physical_volume_device_node: "/dev/xvdb"
+}]
+
+# TODO provision keypair
+ssh_keyname = "development-devops"
+
+team = "platform"
+
+# TODO - Remove these once they're provided automatically
+account_name = "development"
+environment = "common"
+repository_name = "logging-stack"

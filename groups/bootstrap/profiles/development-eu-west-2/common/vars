@@ -1,0 +1,15 @@
+ami_version_pattern = "latest"
+lvm_block_devices = [{
+  aws_volume_size_gb: "20",
+  filesystem_resize_tool: "xfs_growfs",
+  lvm_logical_volume_device_node: "/dev/data/elasticsearch",
+  lvm_physical_volume_device_node: "/dev/xvdb"
+}]
+# TODO provision keypair
+ssh_keyname = "development-devops"
+team = "platform"
+
+# TODO - Remove these once they're provided automatically
+account_name = "development"
+environment = "common"
+repository_name = "logging-stack"

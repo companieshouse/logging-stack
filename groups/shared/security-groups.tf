@@ -1,7 +1,3 @@
-data "aws_security_group" "prometheus" {
-  name = "${var.service}-${var.environment}-prometheus"
-}
-
 resource "aws_security_group" "elasticsearch" {
   description = "Restricts access for Elastic Search ${var.service} nodes"
   name = "${var.service}-${var.environment}-elasticsearch"
@@ -20,7 +16,7 @@ resource "aws_security_group" "elasticsearch" {
     from_port       = 9100
     to_port         = 9100
     protocol        = "tcp"
-    security_groups = [data.aws_security_group.prometheus.id]
+    cidr_blocks     = local.placement_subnet_cidrs
   }
 
   ingress {

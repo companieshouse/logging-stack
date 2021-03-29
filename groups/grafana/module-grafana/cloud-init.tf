@@ -42,6 +42,8 @@ data "template_cloudinit_config" "grafana" {
     content_type = "text/cloud-config"
     content      = templatefile("${path.module}/cloud-init/templates/grafana.ini.tpl",{
       grafana_admin_password        = var.grafana_admin_password
+      grafana_service_group         = var.grafana_service_group
+      grafana_service_user          = var.grafana_service_user
     })
     merge_type   = var.user_data_merge_strategy
   }

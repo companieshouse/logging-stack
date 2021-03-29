@@ -1,6 +1,6 @@
 write_files:
   - path: /etc/grafana/ldap.toml
-    owner: grafana:grafana
+    owner: ${grafana_service_user}:${grafana_service_group}
     permissions: 0644
     content: |
       [[servers]]

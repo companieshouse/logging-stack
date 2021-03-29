@@ -23,6 +23,8 @@ data "template_cloudinit_config" "grafana" {
     # be used as the map itself however this does not currently appear to be possible
     content = templatefile("${path.module}/cloud-init/templates/ldap.toml.tpl",
     {
+      grafana_service_group         = var.grafana_service_group
+      grafana_service_user          = var.grafana_service_user
       ldap_auth_host                  = var.ldap_auth_host
       ldap_auth_port                  = var.ldap_auth_port
       ldap_auth_use_ssl               = var.ldap_auth_use_ssl

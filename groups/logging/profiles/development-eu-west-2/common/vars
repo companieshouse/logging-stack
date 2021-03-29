@@ -19,12 +19,6 @@ data_warm_lvm_block_devices = [{
   lvm_physical_volume_device_node: "/dev/xvdb"
 }]
 
-# TODO - Swap to versioned version
-elastic_search_ami_version_pattern = "latest"
-
-# TODO - Swap to versioned version
-kibana_ami_version_pattern = "latest"
-
 kibana_lvm_block_devices = [
   {
     aws_volume_size_gb: "20",

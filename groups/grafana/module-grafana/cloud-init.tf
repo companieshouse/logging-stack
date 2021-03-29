@@ -51,9 +51,10 @@ data "template_cloudinit_config" "grafana" {
   }
 
   part {
-    content_type    =   "text/cloud-config"
-    content         =   templatefile("${path.module}/cloud-init/files/bootstrap-commands.yml", {
-      hostname      =   "${var.environment}-${var.service}-grafana${count.index+1}"
+    content_type = "text/cloud-config"
+    content = templatefile("${path.module}/cloud-init/templates/bootstrap-commands.yml.tpl", {
+      lvm_block_devices       = var.lvm_block_devices
+      root_volume_device_node = data.aws_ami.grafana.root_device_name
     })
   }
 }

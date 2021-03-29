@@ -7,7 +7,7 @@ data "template_cloudinit_config" "master" {
   part {
     content_type = "text/cloud-config"
     content = templatefile("${path.module}/cloud-init/templates/system-config.yml.tpl", {
-      instance_hostname = "${var.service}-${var.environment}-master-${count.index + 1}.${var.dns_zone_name}"
+      instance_fqdn = "${var.service}-${var.environment}-master-${count.index + 1}.${var.dns_zone_name}"
     })
   }
 

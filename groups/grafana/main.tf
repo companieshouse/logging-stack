@@ -25,7 +25,6 @@ module "grafana" {
   source = "./module-grafana"
 
   ami_version_pattern           = var.grafana_ami_version_pattern
-  discovery_availability_zones  = local.discovery_availability_zones
   dns_zone_id                   = data.aws_route53_zone.zone.zone_id
   dns_zone_name                 = local.dns_zone_name
   environment                   = var.environment

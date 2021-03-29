@@ -3,11 +3,6 @@ variable "ami_version_pattern" {
   type        = string
 }
 
-variable "discovery_availability_zones" {
-  description = "A list of availability zones in which to search for master nodes"
-  type        = string
-}
-
 variable "dns_zone_id" {
   description = "The id of the DNS zone we're using"
   type        = string

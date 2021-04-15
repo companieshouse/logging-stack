@@ -1,0 +1,17 @@
+---
+
+- name: Create common logging nodes dashboard
+  uri:
+    url: "{{ grafana_url }}/api/dashboards/db"
+    method: POST
+    url_username: admin
+    url_password: "{{ item.grafana_admin_password }}"
+    body: "{{ lookup('template', 'roles/grafana/templates/common_logging_nodes.json.j2') }}"
+    status_code: 200
+    body_format: json
+    validate_certs: no
+    force_basic_auth: yes
+    headers:
+      Content-Type: application/json
+  with_items:
+    "{{ logging_variables }}"

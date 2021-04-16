@@ -7,6 +7,7 @@
     status_code: 200
     return_content: yes
   register: list_response
+  no_log: True
 
 - set_fact:
     environment_spaces: "{{ list_response.content | from_json | json_query('[].name') | reject('match','Default') | list }}"

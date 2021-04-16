@@ -16,6 +16,7 @@
     "{{ environments }}"
   when:
     item.name not in environment_spaces
+  no_log: True
 
 - name: Update Kibana environment spaces
   uri:
@@ -31,6 +32,7 @@
     "{{ environments }}"
   when:
     item.name in environment_spaces
+  no_log: True
 
 - name: Delete Kibana environment spaces
   uri:
@@ -43,3 +45,4 @@
     "{{ environment_spaces }}"
   when:
     item not in ( environments | map(attribute='name')| list )
+  no_log: True

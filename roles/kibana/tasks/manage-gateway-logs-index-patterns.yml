@@ -16,3 +16,4 @@
     "{{ environments}}"
   when:
     item.name in environment_spaces
+  no_log: True

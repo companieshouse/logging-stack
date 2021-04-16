@@ -73,7 +73,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{hostname=~\"logging-{{ item.environment }}-master-.{{ item.domain }}\",job=\"nodes\",mode=\"idle\"}[5m])) * 100)",
+            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{hostname=~\"logging-{{ item.environment }}-master-.*\",job=\"nodes\",mode=\"idle\"}[5m])) * 100)",
             "interval": "",
             "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
             "refId": "A"
@@ -176,7 +176,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{hostname=~\"logging-{{ item.environment }}-data-hot-.{{ item.domain }}\",job=\"nodes\",mode=\"idle\"}[5m])) * 100)",
+            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{hostname=~\"logging-{{ item.environment }}-data-hot-.*\",job=\"nodes\",mode=\"idle\"}[5m])) * 100)",
             "interval": "",
             "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
             "refId": "B"
@@ -278,7 +278,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{hostname=~\"logging-{{ item.environment }}-data-warm-.{{ item.domain }}\",job=\"nodes\",mode=\"idle\"}[5m])) * 100)",
+            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{hostname=~\"logging-{{ item.environment }}-data-warm-.*\",job=\"nodes\",mode=\"idle\"}[5m])) * 100)",
             "interval": "",
             "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
             "refId": "A"
@@ -380,7 +380,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{hostname=~\"logging-{{ item.environment }}-data-cold-.{{ item.domain }}\",job=\"nodes\",mode=\"idle\"}[5m])) * 100)",
+            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{hostname=~\"logging-{{ item.environment }}-data-cold-.*\",job=\"nodes\",mode=\"idle\"}[5m])) * 100)",
             "interval": "",
             "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
             "refId": "A"
@@ -483,7 +483,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_memory_MemFree_bytes{hostname=~\"logging-{{ item.environment }}-master-.{{ item.domain }}\", job=\"nodes\"}/1073741824",
+            "expr": "node_memory_MemFree_bytes{hostname=~\"logging-{{ item.environment }}-master-.*\", job=\"nodes\"}/1073741824",
             "interval": "",
             "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
             "refId": "D"
@@ -586,7 +586,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_memory_MemFree_bytes{hostname=~\"logging-{{ item.environment }}-data-hot-.{{ item.domain }}\", job=\"nodes\"}/1073741824",
+            "expr": "node_memory_MemFree_bytes{hostname=~\"logging-{{ item.environment }}-data-hot-.*\", job=\"nodes\"}/1073741824",
             "interval": "",
             "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
             "refId": "D"
@@ -689,7 +689,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_memory_MemFree_bytes{hostname=~\"logging-{{ item.environment }}-data-warm-.{{ item.domain }}\", job=\"nodes\"}/1073741824",
+            "expr": "node_memory_MemFree_bytes{hostname=~\"logging-{{ item.environment }}-data-warm-.*\", job=\"nodes\"}/1073741824",
             "interval": "",
             "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
             "refId": "A"
@@ -791,7 +791,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_memory_MemFree_bytes{hostname=~\"logging-{{ item.environment }}-data-cold-.{{ item.domain }}\", job=\"nodes\"}/1073741824",
+            "expr": "node_memory_MemFree_bytes{hostname=~\"logging-{{ item.environment }}-data-cold-.*\", job=\"nodes\"}/1073741824",
             "interval": "",
             "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
             "refId": "A"
@@ -892,7 +892,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-master-.{{ item.domain }}\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-master-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
             "interval": "",
             "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
             "refId": "A"
@@ -994,7 +994,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-data-hot-.{{ item.domain }}\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-data-hot-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
             "interval": "",
             "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
             "refId": "A"
@@ -1096,7 +1096,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-data-warm-.{{ item.domain }}\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-data-warm-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
             "interval": "",
             "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
             "refId": "A"
@@ -1198,7 +1198,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-data-cold-.{{ item.domain }}\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-data-cold-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
             "interval": "",
             "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
             "refId": "A"
@@ -1300,7 +1300,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "irate(node_network_receive_bytes_total{hostname=~\"logging-{{ item.environment }}-master-.{{ item.domain }}\", job=\"nodes\",device=\"eth0\"}[5m])",
+            "expr": "irate(node_network_receive_bytes_total{hostname=~\"logging-{{ item.environment }}-master-.*\", job=\"nodes\",device=\"eth0\"}[5m])",
             "interval": "",
             "legendFormat": "{% raw %}{{device}} receive ({{hostname}}){% endraw %}",
             "refId": "A"
@@ -1401,7 +1401,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "irate(node_network_receive_bytes_total{hostname=~\"logging-{{ item.environment }}-data-hot-.{{ item.domain }}\", job=\"nodes\",device=\"eth0\"}[5m])",
+            "expr": "irate(node_network_receive_bytes_total{hostname=~\"logging-{{ item.environment }}-data-hot-.*\", job=\"nodes\",device=\"eth0\"}[5m])",
             "interval": "",
             "legendFormat": "{% raw %}{{device}} receive ({{hostname}}){% endraw %}",
             "refId": "A"
@@ -1502,7 +1502,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "irate(node_network_receive_bytes_total{hostname=~\"logging-{{ item.environment }}-data-warm-.{{ item.domain }}\", job=\"nodes\",device=\"eth0\"}[5m])",
+            "expr": "irate(node_network_receive_bytes_total{hostname=~\"logging-{{ item.environment }}-data-warm-.*\", job=\"nodes\",device=\"eth0\"}[5m])",
             "interval": "",
             "legendFormat": "{% raw %}{{device}} receive ({{hostname}}){% endraw %}",
             "refId": "A"
@@ -1603,7 +1603,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "irate(node_network_receive_bytes_total{hostname=~\"logging-{{ item.environment }}-data-cold-.{{ item.domain }}\", job=\"nodes\",device=\"eth0\"}[5m])",
+            "expr": "irate(node_network_receive_bytes_total{hostname=~\"logging-{{ item.environment }}-data-cold-.*\", job=\"nodes\",device=\"eth0\"}[5m])",
             "interval": "",
             "legendFormat": "{% raw %}{{device}} receive ({{hostname}}){% endraw %}",
             "refId": "A"

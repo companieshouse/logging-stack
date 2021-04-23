@@ -12,10 +12,10 @@ locals {
   ]
   discovery_availability_zones = join(",", list("${var.region}a", "${var.region}b", "${var.region}c"))
   dns_zone_id = data.aws_route53_zone.zone.zone_id
-  dns_zone_name = local.secrets["dns_zone_name"]
+  dns_zone_name = local.secrets.dns_zone_name
   heap_size_gigabytes = var.instance_type_heap_allocation[var.instance_type]
-  placement_subnet_name_pattern = local.secrets["placement_subnet_name_pattern"]
+  placement_subnet_name_pattern = local.secrets.placement_subnet_name_pattern
   subnet_id = tolist(data.aws_subnet_ids.placement.ids)[0]
   vpc_id = data.aws_vpc.vpc.id
-  vpc_name = local.secrets["vpc_name"]
+  vpc_name = local.secrets.vpc_name
 }

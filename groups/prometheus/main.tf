@@ -7,26 +7,11 @@ terraform {
   backend "s3" {}
 }
 
-data "aws_route53_zone" "zone" {
-  name         = local.dns_zone_name
-  private_zone = false
-}
-
-data "terraform_remote_state" "networking" {
-  backend = "s3"
-  config = {
-    bucket = "development-${var.region}.terraform-state.ch.gov.uk"
-    key    = "aws-common-infrastructure-terraform/common-${var.region}/networking.tfstate"
-    region = var.region
-  }
-}
-
 module "prometheus" {
   source = "./module-prometheus"
 
   ami_version_pattern           = var.prometheus_ami_version_pattern
   discovery_availability_zones  = local.discovery_availability_zones
-  dns_zone_id                   = data.aws_route53_zone.zone.zone_id
   dns_zone_name                 = local.dns_zone_name
   environment                   = var.environment
   instance_count                = var.prometheus_instance_count
@@ -39,6 +24,7 @@ module "prometheus" {
   prometheus_metrics_port       = var.prometheus_metrics_port
   region                        = var.region
   root_volume_size              = var.prometheus_root_volume_size
+  route53_available             = local.route53_available
   service                       = var.service
   ssh_cidrs                     = local.administration_cidrs
   ssh_keyname                   = var.ssh_keyname

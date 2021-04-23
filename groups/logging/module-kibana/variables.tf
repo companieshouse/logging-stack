@@ -8,11 +8,6 @@ variable "discovery_availability_zones" {
   description = "A list of availability zones in which to search for master nodes"
 }
 
-variable "dns_zone_id" {
-  type        = string
-  description = "The id of the DNS zone we're using"
-}
-
 variable "dns_zone_name" {
   type        = string
   description = "The name of the DNS zone we're using"
@@ -91,6 +86,11 @@ variable "region" {
 variable "root_volume_size" {
   type        = number
   description = "The size of the root volume in GiB; set this value to 0 to preserve the size specified in the AMI metadata. This value should not be smaller than the size specified in the AMI metadata and used by the root volume snapshot. The filesystem will be expanded automatically to use all available space for the volume and an XFS filesystem is assumed"
+}
+
+variable "route53_available" {
+  description = "A flag indicating whether Route53 is available"
+  type        = bool
 }
 
 variable "service" {

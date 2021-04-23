@@ -87,13 +87,3 @@ resource "aws_instance" "data_cold" {
     }
   )
 }
-
-resource "aws_route53_record" "data_cold" {
-  count   = var.dns_zone_id != "" ? "${var.data_cold_instance_count}" : 0
-
-  zone_id = var.dns_zone_id
-  name = "${var.service}-${var.environment}-data-cold-${count.index + 1}.${var.dns_zone_name}"
-  type    = "A"
-  ttl     = "300"
-  records = ["${element(aws_instance.data_cold.*.private_ip, count.index)}"]
-}

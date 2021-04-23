@@ -11,20 +11,6 @@ data "aws_iam_instance_profile" "elastic_search_node" {
   name = "${var.service}-${var.environment}-elastic-search"
 }
 
-data "aws_route53_zone" "zone" {
-  name         = local.dns_zone_name
-  private_zone = false
-}
-
-data "terraform_remote_state" "networking" {
-  backend = "s3"
-  config = {
-    bucket = "development-${var.region}.terraform-state.ch.gov.uk"
-    key    = "aws-common-infrastructure-terraform/common-${var.region}/networking.tfstate"
-    region = var.region
-  }
-}
-
 module "elasticsearch" {
   source = "./module-elasticsearch"
 
@@ -52,7 +38,6 @@ module "elasticsearch" {
   data_warm_root_volume_size    = var.data_warm_root_volume_size
 
   discovery_availability_zones  = local.discovery_availability_zones
-  dns_zone_id                   = data.aws_route53_zone.zone.zone_id
   dns_zone_name                 = local.dns_zone_name
   elastic_search_service_group  = var.elastic_search_service_group
   elastic_search_service_user   = var.elastic_search_service_user
@@ -64,6 +49,7 @@ module "elasticsearch" {
   master_root_volume_size       = var.master_root_volume_size
   master_lvm_block_devices      = var.master_lvm_block_devices
   region                        = var.region
+  route53_available             = local.route53_available
   service                       = var.service
   ssh_cidrs                     = local.administration_cidrs
   ssh_keyname                   = var.ssh_keyname
@@ -76,7 +62,6 @@ module "kibana" {
 
   ami_version_pattern           = var.kibana_ami_version_pattern
   discovery_availability_zones  = local.discovery_availability_zones
-  dns_zone_id                   = data.aws_route53_zone.zone.zone_id
   dns_zone_name                 = local.dns_zone_name
   elastic_search_service_group  = var.elastic_search_service_group
   elastic_search_service_user   = var.elastic_search_service_user
@@ -92,6 +77,7 @@ module "kibana" {
   region                        = var.region
   roles                         = var.kibana_roles
   root_volume_size              = var.kibana_root_volume_size
+  route53_available             = local.route53_available
   service                       = var.service
   ssh_keyname                   = var.ssh_keyname
   subnet_ids                    = local.placement_subnet_ids_by_availability_zone

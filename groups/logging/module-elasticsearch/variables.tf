@@ -113,11 +113,6 @@ variable "discovery_availability_zones" {
   description = "A list of availability zones in which to search for master nodes"
 }
 
-variable "dns_zone_id" {
-  type        = string
-  description = "The id of the DNS zone we're using"
-}
-
 variable "dns_zone_name" {
   type        = string
   description = "The name of the DNS zone we're using"
@@ -185,6 +180,11 @@ variable "role_tags" {
     ingest = "ElasticSearchIngestNode"
   }
   description = "A map defining what tag should be applied for a given role"
+}
+
+variable "route53_available" {
+  description = "A flag indicating whether Route53 is available"
+  type        = bool
 }
 
 variable "service" {

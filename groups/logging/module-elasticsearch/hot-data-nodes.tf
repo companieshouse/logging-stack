@@ -87,21 +87,3 @@ resource "aws_instance" "data_hot" {
     }
   )
 }
-
-resource "aws_route53_record" "data_hot" {
-  count   = var.dns_zone_id != "" ? "${var.data_hot_instance_count}" : 0
-
-  zone_id = var.dns_zone_id
-  name = "${var.service}-${var.environment}-data-hot-${count.index + 1}.${var.dns_zone_name}"
-  type    = "A"
-  ttl     = "300"
-  records = ["${element(aws_instance.data_hot.*.private_ip, count.index)}"]
-}
-
-resource "aws_route53_record" "ingest" {
-  zone_id = var.dns_zone_id
-  name = "${var.service}-${var.environment}-sniffing.${var.dns_zone_name}"
-  type    = "A"
-  ttl     = "300"
-  records = aws_instance.data_hot.*.private_ip
-}

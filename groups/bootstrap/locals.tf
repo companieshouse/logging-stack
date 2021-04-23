@@ -5,8 +5,6 @@ data "vault_generic_secret" "secrets" {
 locals {
   secrets = data.vault_generic_secret.secrets.data
 
-  route53_available = local.secrets.route53_available
-
   ami_root_block_device = tolist(data.aws_ami.elasticsearch.block_device_mappings)[index(data.aws_ami.elasticsearch.block_device_mappings.*.device_name, data.aws_ami.elasticsearch.root_device_name)]
   ami_lvm_block_devices = [
     for block_device in data.aws_ami.elasticsearch.block_device_mappings :
@@ -16,6 +14,7 @@ locals {
   dns_zone_name = local.secrets.dns_zone_name
   heap_size_gigabytes = var.instance_type_heap_allocation[var.instance_type]
   placement_subnet_name_pattern = local.secrets.placement_subnet_name_pattern
+  route53_available = local.secrets.route53_available
   subnet_id = tolist(data.aws_subnet_ids.placement.ids)[0]
   vpc_id = data.aws_vpc.vpc.id
   vpc_name = local.secrets.vpc_name

@@ -1,12 +1,14 @@
 data "aws_route53_zone" "zone" {
+  count   = local.route53_available ? 1 : 0
+
   name         = local.dns_zone_name
   private_zone = false
 }
 
 resource "aws_route53_record" "bootstrap" {
-  count   = local.dns_zone_id != "" ? 1 : 0
+  count   = local.route53_available ? 1 : 0
 
-  zone_id = data.aws_route53_zone.zone.zone_id
+  zone_id = data.aws_route53_zone.zone[count.index].zone_id
   name = "${var.service}-${var.environment}-bootstrap.${local.dns_zone_name}"
   type    = "A"
   ttl     = "300"

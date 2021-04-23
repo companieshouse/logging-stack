@@ -1,12 +1,48 @@
 ---
 
-- name: Create common logging nodes dashboard
+- name: Get list of datasources
+  uri:
+    url: "{{ grafana_url }}/api/datasources"
+    method: GET
+    url_username: "{{ item.grafana_admin_user }}"
+    url_password: "{{ item.grafana_admin_password }}"
+    status_code: 200
+    force_basic_auth: yes
+    headers:
+      Content-Type: application/json
+  with_items:
+    "{{ logging_variables }}"
+  register: list_response
+  no_log: True
+
+- set_fact:
+    environments: "{{ list_response | json_query('results[*].json[].name') | reject('match','Prometheus') | list }}"
+
+- name: Create logging nodes datasource
+  uri:
+    url: "{{ grafana_url }}/api/datasources"
+    method: POST
+    url_username: "{{ item.grafana_admin_user }}"
+    url_password: "{{ item.grafana_admin_password }}"
+    body: "{{ lookup('template', 'roles/grafana/templates/logging_nodes_datasource.json.j2') }}"
+    status_code: 200
+    body_format: json
+    force_basic_auth: yes
+    headers:
+      Content-Type: application/json
+  with_items:
+    "{{ logging_variables }}"
+  when:
+    ("logging-" + item.environment not in environments)
+  no_log: True
+
+- name: Create logging nodes dashboard
   uri:
     url: "{{ grafana_url }}/api/dashboards/db"
     method: POST
-    url_username: admin
+    url_username: "{{ item.grafana_admin_user }}"
     url_password: "{{ item.grafana_admin_password }}"
-    body: "{{ lookup('template', 'roles/grafana/templates/common_logging_nodes.json.j2') }}"
+    body: "{{ lookup('template', 'roles/grafana/templates/logging_nodes_dashboard.json.j2') }}"
     status_code: 200
     body_format: json
     validate_certs: no

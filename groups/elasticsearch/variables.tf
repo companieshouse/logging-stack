@@ -146,58 +146,6 @@ variable "instance_type_heap_allocation" {
   description = "A map used to determine the Java heap allocation in gigabytes, based on instance type. I.e. 50% of what's available"
 }
 
-variable "kibana_ami_version_pattern" {
-  type        = string
-  default     = "\\d.\\d.\\d"
-  description = "The pattern with which to match kibana AMIs"
-}
-
-variable "kibana_instance_count" {
-  type        = number
-  default     = 2
-  description = "The number of kibana instances to provision"
-}
-
-variable "kibana_instance_type" {
-  type        = string
-  default     = "t3.medium"
-  description = "The instance type to use for kibana instances"
-}
-
-variable "kibana_lvm_block_devices" {
-  type = list(object({
-    aws_volume_size_gb: string,
-    filesystem_resize_tool: string,
-    lvm_logical_volume_device_node: string,
-    lvm_physical_volume_device_node: string,
-  }))
-  description = "LVM block devices for kibana nodes"
-}
-
-variable "kibana_roles" {
-  type        = set(string)
-  default     = []
-  description = "The roles to assign to kibana nodes"
-}
-
-variable "kibana_root_volume_size" {
-  type        = number
-  default     = 0
-  description = "The size of the root volume for kibana instances in GiB; set this value to 0 to preserve the size specified in the AMI metadata. This value should not be smaller than the size specified in the AMI metadata and used by the root volume snapshot. The filesystem will be expanded automatically to use all available space for the volume and an XFS filesystem is assumed"
-}
-
-variable "kibana_service_group" {
-  type        = string
-  default     = "kibana"
-  description = "The Linux group name for association with kibana configuration files"
-}
-
-variable "kibana_service_user" {
-  type        = string
-  default     = "kibana"
-  description = "The Linux username for ownership of kibana configuration files"
-}
-
 # Warning: Never go below 3!
 variable "master_instance_count" {
   type        = number

@@ -17,11 +17,11 @@ data "template_cloudinit_config" "data_cold" {
     content = templatefile("${path.module}/cloud-init/templates/elasticsearch.yml.tpl", {
       box_type                      = "cold"
       discovery_availability_zones  = var.discovery_availability_zones
-      elastic_search_service_user   = var.elastic_search_service_user
-      elastic_search_service_group  = var.elastic_search_service_group
       environment                   = var.environment
       region                        = var.region
       roles                         = var.data_cold_roles
+      service_group                 = var.service_group
+      service_user                  = var.service_user
     })
     merge_type = var.user_data_merge_strategy
   }
@@ -29,9 +29,9 @@ data "template_cloudinit_config" "data_cold" {
   part {
     content_type = "text/cloud-config"
     content = templatefile("${path.module}/cloud-init/templates/jvm.options.tpl", {
-      elastic_search_service_user   = var.elastic_search_service_user
-      elastic_search_service_group  = var.elastic_search_service_group
-      heap_size_gigabytes           = var.data_cold_heap_size_gigabytes
+      heap_size_gigabytes   = var.data_cold_heap_size_gigabytes
+      service_group         = var.service_group
+      service_user          = var.service_user
     })
     merge_type = var.user_data_merge_strategy
   }

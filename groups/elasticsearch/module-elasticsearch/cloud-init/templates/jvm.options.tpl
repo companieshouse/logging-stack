@@ -1,6 +1,6 @@
 write_files:
   - path: /etc/elasticsearch/jvm.options
-    owner: ${elastic_search_service_user}:${elastic_search_service_group}
+    owner: ${service_user}:${service_group}
     permissions: 0660
     content: |
       -Xms${heap_size_gigabytes}g

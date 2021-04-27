@@ -118,16 +118,6 @@ variable "dns_zone_name" {
   description = "The name of the DNS zone we're using"
 }
 
-variable "elastic_search_service_group" {
-  type        = string
-  description = "The Linux group name for association with elasticsearch configuration files"
-}
-
-variable "elastic_search_service_user" {
-  type        = string
-  description = "The Linux username for ownership of elasticsearch configuration files"
-}
-
 variable "environment" {
   type        = string
   description = "The environment name to be used when creating AWS resources"
@@ -190,6 +180,16 @@ variable "route53_available" {
 variable "service" {
   type        = string
   description = "The service name to be used when creating AWS resources"
+}
+
+variable "service_group" {
+  type        = string
+  description = "The Linux group name for association with elasticsearch configuration files"
+}
+
+variable "service_user" {
+  type        = string
+  description = "The Linux username for ownership of elasticsearch configuration files"
 }
 
 variable "ssh_cidrs" {

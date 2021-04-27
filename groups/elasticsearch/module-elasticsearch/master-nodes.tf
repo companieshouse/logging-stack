@@ -16,11 +16,11 @@ data "template_cloudinit_config" "master" {
     content = templatefile("${path.module}/cloud-init/templates/elasticsearch.yml.tpl", {
       box_type                      = "master"
       discovery_availability_zones  = var.discovery_availability_zones
-      elastic_search_service_user   = var.elastic_search_service_user
-      elastic_search_service_group  = var.elastic_search_service_group
       environment                   = var.environment
       region                        = var.region
       roles                         = var.master_roles
+      service_group                 = var.service_group
+      service_user                  = var.service_user
     })
     merge_type = var.user_data_merge_strategy
   }

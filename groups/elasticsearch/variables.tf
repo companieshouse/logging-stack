@@ -3,6 +3,12 @@ variable "account_name" {
   description = "The name of the AWS account we're using"
 }
 
+variable "ami_version_pattern" {
+  type        = string
+  default     = "\\d.\\d.\\d"
+  description = "The pattern with which to match elasticsearch AMIs"
+}
+
 variable "data_cold_instance_count" {
   type        = number
   default     = 2
@@ -113,24 +119,6 @@ variable "data_warm_root_volume_size" {
   description = "The size of the root volume for warm data nodes in GiB; set this value to 0 to preserve the size specified in the AMI metadata. This value should not be smaller than the size specified in the AMI metadata and used by the root volume snapshot. The filesystem will be expanded automatically to use all available space for the volume and an XFS filesystem is assumed"
 }
 
-variable "elastic_search_ami_version_pattern" {
-  type        = string
-  default     = "\\d.\\d.\\d"
-  description = "The pattern with which to match elasticsearch AMIs"
-}
-
-variable "elastic_search_service_group" {
-  type        = string
-  default     = "elasticsearch"
-  description = "The Linux group name for association with elasticsearch configuration files"
-}
-
-variable "elastic_search_service_user" {
-  type        = string
-  default     = "elasticsearch"
-  description = "The Linux username for ownership of elasticsearch configuration files"
-}
-
 variable "environment" {
   type        = string
   description = "The environment name to be used when creating AWS resources"
@@ -197,6 +185,18 @@ variable "service" {
   type        = string
   default     = "logging"
   description = "The service name to be used when creating AWS resources"
+}
+
+variable "service_group" {
+  type        = string
+  default     = "elasticsearch"
+  description = "The Linux group name for association with elasticsearch configuration files"
+}
+
+variable "service_user" {
+  type        = string
+  default     = "elasticsearch"
+  description = "The Linux username for ownership of elasticsearch configuration files"
 }
 
 variable "ssh_keyname" {

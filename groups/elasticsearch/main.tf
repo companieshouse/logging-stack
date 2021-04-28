@@ -7,14 +7,10 @@ terraform {
   backend "s3" {}
 }
 
-data "aws_iam_instance_profile" "elastic_search_node" {
-  name = "${var.service}-${var.environment}-elastic-search"
-}
-
 module "elasticsearch" {
   source = "./module-elasticsearch"
 
-  ami_version_pattern           = var.elastic_search_ami_version_pattern
+  ami_version_pattern           = var.ami_version_pattern
 
   data_cold_heap_size_gigabytes = local.data_cold_heap_size_gigabytes
   data_cold_instance_count      = var.data_cold_instance_count
@@ -39,8 +35,6 @@ module "elasticsearch" {
 
   discovery_availability_zones  = local.discovery_availability_zones
   dns_zone_name                 = local.dns_zone_name
-  elastic_search_service_group  = var.elastic_search_service_group
-  elastic_search_service_user   = var.elastic_search_service_user
   environment                   = var.environment
   master_instance_count         = var.master_instance_count
   master_instance_profile_name  = data.aws_iam_instance_profile.elastic_search_node.name
@@ -51,36 +45,10 @@ module "elasticsearch" {
   region                        = var.region
   route53_available             = local.route53_available
   service                       = var.service
+  service_group                 = var.service_group
+  service_user                  = var.service_user
   ssh_cidrs                     = local.administration_cidrs
   ssh_keyname                   = var.ssh_keyname
   subnet_ids                    = local.placement_subnet_ids_by_availability_zone
   user_data_merge_strategy      = var.user_data_merge_strategy
-}
-
-module "kibana" {
-  source = "./module-kibana"
-
-  ami_version_pattern           = var.kibana_ami_version_pattern
-  discovery_availability_zones  = local.discovery_availability_zones
-  dns_zone_name                 = local.dns_zone_name
-  elastic_search_service_group  = var.elastic_search_service_group
-  elastic_search_service_user   = var.elastic_search_service_user
-  environment                   = var.environment
-  instance_count                = var.kibana_instance_count
-  instance_type                 = var.kibana_instance_type
-  instance_profile_name         = data.aws_iam_instance_profile.elastic_search_node.name
-  kibana_cidrs                  = local.kibana_cidrs
-  kibana_service_group          = var.kibana_service_group
-  kibana_service_user           = var.kibana_service_user
-  lvm_block_devices             = var.kibana_lvm_block_devices
-  placement_subnet_ids          = data.aws_subnet_ids.placement.ids
-  region                        = var.region
-  roles                         = var.kibana_roles
-  root_volume_size              = var.kibana_root_volume_size
-  route53_available             = local.route53_available
-  service                       = var.service
-  ssh_keyname                   = var.ssh_keyname
-  subnet_ids                    = local.placement_subnet_ids_by_availability_zone
-  user_data_merge_strategy      = var.user_data_merge_strategy
-  vpc_id                        = data.aws_vpc.vpc.id
 }

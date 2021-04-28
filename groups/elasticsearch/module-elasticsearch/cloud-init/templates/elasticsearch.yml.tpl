@@ -1,6 +1,6 @@
 write_files:
   - path: /etc/elasticsearch/elasticsearch.yml
-    owner: ${elastic_search_service_user}:${elastic_search_service_group}
+    owner: ${service_user}:${service_group}
     permissions: 0660
     content: |
       cluster.name: ${environment}

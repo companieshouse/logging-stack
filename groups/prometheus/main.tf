@@ -11,6 +11,7 @@ module "prometheus" {
   source = "./module-prometheus"
 
   ami_version_pattern           = var.prometheus_ami_version_pattern
+  certificate_arn               = local.certificate_arn
   discovery_availability_zones  = local.discovery_availability_zones
   dns_zone_name                 = local.dns_zone_name
   environment                   = var.environment

@@ -1,12 +1,16 @@
 resource "aws_acm_certificate" "certificate" {
+  count                     = var.route53_available ? 1 : 0
+
   domain_name               = "prometheus.${var.service}.${var.environment}.${var.dns_zone_name}"
   subject_alternative_names = ["*.prometheus.${var.service}.${var.environment}.${var.dns_zone_name}"]
-  validation_method         = var.route53_available ? "DNS" : "EMAIL"
+  validation_method         = "DNS"
 }
 
 resource "aws_acm_certificate_validation" "certificate" {
-  certificate_arn         = aws_acm_certificate.certificate.arn
-  validation_record_fqdns = var.route53_available ? [aws_route53_record.certificate_validation[0].fqdn] : []
+  count                   = var.route53_available ? 1 : 0
+
+  certificate_arn         = aws_acm_certificate.certificate[0].arn
+  validation_record_fqdns = [aws_route53_record.certificate_validation[0].fqdn]
 }
 
 resource "aws_lb" "prometheus" {
@@ -53,7 +57,7 @@ resource "aws_lb_listener" "prometheus" {
   load_balancer_arn = aws_lb.prometheus.arn
   port              = 443
   protocol          = "HTTPS"
-  certificate_arn   = aws_acm_certificate_validation.certificate.certificate_arn
+  certificate_arn   = local.certificate_arn
 
   default_action {
     type             = "forward"

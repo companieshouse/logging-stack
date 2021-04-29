@@ -11,6 +11,7 @@ module "grafana" {
   source = "./module-grafana"
 
   ami_version_pattern           = var.grafana_ami_version_pattern
+  certificate_arn               = local.certificate_arn
   dns_zone_name                 = local.dns_zone_name
   environment                   = var.environment
   instance_count                = var.grafana_instance_count

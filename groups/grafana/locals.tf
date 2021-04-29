@@ -5,6 +5,7 @@ data "vault_generic_secret" "secrets" {
 locals {
   secrets = data.vault_generic_secret.secrets.data
 
+  certificate_arn = contains(keys(local.secrets), "certificate_arn") ? local.secrets.certificate_arn : null
   dns_zone_name = local.secrets.dns_zone_name
   grafana_admin_password = local.secrets.grafana_admin_password
   internal_cidrs = values(data.terraform_remote_state.networking.outputs.internal_cidrs)

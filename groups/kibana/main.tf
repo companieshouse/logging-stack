@@ -11,6 +11,7 @@ module "kibana" {
   source = "./module-kibana"
 
   ami_version_pattern           = var.ami_version_pattern
+  certificate_arn               = local.certificate_arn
   discovery_availability_zones  = local.discovery_availability_zones
   dns_zone_name                 = local.dns_zone_name
   elastic_search_service_group  = var.elastic_search_service_group

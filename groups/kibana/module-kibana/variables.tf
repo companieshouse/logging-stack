@@ -3,6 +3,11 @@ variable "ami_version_pattern" {
   description = "The pattern with which to match AMIs"
 }
 
+variable "certificate_arn" {
+  description = "The ARN of the certificate we'll use"
+  type        = string
+}
+
 variable "discovery_availability_zones" {
   type        = string
   description = "A list of availability zones in which to search for master nodes"

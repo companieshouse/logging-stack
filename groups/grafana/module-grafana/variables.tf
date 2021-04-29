@@ -3,6 +3,11 @@ variable "ami_version_pattern" {
   type        = string
 }
 
+variable "certificate_arn" {
+  description = "The ARN of the certificate we'll use"
+  type        = string
+}
+
 variable "dns_zone_name" {
   description = "The name of the DNS zone we're using"
   type        = string

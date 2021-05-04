@@ -11,7 +11,7 @@ variable "ami_version_pattern" {
 
 variable "data_cold_instance_count" {
   type        = number
-  default     = 2
+  default     = 3
   description = "The number of cold data instances to provision"
 }
 
@@ -48,13 +48,13 @@ variable "data_cold_root_volume_size" {
 
 variable "data_hot_instance_count" {
   type        = number
-  default     = 2
+  default     = 3
   description = "The number of hot data instances to provision"
 }
 
 variable "data_hot_instance_type" {
   type        = string
-  default     = "r5.large"
+  default     = "t3.medium"
   description = "The instance type to use for hot data nodes"
 }
 
@@ -85,13 +85,13 @@ variable "data_hot_root_volume_size" {
 
 variable "data_warm_instance_count" {
   type        = number
-  default     = 2
+  default     = 3
   description = "The number of warm data instances to provision"
 }
 
 variable "data_warm_instance_type" {
   type        = string
-  default     = "t3.large"
+  default     = "t3.medium"
   description = "The instance type to use for warm data nodes"
 }
 

@@ -1,19 +1,19 @@
 data_cold_lvm_block_devices = [{
-  aws_volume_size_gb: "1000",
+  aws_volume_size_gb: "200",
   filesystem_resize_tool: "xfs_growfs",
   lvm_logical_volume_device_node: "/dev/elasticsearch/data",
   lvm_physical_volume_device_node: "/dev/xvdb"
 }]
 
 data_hot_lvm_block_devices = [{
-  aws_volume_size_gb: "100",
+  aws_volume_size_gb: "50",
   filesystem_resize_tool: "xfs_growfs",
   lvm_logical_volume_device_node: "/dev/elasticsearch/data",
   lvm_physical_volume_device_node: "/dev/xvdb"
 }]
 
 data_warm_lvm_block_devices = [{
-  aws_volume_size_gb: "500",
+  aws_volume_size_gb: "100",
   filesystem_resize_tool: "xfs_growfs",
   lvm_logical_volume_device_node: "/dev/elasticsearch/data",
   lvm_physical_volume_device_node: "/dev/xvdb"

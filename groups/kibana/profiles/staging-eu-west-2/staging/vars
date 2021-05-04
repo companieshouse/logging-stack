@@ -1,0 +1,24 @@
+kibana_lvm_block_devices = [
+  {
+    aws_volume_size_gb: "20",
+    filesystem_resize_tool: "xfs_growfs",
+    lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+    lvm_physical_volume_device_node: "/dev/xvdb"
+  },
+  {
+    aws_volume_size_gb: "20",
+    filesystem_resize_tool: "xfs_growfs",
+    lvm_logical_volume_device_node: "/dev/kibana/data",
+    lvm_physical_volume_device_node: "/dev/xvdc"
+  }
+]
+
+# TODO provision keypair
+ssh_keyname = "ch-aws-staging"
+
+team = "platform"
+
+# TODO - Remove these once they're provided automatically
+account_name = "staging"
+environment = "staging"
+repository_name = "logging-stack"

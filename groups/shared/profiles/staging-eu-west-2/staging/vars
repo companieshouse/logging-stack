@@ -1,0 +1,6 @@
+team = "platform"
+
+# TODO - Remove these once they're provided automatically
+account_name = "staging"
+environment = "staging"
+repository_name = "logging-stack"

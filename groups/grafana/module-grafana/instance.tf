@@ -1,5 +1,5 @@
 data "aws_ami" "grafana" {
-  owners      = ["self"]
+  owners      = ["${var.ami_owner_id}"]
   most_recent = true
   name_regex  = "^grafana-ami-${var.ami_version_pattern}$"
 

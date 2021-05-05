@@ -10,6 +10,7 @@ terraform {
 module "prometheus" {
   source = "./module-prometheus"
 
+  ami_owner_id                  = var.ami_owner_id
   ami_version_pattern           = var.prometheus_ami_version_pattern
   certificate_arn               = local.certificate_arn
   discovery_availability_zones  = local.discovery_availability_zones

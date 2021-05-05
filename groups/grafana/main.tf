@@ -10,6 +10,7 @@ terraform {
 module "grafana" {
   source = "./module-grafana"
 
+  ami_owner_id                  = var.ami_owner_id
   ami_version_pattern           = var.grafana_ami_version_pattern
   certificate_arn               = local.certificate_arn
   dns_zone_name                 = local.dns_zone_name

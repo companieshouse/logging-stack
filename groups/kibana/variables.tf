@@ -43,7 +43,7 @@ variable "instance_type" {
   description = "The instance type to use for kibana instances"
 }
 
-variable "lvm_block_devices" {
+variable "kibana_lvm_block_devices" {
   type = list(object({
     aws_volume_size_gb: string,
     filesystem_resize_tool: string,

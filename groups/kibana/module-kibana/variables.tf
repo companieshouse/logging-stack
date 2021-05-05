@@ -1,3 +1,8 @@
+variable "ami_owner_id" {
+  type        = string
+  description = "The ID of the AMI owner"
+}
+
 variable "ami_version_pattern" {
   type        = string
   description = "The pattern with which to match AMIs"

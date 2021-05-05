@@ -1,5 +1,5 @@
 data "aws_ami" "prometheus" {
-  owners      = ["self"]
+  owners      = ["${var.ami_owner_id}"]
   most_recent = true
   name_regex  = "^prometheus-ami-${var.ami_version_pattern}$"
 

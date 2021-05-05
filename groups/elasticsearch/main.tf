@@ -10,6 +10,7 @@ terraform {
 module "elasticsearch" {
   source = "./module-elasticsearch"
 
+  ami_owner_id                  = var.ami_owner_id
   ami_version_pattern           = var.ami_version_pattern
 
   data_cold_heap_size_gigabytes = local.data_cold_heap_size_gigabytes

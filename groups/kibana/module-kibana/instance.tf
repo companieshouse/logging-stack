@@ -1,5 +1,5 @@
 data "aws_ami" "kibana" {
-  owners      = ["self"]
+  owners      = ["${var.ami_owner_id}"]
   most_recent = true
   name_regex  = "^kibana-ami-${var.ami_version_pattern}$"
 

@@ -3,6 +3,11 @@ variable "account_name" {
   type        = string
 }
 
+variable "ami_owner_id" {
+  type        = string
+  description = "The ID of the AMI owner"
+}
+
 variable "environment" {
   description = "The environment name to be used when creating AWS resources"
   type        = string

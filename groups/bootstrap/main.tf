@@ -8,7 +8,7 @@ terraform {
 }
 
 data "aws_ami" "elasticsearch" {
-  owners      = ["self"]
+  owners      = ["${var.ami_owner_id}"]
   most_recent = true
   name_regex  = "^elasticsearch-ami-${var.ami_version_pattern}$"
 

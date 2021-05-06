@@ -24,7 +24,7 @@ module "kibana" {
   kibana_cidrs                  = local.kibana_cidrs
   kibana_service_group          = var.kibana_service_group
   kibana_service_user           = var.kibana_service_user
-  lvm_block_devices             = var.lvm_block_devices
+  lvm_block_devices             = var.kibana_lvm_block_devices
   placement_subnet_ids          = data.aws_subnet_ids.placement.ids
   region                        = var.region
   roles                         = var.roles

@@ -29,7 +29,7 @@ resource "aws_route53_record" "prometheus_load_balancer" {
   count   = var.route53_available ? 1 : 0
 
   zone_id = data.aws_route53_zone.zone[0].zone_id
-  name    = "prometheus.${var.service}.${var.environment}.${var.dns_zone_name}"
+  name    = "${var.service}-${var.environment}-prometheus.${var.dns_zone_name}"
   type    = "A"
 
   alias {

@@ -30,7 +30,7 @@ resource "aws_route53_record" "grafana_load_balancer" {
   count   = var.route53_available ? 1 : 0
 
   zone_id = data.aws_route53_zone.zone[0].zone_id
-  name    = "grafana.${var.service}.${var.environment}.${var.dns_zone_name}"
+  name    = "${var.service}-${var.environment}-grafana.${var.dns_zone_name}"
   type    = "A"
 
   alias {

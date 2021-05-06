@@ -1,7 +1,7 @@
 {
   "name":"logging-{{ item.environment }}",
   "type":"prometheus",
-  "url":"https://logging.{{ item.environment }}-prometheus.{{ item.dns_zone_name }}",
+  "url":"https://logging-{{ item.environment }}-prometheus.{{ item.dns_zone_name }}",
   "access":"Browser",
   "basicAuth":false
 }

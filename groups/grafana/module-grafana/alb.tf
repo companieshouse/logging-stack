@@ -1,8 +1,8 @@
 resource "aws_acm_certificate" "certificate" {
   count                     = var.route53_available ? 1 : 0
 
-  domain_name               = "grafana.${var.service}.${var.environment}.${var.dns_zone_name}"
-  subject_alternative_names = ["*.grafana.${var.service}.${var.environment}.${var.dns_zone_name}"]
+  domain_name               = "${var.service}-${var.environment}-grafana.${var.dns_zone_name}"
+  subject_alternative_names = ["*.${var.service}-${var.environment}-grafana.${var.dns_zone_name}"]
   validation_method         = "DNS"
 }
 
@@ -30,7 +30,7 @@ resource "aws_lb" "grafana" {
 }
 
 resource "aws_lb_target_group" "grafana" {
-  name        = "${var.environment}-${var.service}-grafana"
+  name        = "${var.service}-${var.environment}-grafana"
   port        = 3000
   protocol    = "HTTP"
   target_type = "ip"

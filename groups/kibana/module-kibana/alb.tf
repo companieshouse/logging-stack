@@ -1,8 +1,8 @@
 resource "aws_acm_certificate" "certificate" {
   count                     = var.route53_available ? 1 : 0
 
-  domain_name               = "kibana.${var.service}.${var.environment}.${var.dns_zone_name}"
-  subject_alternative_names = ["*.kibana.${var.service}.${var.environment}.${var.dns_zone_name}"]
+  domain_name               = "${var.service}-${var.environment}-kibana.${var.dns_zone_name}"
+  subject_alternative_names = ["*.${var.service}-${var.environment}-kibana.${var.dns_zone_name}"]
   validation_method         = "DNS"
 }
 
@@ -30,7 +30,7 @@ resource "aws_lb" "kibana" {
 }
 
 resource "aws_lb_target_group" "kibana" {
-  name        = "${var.environment}-${var.service}-kibana"
+  name        = "${var.service}-${var.environment}-kibana"
   port        = 5601
   protocol    = "HTTP"
   target_type = "ip"

@@ -33,7 +33,7 @@ variable "environment" {
 
 variable "instance_count" {
   type        = number
-  default     = 2
+  default     = 3
   description = "The number of kibana instances to provision"
 }
 

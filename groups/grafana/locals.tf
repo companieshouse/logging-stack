@@ -6,6 +6,7 @@ locals {
   secrets = data.vault_generic_secret.secrets.data
 
   certificate_arn = contains(keys(local.secrets), "certificate_arn") ? local.secrets.certificate_arn : null
+  concourse_worker_cidrs = jsondecode(local.secrets.concourse_worker_cidrs)
   dns_zone_name = local.secrets.dns_zone_name
   grafana_admin_password = local.secrets.grafana_admin_password
   internal_cidrs = values(data.terraform_remote_state.networking.outputs.internal_cidrs)
@@ -27,4 +28,6 @@ locals {
   administration_cidrs = concat(local.internal_cidrs, local.vpn_cidrs)
   placement_subnet_ids = [for subnet in values(data.aws_subnet.placement) : lookup(subnet, "id")]
   placement_subnet_ids_by_availability_zone = values(zipmap(local.placement_subnet_availability_zones, local.placement_subnet_ids))
+
+  grafana_cidrs = concat(local.administration_cidrs, local.concourse_worker_cidrs)
 }

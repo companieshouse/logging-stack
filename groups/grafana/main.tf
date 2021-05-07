@@ -17,7 +17,7 @@ module "grafana" {
   environment                   = var.environment
   instance_count                = var.grafana_instance_count
   instance_type                 = var.grafana_instance_type
-  grafana_cidrs                 = local.administration_cidrs
+  grafana_cidrs                 = local.grafana_cidrs
   grafana_service_group         = var.grafana_service_group
   grafana_service_user          = var.grafana_service_user
   grafana_admin_password        = local.grafana_admin_password

@@ -12,3 +12,4 @@
       kbn-xsrf: true
   with_items:
     "{{ environments }}"
+  no_log: True

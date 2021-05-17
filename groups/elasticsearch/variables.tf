@@ -16,13 +16,11 @@ variable "ami_version_pattern" {
 
 variable "data_cold_instance_count" {
   type        = number
-  default     = 3
   description = "The number of cold data instances to provision"
 }
 
 variable "data_cold_instance_type" {
   type        = string
-  default     = "t3.medium"
   description = "The instance type to use for cold data nodes"
 }
 
@@ -53,13 +51,11 @@ variable "data_cold_root_volume_size" {
 
 variable "data_hot_instance_count" {
   type        = number
-  default     = 3
   description = "The number of hot data instances to provision"
 }
 
 variable "data_hot_instance_type" {
   type        = string
-  default     = "t3.medium"
   description = "The instance type to use for hot data nodes"
 }
 
@@ -90,13 +86,11 @@ variable "data_hot_root_volume_size" {
 
 variable "data_warm_instance_count" {
   type        = number
-  default     = 3
   description = "The number of warm data instances to provision"
 }
 
 variable "data_warm_instance_type" {
   type        = string
-  default     = "t3.medium"
   description = "The instance type to use for warm data nodes"
 }
 
@@ -130,11 +124,12 @@ variable "environment" {
 }
 
 variable "instance_type_heap_allocation" {
-  type        = map(string)
-  default     = {
+  type          = map(string)
+  default       = {
+    "t3.small"  = "1",
     "t3.medium" = "2",
-    "t3.large" = "4"
-    "r5.large" = "8"
+    "t3.large"  = "4"
+    "r5.large"  = "8"
   }
   description = "A map used to determine the Java heap allocation in gigabytes, based on instance type. I.e. 50% of what's available"
 }
@@ -148,7 +143,6 @@ variable "master_instance_count" {
 
 variable "master_instance_type" {
   type        = string
-  default     = "t3.medium"
   description = "The instance type to use for master nodes"
 }
 

@@ -33,13 +33,11 @@ variable "environment" {
 
 variable "instance_count" {
   type        = number
-  default     = 3
   description = "The number of kibana instances to provision"
 }
 
 variable "instance_type" {
   type        = string
-  default     = "t3.medium"
   description = "The instance type to use for kibana instances"
 }
 

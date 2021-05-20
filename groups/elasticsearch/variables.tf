@@ -10,7 +10,7 @@ variable "ami_owner_id" {
 
 variable "ami_version_pattern" {
   type        = string
-  default     = "\\d.\\d.\\d"
+  default     = "feature"
   description = "The pattern with which to match elasticsearch AMIs"
 }
 

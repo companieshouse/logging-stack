@@ -11,6 +11,7 @@ data "template_cloudinit_config" "prometheus" {
   part {
     content_type              = "text/cloud-config"
     content                   = templatefile("${path.module}/cloud-init/templates/prometheus.yml.tpl", {
+      environment             = var.environment
       prometheus_metrics_port = var.prometheus_metrics_port
       region                  = var.region
     })

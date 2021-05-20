@@ -1,15 +1,20 @@
+variable "ami_owner_id" {
+  type        = string
+  description = "The ID of the AMI owner"
+}
+
 variable "ami_version_pattern" {
   description = "The pattern with which to match AMIs"
   type        = string
 }
 
-variable "discovery_availability_zones" {
-  description = "A list of availability zones in which to search for master nodes"
+variable "certificate_arn" {
+  description = "The ARN of the certificate we'll use"
   type        = string
 }
 
-variable "dns_zone_id" {
-  description = "The id of the DNS zone we're using"
+variable "discovery_availability_zones" {
+  description = "A list of availability zones in which to search for master nodes"
   type        = string
 }
 
@@ -33,21 +38,6 @@ variable "instance_type" {
   type        = string
 }
 
-variable "prometheus_cidrs" {
-  description = "A list of CIDR blocks to permit prometheus access from"
-  type        = list(string)
-}
-
-variable "prometheus_service_group" {
-  description = "The Linux group name for association with prometheus configuration files"
-  type        = string
-}
-
-variable "prometheus_service_user" {
-  description = "The Linux username for ownership of prometheus configuration files"
-  type        = string
-}
-
 variable "lvm_block_devices" {
   description = "A list of objects representing LVM block devices; each LVM volume group is assumed to contain a single physical volume and each logical volume is assumed to belong to a single volume group; the filesystem for each logical volume will be expanded to use all available space within the volume group using the filesystem resize tool specified; block device configuration applies only on resource creation"
   type = list(object({
@@ -63,9 +53,24 @@ variable "placement_subnet_ids" {
   type = list(string)
 }
 
+variable "prometheus_cidrs" {
+  description = "A list of CIDR blocks to permit prometheus access from"
+  type        = list(string)
+}
+
 variable "prometheus_metrics_port" {
   description = "The metrics port to be used"
   type = string
+}
+
+variable "prometheus_service_group" {
+  description = "The Linux group name for association with prometheus configuration files"
+  type        = string
+}
+
+variable "prometheus_service_user" {
+  description = "The Linux username for ownership of prometheus configuration files"
+  type        = string
 }
 
 variable "region" {
@@ -76,6 +81,11 @@ variable "region" {
 variable "root_volume_size" {
   description = "The size of the root volume in GiB; set this value to 0 to preserve the size specified in the AMI metadata. This value should not be smaller than the size specified in the AMI metadata and used by the root volume snapshot. The filesystem will be expanded automatically to use all available space for the volume and an XFS filesystem is assumed"
   type        = number
+}
+
+variable "route53_available" {
+  description = "A flag indicating whether Route53 is available"
+  type        = bool
 }
 
 variable "service" {

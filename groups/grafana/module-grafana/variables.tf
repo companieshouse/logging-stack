@@ -1,10 +1,15 @@
+variable "ami_owner_id" {
+  type        = string
+  description = "The ID of the AMI owner"
+}
+
 variable "ami_version_pattern" {
   description = "The pattern with which to match AMIs"
   type        = string
 }
 
-variable "dns_zone_id" {
-  description = "The id of the DNS zone we're using"
+variable "certificate_arn" {
+  description = "The ARN of the certificate we'll use"
   type        = string
 }
 
@@ -18,13 +23,8 @@ variable "environment" {
   type        = string
 }
 
-variable "instance_count" {
-  description = "The number of grafana instances to provision"
-  type        = number
-}
-
-variable "instance_type" {
-  description = "The instance type to use"
+variable "grafana_admin_password" {
+  description = "The Grafana admin password used if LDAP connectivity is unavailable"
   type        = string
 }
 
@@ -43,8 +43,23 @@ variable "grafana_service_user" {
   type        = string
 }
 
-variable "grafana_admin_password" {
-  description = "The Grafana admin password used if LDAP connectivity is unavailable"
+variable "instance_count" {
+  description = "The number of grafana instances to provision"
+  type        = number
+}
+
+variable "instance_type" {
+  description = "The instance type to use"
+  type        = string
+}
+
+variable "ldap_auth_bind_dn" {
+  description = "Bind DN for searching LDAP users and groups"
+  type        = string
+}
+
+variable "ldap_auth_bind_password" {
+  description = "Bind password for the user specified bind DN"
   type        = string
 }
 
@@ -58,28 +73,8 @@ variable "ldap_auth_port" {
   type        = string
 }
 
-variable "ldap_auth_use_ssl" {
-  description = "Ldap ssl configuration"
-  type        = bool
-}
-
-variable "ldap_auth_start_tls" {
-  description = "Ldap TLS configuration"
-  type        = bool
-}
-
-variable "ldap_auth_ssl_skip_verify" {
-  description = "Ldap SSL cert validation configuration"
-  type        = bool
-}
-
-variable "ldap_auth_bind_dn" {
-  description = "Bind DN for searching LDAP users and groups"
-  type        = string
-}
-
-variable "ldap_auth_bind_password" {
-  description = "Bind password for the user specified bind DN"
+variable "ldap_auth_search_base_dns" {
+  description = "An array of base dns to search through"
   type        = string
 }
 
@@ -88,9 +83,19 @@ variable "ldap_auth_search_filter" {
   type        = string
 }
 
-variable "ldap_auth_search_base_dns" {
-  description = "An array of base dns to search through"
-  type        = string
+variable "ldap_auth_ssl_skip_verify" {
+  description = "Ldap SSL cert validation configuration"
+  type        = bool
+}
+
+variable "ldap_auth_start_tls" {
+  description = "Ldap TLS configuration"
+  type        = bool
+}
+
+variable "ldap_auth_use_ssl" {
+  description = "Ldap ssl configuration"
+  type        = bool
 }
 
 variable "ldap_grafana_admin_group_dn" {
@@ -126,6 +131,11 @@ variable "region" {
 variable "root_volume_size" {
   description = "The size of the root volume in GiB; set this value to 0 to preserve the size specified in the AMI metadata. This value should not be smaller than the size specified in the AMI metadata and used by the root volume snapshot. The filesystem will be expanded automatically to use all available space for the volume and an XFS filesystem is assumed"
   type        = number
+}
+
+variable "route53_available" {
+  description = "A flag indicating whether Route53 is available"
+  type        = bool
 }
 
 variable "service" {

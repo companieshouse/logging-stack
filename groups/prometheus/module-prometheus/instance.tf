@@ -1,5 +1,5 @@
 data "aws_ami" "prometheus" {
-  owners      = ["self"]
+  owners      = ["${var.ami_owner_id}"]
   most_recent = true
   name_regex  = "^prometheus-ami-${var.ami_version_pattern}$"
 
@@ -43,14 +43,4 @@ resource "aws_instance" "prometheus" {
     Name        = "${var.service}-${var.environment}-prometheus-${count.index + 1}"
     Service     = var.service
   }
-}
-
-resource "aws_route53_record" "prometheus" {
-  count   = var.dns_zone_id != "" ? "${var.instance_count}" : 0
-
-  zone_id = var.dns_zone_id
-  name = "${var.service}-${var.environment}-prometheus-${count.index + 1}.${var.dns_zone_name}"
-  type    = "A"
-  ttl     = "300"
-  records = ["${element(aws_instance.prometheus.*.private_ip, count.index)}"]
 }

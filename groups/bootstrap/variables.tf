@@ -3,6 +3,11 @@ variable "account_name" {
   description = "The name of the AWS account we're using"
 }
 
+variable "ami_owner_id" {
+  type        = string
+  description = "The ID of the AMI owner"
+}
+
 variable "ami_version_pattern" {
   type        = string
   default     = "\\d.\\d.\\d"

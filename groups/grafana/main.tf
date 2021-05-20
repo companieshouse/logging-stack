@@ -7,30 +7,17 @@ terraform {
   backend "s3" {}
 }
 
-data "aws_route53_zone" "zone" {
-  name         = local.dns_zone_name
-  private_zone = false
-}
-
-data "terraform_remote_state" "networking" {
-  backend = "s3"
-  config = {
-    bucket = "development-${var.region}.terraform-state.ch.gov.uk"
-    key    = "aws-common-infrastructure-terraform/common-${var.region}/networking.tfstate"
-    region = var.region
-  }
-}
-
 module "grafana" {
   source = "./module-grafana"
 
+  ami_owner_id                  = var.ami_owner_id
   ami_version_pattern           = var.grafana_ami_version_pattern
-  dns_zone_id                   = data.aws_route53_zone.zone.zone_id
+  certificate_arn               = local.certificate_arn
   dns_zone_name                 = local.dns_zone_name
   environment                   = var.environment
   instance_count                = var.grafana_instance_count
   instance_type                 = var.grafana_instance_type
-  grafana_cidrs                 = local.administration_cidrs
+  grafana_cidrs                 = local.grafana_cidrs
   grafana_service_group         = var.grafana_service_group
   grafana_service_user          = var.grafana_service_user
   grafana_admin_password        = local.grafana_admin_password
@@ -49,6 +36,7 @@ module "grafana" {
   placement_subnet_ids          = data.aws_subnet_ids.placement.ids
   region                        = var.region
   root_volume_size              = var.grafana_root_volume_size
+  route53_available             = local.route53_available
   service                       = var.service
   ssh_cidrs                     = local.administration_cidrs
   ssh_keyname                   = var.ssh_keyname

@@ -26,7 +26,7 @@ write_files:
               regex: logging
               action: keep
             - source_labels: [__meta_ec2_tag_Environment]
-              regex: common
+              regex: ${environment}
               action: keep
             - source_labels: [__meta_ec2_tag_HostName]
               target_label: hostname

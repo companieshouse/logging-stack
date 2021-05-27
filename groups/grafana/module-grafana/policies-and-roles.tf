@@ -28,6 +28,6 @@ resource "aws_iam_role" "grafana_discovery_execution" {
 }
 
 resource "aws_iam_role_policy_attachment" "grafana_discovery_execution" {
-  role   = aws_iam_role.grafana_discovery_execution.id
+  role       = aws_iam_role.grafana_discovery_execution.id
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess"
 }

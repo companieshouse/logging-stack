@@ -14,7 +14,7 @@ variable "environment" {
 }
 
 variable "prometheus_ami_version_pattern" {
-  default     = "feature"
+  default     = "\\d.\\d.\\d"
   description = "The pattern with which to match prometheus AMIs"
   type        = string
 }

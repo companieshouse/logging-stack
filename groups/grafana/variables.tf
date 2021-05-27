@@ -14,7 +14,7 @@ variable "environment" {
 }
 
 variable "grafana_ami_version_pattern" {
-  default     = "feature"
+  default     = "\\d.\\d.\\d"
   description = "The pattern with which to match grafana AMIs"
   type        = string
 }

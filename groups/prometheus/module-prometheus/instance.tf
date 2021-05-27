@@ -10,7 +10,7 @@ data "aws_ami" "prometheus" {
 }
 
 resource "aws_instance" "prometheus" {
-  count                  = "${var.instance_count}"
+  count                  = var.instance_count
 
   ami                    = data.aws_ami.prometheus.id
   iam_instance_profile   = aws_iam_instance_profile.prometheus.name

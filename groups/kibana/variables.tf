@@ -10,7 +10,7 @@ variable "ami_owner_id" {
 
 variable "ami_version_pattern" {
   type        = string
-  default     = "feature"
+  default     = "\\d.\\d.\\d"
   description = "The pattern with which to match kibana AMIs"
 }
 

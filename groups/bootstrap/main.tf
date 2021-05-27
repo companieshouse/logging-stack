@@ -24,7 +24,7 @@ resource "aws_instance" "bootstrap" {
   instance_type          = var.instance_type
   key_name               = var.ssh_keyname
   subnet_id              = local.subnet_id
-  user_data_base64       = "${data.template_cloudinit_config.config.rendered}"
+  user_data_base64       = data.template_cloudinit_config.config.rendered
   vpc_security_group_ids = [data.aws_security_group.elasticsearch.id]
 
   root_block_device {

@@ -884,8 +884,12 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-master-.*/",
+            "alias": "/logging-.*-master-.*.(elasticsearch_data.)/",
             "color": "#73BF69"
+          },
+          {
+            "alias": "/logging-.*-master-.*.(root.)/",
+            "color": "#C8F2C2"
           }
         ],
         "spaceLength": 10,
@@ -893,10 +897,16 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-master-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-common-master-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
+            "legendFormat": "{{hostname}} (elasticsearch_data)",
             "refId": "A"
+          },
+          {
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-common-master-.*\", job=\"nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
+            "interval": "",
+            "legendFormat": "{{hostname}} (root)",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -923,7 +933,7 @@
             "decimals": null,
             "format": "gbytes",
             "label": null,
-            "logBase": 1,
+            "logBase": 10,
             "max": null,
             "min": "0",
             "show": true
@@ -986,8 +996,12 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-data-hot-.*/",
+            "alias": "/logging-.*-data-hot-.*.(elasticsearch_data.)/",
             "color": "#C4162A"
+          },
+          {
+            "alias": "/logging-.*-data-hot-.*.(root.)/",
+            "color": "#FF7383"
           }
         ],
         "spaceLength": 10,
@@ -995,10 +1009,16 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-data-hot-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-common-data-hot-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
+            "legendFormat": "{{hostname}} (elasticsearch_data)",
             "refId": "A"
+          },
+          {
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-common-data-hot-.*\", job=\"nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
+            "interval": "",
+            "legendFormat": "{{hostname}} (root)",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -1025,7 +1045,7 @@
             "decimals": null,
             "format": "gbytes",
             "label": null,
-            "logBase": 1,
+            "logBase": 10,
             "max": null,
             "min": "0",
             "show": true
@@ -1088,8 +1108,12 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-data-warm-.*/",
+            "alias": "/logging-.*-data-warm-.*.(elasticsearch_data.)/",
             "color": "#E0B400"
+          },
+          {
+            "alias": "/logging-.*-data-warm-.*.(root.)/",
+            "color": "#FFEE52"
           }
         ],
         "spaceLength": 10,
@@ -1097,10 +1121,16 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-data-warm-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-common-data-warm-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
+            "legendFormat": "{{hostname}} (elasticsearch_data)",
             "refId": "A"
+          },
+          {
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-common-data-warm-.*\", job=\"nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
+            "interval": "",
+            "legendFormat": "{{hostname}} (root)",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -1136,7 +1166,7 @@
             "$$hashKey": "object:1682",
             "format": "short",
             "label": null,
-            "logBase": 1,
+            "logBase": 10,
             "max": null,
             "min": null,
             "show": true
@@ -1190,8 +1220,12 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-data-cold-.*/",
+            "alias": "/logging-.*-data-cold-.*.(elasticsearch_data.)/",
             "color": "#1F60C4"
+          },
+          {
+            "alias": "/logging-.*-data-cold-.* .(root.)/",
+            "color": "#8AB8FF"
           }
         ],
         "spaceLength": 10,
@@ -1199,10 +1233,16 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-data-cold-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-common-data-cold-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
+            "legendFormat": "{{hostname}} (elasticsearch_data)",
             "refId": "A"
+          },
+          {
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-common-data-cold-.*\", job=\"nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
+            "interval": "",
+            "legendFormat": "{{hostname}} (root)",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -1229,7 +1269,7 @@
             "decimals": null,
             "format": "gbytes",
             "label": null,
-            "logBase": 1,
+            "logBase": 10,
             "max": null,
             "min": "0",
             "show": true

@@ -897,15 +897,15 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-common-master-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-master-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
             "interval": "",
-            "legendFormat": "{{hostname}} (elasticsearch_data)",
+            "legendFormat": "{% raw %}{{hostname}} (elasticsearch_data){% endraw %}",
             "refId": "A"
           },
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-common-master-.*\", job=\"nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-master-.*\", job=\"nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
             "interval": "",
-            "legendFormat": "{{hostname}} (root)",
+            "legendFormat": "{% raw %}{{hostname}} (root){% endraw %}",
             "refId": "B"
           }
         ],
@@ -1009,15 +1009,15 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-common-data-hot-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-data-hot-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
             "interval": "",
-            "legendFormat": "{{hostname}} (elasticsearch_data)",
+            "legendFormat": "{% raw %}{{hostname}} (elasticsearch_data){% endraw %}",
             "refId": "A"
           },
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-common-data-hot-.*\", job=\"nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-data-hot-.*\", job=\"nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
             "interval": "",
-            "legendFormat": "{{hostname}} (root)",
+            "legendFormat": "{% raw %}{{hostname}} (root){% endraw %}",
             "refId": "B"
           }
         ],
@@ -1121,15 +1121,15 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-common-data-warm-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-data-warm-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
             "interval": "",
-            "legendFormat": "{{hostname}} (elasticsearch_data)",
+            "legendFormat": "{% raw %}{{hostname}} (elasticsearch_data){% endraw %}",
             "refId": "A"
           },
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-common-data-warm-.*\", job=\"nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-data-warm-.*\", job=\"nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
             "interval": "",
-            "legendFormat": "{{hostname}} (root)",
+            "legendFormat": "{% raw %}{{hostname}} (root){% endraw %}",
             "refId": "B"
           }
         ],
@@ -1233,15 +1233,15 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-common-data-cold-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-data-cold-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
             "interval": "",
-            "legendFormat": "{{hostname}} (elasticsearch_data)",
+            "legendFormat": "{% raw %}{{hostname}} (elasticsearch_data){% endraw %}",
             "refId": "A"
           },
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-common-data-cold-.*\", job=\"nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-data-cold-.*\", job=\"nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
             "interval": "",
-            "legendFormat": "{{hostname}} (root)",
+            "legendFormat": "{% raw %}{{hostname}} (root){% endraw %}",
             "refId": "B"
           }
         ],

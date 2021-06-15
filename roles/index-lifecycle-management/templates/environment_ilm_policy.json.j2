@@ -5,8 +5,8 @@
                 "min_age": "0ms",
                 "actions": {
                     "rollover": {
-                        "max_size": "50gb",
-                        "max_age": "1d"
+                        "max_size": "{{ item.rollover_index_size }}",
+                        "max_age": "{{ item.hot_age }}"
                     },
                     "set_priority": {
                         "priority": 100
@@ -14,7 +14,7 @@
                 }
             },
             "warm": {
-                "min_age": "1d",
+                "min_age": "{{ item.hot_age }}",
                 "actions": {
                     "set_priority": {
                         "priority": 50
@@ -27,7 +27,7 @@
                 }
             },
             "cold": {
-                "min_age": "2d",
+                "min_age": "{{ item.cold_age }}",
                 "actions": {
                     "set_priority": {
                         "priority": 0
@@ -40,7 +40,7 @@
                 }
             },
             "delete": {
-                "min_age": "7d",
+                "min_age": "{{ item.delete_age }}",
                 "actions": {
                     "delete" : { }
                 }

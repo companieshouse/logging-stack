@@ -37,7 +37,7 @@
         "fillGradient": 0,
         "gridPos": {
           "h": 6,
-          "w": 6,
+          "w": 4,
           "x": 0,
           "y": 0
         },
@@ -129,7 +129,7 @@
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
-        "description": "Logging {{ item.environment }} warm nodes CPU",
+        "description": "Logging {{ item.environment }} hot nodes CPU",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -140,8 +140,8 @@
         "fillGradient": 0,
         "gridPos": {
           "h": 6,
-          "w": 6,
-          "x": 6,
+          "w": 4,
+          "x": 4,
           "y": 0
         },
         "hiddenSeries": false,
@@ -242,8 +242,8 @@
         "fillGradient": 0,
         "gridPos": {
           "h": 6,
-          "w": 6,
-          "x": 12,
+          "w": 4,
+          "x": 8,
           "y": 0
         },
         "hiddenSeries": false,
@@ -344,8 +344,8 @@
         "fillGradient": 0,
         "gridPos": {
           "h": 6,
-          "w": 6,
-          "x": 18,
+          "w": 4,
+          "x": 12,
           "y": 0
         },
         "hiddenSeries": false,
@@ -436,7 +436,7 @@
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
-        "description": "",
+        "description": "Logging {{ item.environment }} kibana nodes CPU",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -446,8 +446,111 @@
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
-          "h": 5,
-          "w": 6,
+          "h": 6,
+          "w": 4,
+          "x": 16,
+          "y": 0
+        },
+        "hiddenSeries": false,
+        "id": 31,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": false,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "7.2.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "alias": "/logging-.*-kibana-.*/",
+            "color": "#8F3BB8"
+          }
+        ],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{hostname=~\"logging-{{ item.environment }}-kibana-.*\",job=\"nodes\",mode=\"idle\"}[5m])) * 100)",
+            "interval": "",
+            "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Kibana Nodes CPU",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "$$hashKey": "object:763",
+            "decimals": null,
+            "format": "percent",
+            "label": null,
+            "logBase": 1,
+            "max": "100",
+            "min": "0",
+            "show": true
+          },
+          {
+            "$$hashKey": "object:764",
+            "format": "Misc",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": "logging-{{ item.environment }}",
+        "description": "Logging {{ item.environment }} master nodes free memory",
+        "fieldConfig": {
+          "defaults": {
+            "custom": {}
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 6,
+          "w": 4,
           "x": 0,
           "y": 6
         },
@@ -539,7 +642,7 @@
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
-        "description": "",
+        "description": "Logging {{ item.environment }} hot nodes free memory",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -549,9 +652,9 @@
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
-          "h": 5,
-          "w": 6,
-          "x": 6,
+          "h": 6,
+          "w": 4,
+          "x": 4,
           "y": 6
         },
         "hiddenSeries": false,
@@ -642,7 +745,7 @@
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
-        "description": "",
+        "description": "Logging {{ item.environment }} warm nodes free memory",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -652,9 +755,9 @@
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
-          "h": 5,
-          "w": 6,
-          "x": 12,
+          "h": 6,
+          "w": 4,
+          "x": 8,
           "y": 6
         },
         "hiddenSeries": false,
@@ -744,7 +847,7 @@
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
-        "description": "",
+        "description": "Logging {{ item.environment }} cold nodes free memory",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -754,9 +857,9 @@
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
-          "h": 5,
-          "w": 6,
-          "x": 18,
+          "h": 6,
+          "w": 4,
+          "x": 12,
           "y": 6
         },
         "hiddenSeries": false,
@@ -846,6 +949,7 @@
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
+        "description": "Logging {{ item.environment }} kibana nodes free memory",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -856,9 +960,111 @@
         "fillGradient": 0,
         "gridPos": {
           "h": 6,
-          "w": 6,
+          "w": 4,
+          "x": 16,
+          "y": 6
+        },
+        "hiddenSeries": false,
+        "id": 32,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": false,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "7.2.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "alias": "/logging-.*-kibana-.*/",
+            "color": "#8F3BB8"
+          }
+        ],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "expr": "node_memory_MemFree_bytes{hostname=~\"logging-{{ item.environment }}-kibana-.*\", job=\"nodes\"}/1073741824",
+            "interval": "",
+            "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Kibana Nodes Memory Free",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "$$hashKey": "object:933",
+            "format": "gbytes",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": "0",
+            "show": true
+          },
+          {
+            "$$hashKey": "object:934",
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": "logging-{{ item.environment }}",
+        "description": "Logging {{ item.environment }} master nodes disk space free",
+        "fieldConfig": {
+          "defaults": {
+            "custom": {}
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 6,
+          "w": 4,
           "x": 0,
-          "y": 11
+          "y": 12
         },
         "hiddenSeries": false,
         "id": 29,
@@ -958,6 +1164,7 @@
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
+        "description": "Logging {{ item.environment }} hot nodes disk space free",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -968,9 +1175,9 @@
         "fillGradient": 0,
         "gridPos": {
           "h": 6,
-          "w": 6,
-          "x": 6,
-          "y": 11
+          "w": 4,
+          "x": 4,
+          "y": 12
         },
         "hiddenSeries": false,
         "id": 21,
@@ -1070,6 +1277,7 @@
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
+        "description": "Logging {{ item.environment }} warm nodes disk space free",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -1080,9 +1288,9 @@
         "fillGradient": 0,
         "gridPos": {
           "h": 6,
-          "w": 6,
-          "x": 12,
-          "y": 11
+          "w": 4,
+          "x": 8,
+          "y": 12
         },
         "hiddenSeries": false,
         "id": 22,
@@ -1182,6 +1390,7 @@
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
+        "description": "Logging {{ item.environment }} cold nodes disk space free",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -1192,9 +1401,9 @@
         "fillGradient": 0,
         "gridPos": {
           "h": 6,
-          "w": 6,
-          "x": 18,
-          "y": 11
+          "w": 4,
+          "x": 12,
+          "y": 12
         },
         "hiddenSeries": false,
         "id": 18,
@@ -1294,6 +1503,7 @@
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
+        "description": "Logging {{ item.environment }} kibana nodes disk space free",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -1303,10 +1513,123 @@
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
-          "h": 7,
-          "w": 6,
+          "h": 6,
+          "w": 4,
+          "x": 16,
+          "y": 12
+        },
+        "hiddenSeries": false,
+        "id": 33,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": false,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "7.2.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "alias": "/logging-.*-kibana-.*.(elasticsearch_data.)/",
+            "color": "#8F3BB8"
+          },
+          {
+            "alias": "/logging-.*-kibana-.* .(root.)/",
+            "color": "#DEB6F2"
+          }
+        ],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-kibana-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "interval": "",
+            "legendFormat": "{% raw %}{{hostname}} (elasticsearch_data){% endraw %}",
+            "refId": "A"
+          },
+          {
+            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-kibana-.*\", job=\"nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
+            "interval": "",
+            "legendFormat": "{% raw %}{{hostname}} (root){% endraw %}",
+            "refId": "B"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Kibana Nodes Disk Space Free",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "$$hashKey": "object:1681",
+            "decimals": null,
+            "format": "gbytes",
+            "label": null,
+            "logBase": 10,
+            "max": null,
+            "min": "0",
+            "show": true
+          },
+          {
+            "$$hashKey": "object:1682",
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": "logging-{{ item.environment }}",
+        "description": "Logging {{ item.environment }} master nodes network traffic",
+        "fieldConfig": {
+          "defaults": {
+            "custom": {}
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 6,
+          "w": 4,
           "x": 0,
-          "y": 17
+          "y": 16
         },
         "hiddenSeries": false,
         "id": 30,
@@ -1395,6 +1718,7 @@
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
+        "description": "Logging {{ item.environment }} hot nodes network traffic",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -1404,10 +1728,10 @@
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
-          "h": 7,
-          "w": 6,
-          "x": 6,
-          "y": 17
+          "h": 6,
+          "w": 4,
+          "x": 4,
+          "y": 16
         },
         "hiddenSeries": false,
         "id": 26,
@@ -1496,6 +1820,7 @@
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
+        "description": "Logging {{ item.environment }} warm nodes network traffic",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -1505,10 +1830,10 @@
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
-          "h": 7,
-          "w": 6,
-          "x": 12,
-          "y": 17
+          "h": 6,
+          "w": 4,
+          "x": 8,
+          "y": 16
         },
         "hiddenSeries": false,
         "id": 25,
@@ -1597,6 +1922,7 @@
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
+        "description": "Logging {{ item.environment }} cold nodes network traffic",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -1606,10 +1932,10 @@
         "fill": 1,
         "fillGradient": 0,
         "gridPos": {
-          "h": 7,
-          "w": 6,
-          "x": 18,
-          "y": 17
+          "h": 6,
+          "w": 4,
+          "x": 12,
+          "y": 16
         },
         "hiddenSeries": false,
         "id": 24,
@@ -1655,6 +1981,108 @@
         "timeRegions": [],
         "timeShift": null,
         "title": "Cold Nodes Network Traffic",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "$$hashKey": "object:2335",
+            "format": "KBs",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          },
+          {
+            "$$hashKey": "object:2336",
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": "logging-{{ item.environment }}",
+        "description": "Logging {{ item.environment }} kibana nodes network traffic",
+        "fieldConfig": {
+          "defaults": {
+            "custom": {}
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 6,
+          "w": 4,
+          "x": 16,
+          "y": 16
+        },
+        "hiddenSeries": false,
+        "id": 34,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": false,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "7.2.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "alias": "/logging-.*-kibana-.*/",
+            "color": "#8F3BB8"
+          }
+        ],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "expr": "irate(node_network_receive_bytes_total{hostname=~\"logging-{{ item.environment }}-kibana-.*\", job=\"nodes\",device=\"eth0\"}[5m])",
+            "interval": "",
+            "legendFormat": "{% raw %}{{device}} receive ({{hostname}}){% endraw %}",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Kibana Nodes Network Traffic",
         "tooltip": {
           "shared": true,
           "sort": 0,

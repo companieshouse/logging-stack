@@ -7,9 +7,6 @@ prometheus_lvm_block_devices = [
   }
 ]
 
-# TODO provision keypair
-ssh_keyname = "ch-aws-staging"
-
 team = "platform"
 
 # TODO - Remove these once they're provided automatically

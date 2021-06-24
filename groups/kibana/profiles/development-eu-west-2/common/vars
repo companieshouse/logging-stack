@@ -15,9 +15,6 @@ kibana_lvm_block_devices = [
   }
 ]
 
-# TODO provision keypair
-ssh_keyname = "development-devops"
-
 team = "platform"
 
 # TODO - Remove these once they're provided automatically

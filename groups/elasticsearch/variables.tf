@@ -198,11 +198,6 @@ variable "service_user" {
   description = "The Linux username for ownership of elasticsearch configuration files"
 }
 
-variable "ssh_keyname" {
-  type        = string
-  description = "The SSH keypair name to use for remote connectivity"
-}
-
 variable "team" {
   type        = string
   description = "The team responsible for administering the instance"

@@ -24,6 +24,11 @@ variable "service" {
   description = "The service name to be used when creating AWS resources"
 }
 
+variable "ssh_public_key" {
+  type        = string
+  description = "The SSH public key"
+}
+
 variable "team" {
   type        = string
   description = "The team responsible for administering the instance"

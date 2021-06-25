@@ -91,11 +91,6 @@ variable "service" {
   description = "The service name to be used when creating AWS resources"
 }
 
-variable "ssh_keyname" {
-  type        = string
-  description = "The SSH keypair name to use for remote connectivity"
-}
-
 variable "team" {
   type        = string
   description = "The team responsible for administering the instance"

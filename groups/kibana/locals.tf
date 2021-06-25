@@ -13,6 +13,7 @@ locals {
   placement_subnet_availability_zones = [for subnet in values(data.aws_subnet.placement) : lookup(subnet, "availability_zone")]
   placement_subnet_name_patterns = jsondecode(local.secrets.placement_subnet_name_patterns)
   route53_available = local.secrets.route53_available
+  ssh_keyname = "${var.service}-${var.environment}.pem"
   vpc_name = local.secrets.vpc_name
   vpn_cidrs = values(data.terraform_remote_state.networking.outputs.vpn_cidrs)
 

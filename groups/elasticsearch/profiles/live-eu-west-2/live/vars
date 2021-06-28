@@ -34,9 +34,6 @@ master_lvm_block_devices = [{
   lvm_physical_volume_device_node: "/dev/xvdb"
 }]
 
-# TODO provision keypair
-ssh_keyname = "ch-aws-live"
-
 team = "platform"
 
 # TODO - Remove these once they're provided automatically

@@ -8,6 +8,6 @@ lvm_block_devices = [{
 team = "platform"
 
 # TODO - Remove these once they're provided automatically
-account_name = "staging"
-environment = "staging"
+account_name = "development"
+environment = "devops"
 repository_name = "logging-stack"

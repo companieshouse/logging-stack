@@ -15,6 +15,7 @@ locals {
   heap_size_gigabytes = var.instance_type_heap_allocation[var.instance_type]
   placement_subnet_name_pattern = local.secrets.placement_subnet_name_pattern
   route53_available = local.secrets.route53_available
+  ssh_keyname = "${var.service}-${var.environment}.pem"
   subnet_id = tolist(data.aws_subnet_ids.placement.ids)[0]
   vpc_id = data.aws_vpc.vpc.id
   vpc_name = local.secrets.vpc_name

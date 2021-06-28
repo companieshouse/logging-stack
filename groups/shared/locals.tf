@@ -9,6 +9,8 @@ locals {
   internal_cidrs = values(data.terraform_remote_state.networking.outputs.internal_cidrs)
   placement_subnet_cidrs = [for subnet in data.aws_subnet.placement_subnets : subnet.cidr_block]
   placement_subnet_name_patterns = jsondecode(local.secrets.placement_subnet_name_patterns)
+  ssh_keyname = "${var.service}-${var.environment}.pem"
+  vpc_id = data.aws_vpc.vpc.id
   vpn_cidrs = values(data.terraform_remote_state.networking.outputs.vpn_cidrs)
   vpc_name = local.secrets.vpc_name
 
@@ -17,5 +19,4 @@ locals {
   elastic_search_http_cidrs = concat(local.administration_cidrs, local.placement_subnet_cidrs, local.concourse_worker_cidrs)
   prometheus_cidrs = local.administration_cidrs
   ssh_cidrs = local.administration_cidrs
-  vpc_id = data.aws_vpc.vpc.id
 }

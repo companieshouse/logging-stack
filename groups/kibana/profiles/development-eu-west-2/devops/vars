@@ -19,5 +19,5 @@ team = "platform"
 
 # TODO - Remove these once they're provided automatically
 account_name = "development"
-environment = "common"
+environment = "devops"
 repository_name = "logging-stack"

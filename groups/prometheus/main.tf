@@ -29,7 +29,7 @@ module "prometheus" {
   route53_available             = local.route53_available
   service                       = var.service
   ssh_cidrs                     = local.administration_cidrs
-  ssh_keyname                   = var.ssh_keyname
+  ssh_keyname                   = local.ssh_keyname
   subnet_ids                    = local.placement_subnet_ids_by_availability_zone
   user_data_merge_strategy      = var.user_data_merge_strategy
   vpc_id                        = data.aws_vpc.vpc.id

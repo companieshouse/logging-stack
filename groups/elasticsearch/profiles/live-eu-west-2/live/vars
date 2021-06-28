@@ -1,0 +1,42 @@
+data_cold_instance_count = 6
+data_cold_instance_type = "t3.medium"
+data_cold_lvm_block_devices = [{
+  aws_volume_size_gb: "1200",
+  filesystem_resize_tool: "xfs_growfs",
+  lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+  lvm_physical_volume_device_node: "/dev/xvdb"
+}]
+
+data_hot_instance_count = 3
+data_hot_instance_type = "r5.large"
+data_hot_lvm_block_devices = [{
+  aws_volume_size_gb: "100",
+  filesystem_resize_tool: "xfs_growfs",
+  lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+  lvm_physical_volume_device_node: "/dev/xvdb"
+}]
+
+data_warm_instance_count = 3
+data_warm_instance_type = "t3.large"
+data_warm_lvm_block_devices = [{
+  aws_volume_size_gb: "200",
+  filesystem_resize_tool: "xfs_growfs",
+  lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+  lvm_physical_volume_device_node: "/dev/xvdb"
+}]
+
+master_instance_count = 3
+master_instance_type = "c5.large"
+master_lvm_block_devices = [{
+  aws_volume_size_gb: "20",
+  filesystem_resize_tool: "xfs_growfs",
+  lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+  lvm_physical_volume_device_node: "/dev/xvdb"
+}]
+
+team = "platform"
+
+# TODO - Remove these once they're provided automatically
+account_name = "live"
+environment = "live"
+repository_name = "logging-stack"

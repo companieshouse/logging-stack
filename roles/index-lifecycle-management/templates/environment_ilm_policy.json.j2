@@ -5,6 +5,7 @@
                 "min_age": "0ms",
                 "actions": {
                     "rollover": {
+                        "max_size": "{{ item.rollover_index_size }}",
                         "max_age": "{{ item.hot_age }}"
                     },
                     "set_priority": {
@@ -13,13 +14,10 @@
                 }
             },
             "warm": {
-                "min_age": "{{ item.hot_age }}",
+                "min_age": "0ms,
                 "actions": {
                     "set_priority": {
                         "priority": 50
-                    },
-                    "shrink": {
-                        "number_of_shards": "1"
                     },
                     "allocate" : {
             			"require" : {

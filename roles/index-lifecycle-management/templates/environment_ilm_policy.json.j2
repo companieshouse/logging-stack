@@ -14,13 +14,10 @@
                 }
             },
             "warm": {
-                "min_age": "{{ item.hot_age }}",
+                "min_age": "0ms",
                 "actions": {
                     "set_priority": {
                         "priority": 50
-                    },
-                    "shrink": {
-                        "number_of_shards": "1"
                     },
                     "allocate" : {
             			"require" : {

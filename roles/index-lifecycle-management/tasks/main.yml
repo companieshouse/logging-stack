@@ -1,8 +1,8 @@
 ---
 
-- name: Set index-lifecycle-management policies for environments
+- name: Set index-lifecycle-management application policies for environments
   uri:
-    url: "{{ elasticsearch_api_url }}/_ilm/policy/{{ item.name }}-logging-policy"
+    url: "{{ elasticsearch_api_url }}/_ilm/policy/{{ item.name }}-application-logging-policy"
     method: PUT
     body: "{{ lookup('template', 'roles/index-lifecycle-management/templates/environment_ilm_policy.json.j2') }}"
     status_code: 200
@@ -11,5 +11,19 @@
       Content-Type: application/json
       kbn-xsrf: true
   with_items:
-    "{{ environments }}"
+    "{{ application_environments }}"
+  no_log: True
+
+- name: Set index-lifecycle-management gateway policies for environments
+  uri:
+    url: "{{ elasticsearch_api_url }}/_ilm/policy/{{ item.name }}-gateway-logging-policy"
+    method: PUT
+    body: "{{ lookup('template', 'roles/index-lifecycle-management/templates/environment_ilm_policy.json.j2') }}"
+    status_code: 200
+    body_format: json
+    headers:
+      Content-Type: application/json
+      kbn-xsrf: true
+  with_items:
+    "{{ gateway_environments }}"
   no_log: True

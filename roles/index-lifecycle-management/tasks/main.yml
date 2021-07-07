@@ -12,7 +12,7 @@
       kbn-xsrf: true
   with_items:
     "{{ application_environments }}"
-  # no_log: True
+  no_log: True
 
 - name: Set index-lifecycle-management gateway policies for environments
   uri:
@@ -26,4 +26,4 @@
       kbn-xsrf: true
   with_items:
     "{{ gateway_environments }}"
-  # no_log: True
+  no_log: True

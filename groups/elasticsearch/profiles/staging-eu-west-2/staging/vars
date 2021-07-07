@@ -1,7 +1,7 @@
 data_cold_instance_count = 3
 data_cold_instance_type = "t3.medium"
 data_cold_lvm_block_devices = [{
-  aws_volume_size_gb: "10",
+  aws_volume_size_gb: "100",
   filesystem_resize_tool: "xfs_growfs",
   lvm_logical_volume_device_node: "/dev/elasticsearch/data",
   lvm_physical_volume_device_node: "/dev/xvdb"
@@ -10,7 +10,7 @@ data_cold_lvm_block_devices = [{
 data_hot_instance_count = 3
 data_hot_instance_type = "t3.medium"
 data_hot_lvm_block_devices = [{
-  aws_volume_size_gb: "10",
+  aws_volume_size_gb: "80",
   filesystem_resize_tool: "xfs_growfs",
   lvm_logical_volume_device_node: "/dev/elasticsearch/data",
   lvm_physical_volume_device_node: "/dev/xvdb"
@@ -19,7 +19,7 @@ data_hot_lvm_block_devices = [{
 data_warm_instance_count = 3
 data_warm_instance_type = "t3.medium"
 data_warm_lvm_block_devices = [{
-  aws_volume_size_gb: "10",
+  aws_volume_size_gb: "50",
   filesystem_resize_tool: "xfs_growfs",
   lvm_logical_volume_device_node: "/dev/elasticsearch/data",
   lvm_physical_volume_device_node: "/dev/xvdb"

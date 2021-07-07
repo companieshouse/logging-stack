@@ -1,4 +1,4 @@
-data_cold_instance_count = 0
+data_cold_instance_count = 1
 data_cold_instance_type = "t3.medium"
 data_cold_lvm_block_devices = [{
   aws_volume_size_gb: "10",
@@ -7,7 +7,7 @@ data_cold_lvm_block_devices = [{
   lvm_physical_volume_device_node: "/dev/xvdb"
 }]
 
-data_hot_instance_count = 0
+data_hot_instance_count = 1
 data_hot_instance_type = "t3.medium"
 data_hot_lvm_block_devices = [{
   aws_volume_size_gb: "10",
@@ -16,7 +16,7 @@ data_hot_lvm_block_devices = [{
   lvm_physical_volume_device_node: "/dev/xvdb"
 }]
 
-data_warm_instance_count = 0
+data_warm_instance_count = 1
 data_warm_instance_type = "t3.medium"
 data_warm_lvm_block_devices = [{
   aws_volume_size_gb: "10",

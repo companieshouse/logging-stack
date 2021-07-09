@@ -1,4 +1,0 @@
-runcmd:
-  - hostnamectl set-hostname ${hostname}
-  - systemctl enable prometheus
-  - systemctl start prometheus

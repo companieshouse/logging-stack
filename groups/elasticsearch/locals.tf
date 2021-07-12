@@ -11,7 +11,8 @@ locals {
   data_hot_heap_size_gigabytes = var.instance_type_heap_allocation[var.data_hot_instance_type]
   data_warm_heap_size_gigabytes = var.instance_type_heap_allocation[var.data_warm_instance_type]
   internal_cidrs = values(data.terraform_remote_state.networking.outputs.internal_cidrs)
-  placement_subnet_availability_zones = [for subnet in values(data.aws_subnet.placement) : lookup(subnet, "availability_zone")]
+  placement_subnet_availability_zones = sort([for subnet in values(data.aws_subnet.placement) : lookup(subnet, "availability_zone")])
+  placement_subnet_ids = [for subnet in values(data.aws_subnet.placement) : lookup(subnet, "id")]
   placement_subnet_name_patterns = jsondecode(local.secrets.placement_subnet_name_patterns)
   route53_available = local.secrets.route53_available
   ssh_keyname = "${var.service}-${var.environment}.pem"
@@ -19,6 +20,5 @@ locals {
   vpn_cidrs = values(data.terraform_remote_state.networking.outputs.vpn_cidrs)
 
   administration_cidrs = concat(local.internal_cidrs, local.vpn_cidrs)
-  placement_subnet_ids = [for subnet in values(data.aws_subnet.placement) : lookup(subnet, "id")]
   placement_subnet_ids_by_availability_zone = values(zipmap(local.placement_subnet_availability_zones, local.placement_subnet_ids))
 }

@@ -9,11 +9,13 @@ data "template_cloudinit_config" "master" {
     content = templatefile("${path.module}/cloud-init/templates/system-config.yml.tpl", {
       instance_fqdn = "${var.service}-${var.environment}-master-${count.index + 1}.${var.dns_zone_name}"
     })
+    merge_type = var.user_data_merge_strategy
   }
 
   part {
     content_type = "text/cloud-config"
     content = templatefile("${path.module}/cloud-init/templates/elasticsearch.yml.tpl", {
+      availability_zone             = var.availability_zones[count.index]
       box_type                      = "master"
       discovery_availability_zones  = var.discovery_availability_zones
       environment                   = var.environment

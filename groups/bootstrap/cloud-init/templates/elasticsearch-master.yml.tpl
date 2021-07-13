@@ -6,6 +6,7 @@ write_files:
       cluster.initial_master_nodes:
         - ${service}-${environment}-bootstrap.${dns_zone_name}
       cluster.name: ${environment}
+      cluster.routing.allocation.awareness.attributes: availability_zone
       discovery.ec2.availability_zones: ${discovery_availability_zones}
       discovery.ec2.endpoint: ec2.${region}.amazonaws.com
       discovery.ec2.tag.ElasticSearchMasterNode: true

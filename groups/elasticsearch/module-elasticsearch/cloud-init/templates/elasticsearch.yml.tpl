@@ -10,8 +10,8 @@ write_files:
       discovery.ec2.tag.ElasticSearchMasterNode: true
       discovery.ec2.tag.Environment: ${environment}
       discovery.seed_providers: ec2
-      network.host: _ec2:privateIpv4_
-      node.attr.availability_zone: ${availability_zone}
+      network.host: _ec2:privateIpv4_%{ if availability_zone != null }
+      node.attr.availability_zone: ${availability_zone}%{ endif }
       node.attr.box_type: ${box_type}
       node.roles:%{ for role in roles }
         - ${role}%{ endfor }

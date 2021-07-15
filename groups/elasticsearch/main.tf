@@ -14,21 +14,18 @@ module "elasticsearch" {
   ami_version_pattern           = var.ami_version_pattern
   availability_zones            = sort(local.placement_subnet_availability_zones)
 
-  data_cold_heap_size_gigabytes = local.data_cold_heap_size_gigabytes
   data_cold_instance_count      = var.data_cold_instance_count
   data_cold_instance_type       = var.data_cold_instance_type
   data_cold_lvm_block_devices   = var.data_cold_lvm_block_devices
   data_cold_roles               = var.data_cold_roles
   data_cold_root_volume_size    = var.data_cold_root_volume_size
 
-  data_hot_heap_size_gigabytes = local.data_hot_heap_size_gigabytes
   data_hot_instance_count       = var.data_hot_instance_count
   data_hot_instance_type        = var.data_hot_instance_type
   data_hot_lvm_block_devices    = var.data_hot_lvm_block_devices
   data_hot_roles                = var.data_hot_roles
   data_hot_root_volume_size     = var.data_hot_root_volume_size
 
-  data_warm_heap_size_gigabytes = local.data_warm_heap_size_gigabytes
   data_warm_instance_count      = var.data_warm_instance_count
   data_warm_instance_type       = var.data_warm_instance_type
   data_warm_lvm_block_devices   = var.data_warm_lvm_block_devices

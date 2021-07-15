@@ -13,11 +13,6 @@ variable "availability_zones" {
   type          = list(string)
 }
 
-variable "data_cold_heap_size_gigabytes" {
-  type        = string
-  description = "The heap allocation for cold nodes in gigabytes"
-}
-
 variable "data_cold_instance_count" {
   type        = number
   description = "The number of cold data instances to provision"
@@ -48,11 +43,6 @@ variable "data_cold_root_volume_size" {
   description = "The size of the root volume for cold data nodes in GiB; set this value to 0 to preserve the size specified in the AMI metadata. This value should not be smaller than the size specified in the AMI metadata and used by the root volume snapshot. The filesystem will be expanded automatically to use all available space for the volume and an XFS filesystem is assumed"
 }
 
-variable "data_hot_heap_size_gigabytes" {
-  type        = string
-  description = "The heap allocation for hot nodes in gigabytes"
-}
-
 variable "data_hot_instance_count" {
   type        = number
   description = "The number of hot data instances to provision"
@@ -81,11 +71,6 @@ variable "data_hot_roles" {
 variable "data_hot_root_volume_size" {
   type        = number
   description = "The size of the root volume for hot data nodes in GiB; set this value to 0 to preserve the size specified in the AMI metadata. This value should not be smaller than the size specified in the AMI metadata and used by the root volume snapshot. The filesystem will be expanded automatically to use all available space for the volume and an XFS filesystem is assumed"
-}
-
-variable "data_warm_heap_size_gigabytes" {
-  type        = string
-  description = "The heap allocation for warm nodes in gigabytes"
 }
 
 variable "data_warm_instance_count" {
@@ -166,6 +151,17 @@ variable "master_roles" {
 variable "master_root_volume_size" {
   type        = number
   description = "The size of the root volume for master nodes in GiB; set this value to 0 to preserve the size specified in the AMI metadata. This value should not be smaller than the size specified in the AMI metadata and used by the root volume snapshot. The filesystem will be expanded automatically to use all available space for the volume and an XFS filesystem is assumed"
+}
+
+variable "instance_type_heap_allocation" {
+  type          = map(string)
+  default       = {
+    "t3.small"  = "1",
+    "t3.medium" = "2",
+    "t3.large"  = "4"
+    "r5.large"  = "8"
+  }
+  description = "A map used to determine the Java heap allocation in gigabytes, based on instance type. I.e. 50% of what's available"
 }
 
 variable "region" {

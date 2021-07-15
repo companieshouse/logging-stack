@@ -30,7 +30,7 @@ data "template_cloudinit_config" "data_cold" {
   part {
     content_type = "text/cloud-config"
     content = templatefile("${path.module}/cloud-init/templates/jvm.options.tpl", {
-      heap_size_gigabytes   = var.data_cold_heap_size_gigabytes
+      heap_size_gigabytes   = var.instance_type_heap_allocation[var.data_cold_instance_type]
       service_group         = var.service_group
       service_user          = var.service_user
     })

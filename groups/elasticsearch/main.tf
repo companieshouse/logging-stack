@@ -12,6 +12,7 @@ module "elasticsearch" {
 
   ami_owner_id                  = var.ami_owner_id
   ami_version_pattern           = var.ami_version_pattern
+  availability_zones            = sort(local.placement_subnet_availability_zones)
 
   data_cold_heap_size_gigabytes = local.data_cold_heap_size_gigabytes
   data_cold_instance_count      = var.data_cold_instance_count

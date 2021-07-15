@@ -8,5 +8,5 @@ runcmd:
   %{ endif }
   %{~ endfor ~}
   - xfs_growfs ${root_volume_device_node}
-  - systemctl enable grafana-server
-  - systemctl start grafana-server
+  - systemctl enable prometheus
+  - systemctl start prometheus

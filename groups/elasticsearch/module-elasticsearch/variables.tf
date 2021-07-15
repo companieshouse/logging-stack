@@ -8,6 +8,11 @@ variable "ami_version_pattern" {
   description = "The pattern with which to match AMIs"
 }
 
+variable "availability_zones" {
+  description   = "The availability zones into which we'll place instances"
+  type          = list(string)
+}
+
 variable "data_cold_heap_size_gigabytes" {
   type        = string
   description = "The heap allocation for cold nodes in gigabytes"

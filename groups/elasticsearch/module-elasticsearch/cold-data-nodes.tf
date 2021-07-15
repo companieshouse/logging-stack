@@ -15,6 +15,7 @@ data "template_cloudinit_config" "data_cold" {
   part {
     content_type = "text/cloud-config"
     content = templatefile("${path.module}/cloud-init/templates/elasticsearch.yml.tpl", {
+      availability_zone             = element(var.availability_zones, count.index)
       box_type                      = "cold"
       discovery_availability_zones  = var.discovery_availability_zones
       environment                   = var.environment

@@ -1,0 +1,6 @@
+---
+
+- name: Manage service logstash
+  ansible.builtin.service:
+    name: logstash
+    state: stopped

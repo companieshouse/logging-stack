@@ -1,0 +1,12 @@
+plugin: aws_ec2
+boto_profile: development-eu-west-2
+
+regions:
+  - eu-west-2
+
+filters:
+  tag:Service: chs
+  tag:AnsibleGroup: logstash
+  tag:Environment: devops1
+
+hostnames: private-ip-address

@@ -93,7 +93,7 @@ data "template_cloudinit_config" "cold_data_asg" {
   part {
     content_type = "text/cloud-config"
     content = templatefile("${path.module}/cloud-init/templates/bootstrap-commands.yml.tpl", {
-      lvm_block_devices       = var.data_cold_lvm_block_devices
+      lvm_block_devices       = var.scaling_group_configuration[each.value].cold.lvm_block_devices
       root_volume_device_node = data.aws_ami.elasticsearch[var.scaling_group_configuration[each.value].cold.ami_version_pattern].root_device_name
 
     })

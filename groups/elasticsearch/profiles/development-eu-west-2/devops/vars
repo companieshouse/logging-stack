@@ -40,3 +40,51 @@ team = "platform"
 account_name = "development"
 environment = "devops"
 repository_name = "logging-stack"
+
+# ------------------------------------------------------------------------------
+# Auto Scaling Group Variables
+# ------------------------------------------------------------------------------
+scaling_group_configuration = {
+  "eu-west-2a" = {
+    "cold" = {
+      ami_version_pattern: "\\d.\\d.\\d",
+      instance_type = "t3.medium",
+      lvm_block_devices = [{
+        aws_volume_size_gb: "10",
+        filesystem_resize_tool: "xfs_growfs",
+        lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+        lvm_physical_volume_device_node: "/dev/xvdb"
+      }],
+      node_count: 1,
+      root_volume_size: 10
+    }
+  },
+  "eu-west-2b" = {
+    "cold" = {
+      ami_version_pattern: "\\d.\\d.\\d",
+      instance_type = "t3.medium",
+      lvm_block_devices = [{
+        aws_volume_size_gb: "10",
+        filesystem_resize_tool: "xfs_growfs",
+        lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+        lvm_physical_volume_device_node: "/dev/xvdb"
+      }],
+      node_count: 0,
+      root_volume_size: 0
+    }
+  },
+  "eu-west-2c" = {
+    "cold" = {
+      ami_version_pattern: "\\d.\\d.\\d",
+      instance_type = "t3.medium",
+      lvm_block_devices = [{
+        aws_volume_size_gb: "10",
+        filesystem_resize_tool: "xfs_growfs",
+        lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+        lvm_physical_volume_device_node: "/dev/xvdb"
+      }],
+      node_count: 0,
+      root_volume_size: 0
+    }
+  }
+}

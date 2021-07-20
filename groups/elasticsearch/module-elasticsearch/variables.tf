@@ -172,8 +172,10 @@ variable "region" {
 variable "role_tags" {
   type = map(string)
   default = {
-    master = "ElasticSearchMasterNode",
-    ingest = "ElasticSearchIngestNode"
+    data_cold       = "ElasticSearchColdNode",
+    data_content    = "ElasticSearchContentNode",
+    master          = "ElasticSearchMasterNode",
+    ingest          = "ElasticSearchIngestNode"
   }
   description = "A map defining what tag should be applied for a given role"
 }
@@ -216,4 +218,38 @@ variable "subnet_ids" {
 variable "user_data_merge_strategy" {
   type        = string
   description = "Merge strategy to apply to user-data sections for cloud-init"
+}
+
+# ------------------------------------------------------------------------------
+# Auto Scaling Group Variables
+# ------------------------------------------------------------------------------
+variable "ami_version_patterns" {
+  type        = set(string)
+  description = "The patterns with which to match AMIs"
+}
+
+variable "asg_availability_zones" {
+  description   = "The availability zones into which we'll place instances"
+  type          = set(string)
+}
+
+variable "asg_subnet_ids_by_availability_zone" {
+  type        = map(string)
+  description = "The ids of the subnets into which we'll place instances"
+}
+
+variable "scaling_group_configuration" {
+  description = "The scaling group configuration indexed by availability zone"
+  type = map(map(object({
+    ami_version_pattern: string,
+    instance_type: string,
+    lvm_block_devices: list(object({
+      aws_volume_size_gb: string,
+      filesystem_resize_tool: string,
+      lvm_logical_volume_device_node: string,
+      lvm_physical_volume_device_node: string,
+    })),
+    node_count: number,
+    root_volume_size: number
+  })))
 }

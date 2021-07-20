@@ -31,7 +31,7 @@ data "template_cloudinit_config" "master" {
     content_type = "text/cloud-config"
     content = templatefile("${path.module}/cloud-init/templates/bootstrap-commands.yml.tpl", {
       lvm_block_devices       = var.master_lvm_block_devices
-      root_volume_device_node = data.aws_ami.elasticsearch.root_device_name
+      root_volume_device_node = data.aws_ami.elasticsearch[var.ami_version_pattern].root_device_name
     })
   }
 }
@@ -39,7 +39,7 @@ data "template_cloudinit_config" "master" {
 resource "aws_instance" "master" {
   count                  = var.master_instance_count
 
-  ami                    = data.aws_ami.elasticsearch.id
+  ami                    = data.aws_ami.elasticsearch[var.ami_version_pattern].id
   iam_instance_profile   = var.master_instance_profile_name
   instance_type          = var.master_instance_type
   key_name               = var.ssh_keyname

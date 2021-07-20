@@ -197,3 +197,23 @@ variable "user_data_merge_strategy" {
   default     = "list(append)+dict(recurse_array)+str()"
   description = "Merge strategy to apply to user-data sections for cloud-init"
 }
+
+# ------------------------------------------------------------------------------
+# Auto Scaling Group Variables
+# ------------------------------------------------------------------------------
+variable "scaling_group_configuration" {
+  default = {}
+  description = "The scaling group configuration indexed by availability zone"
+  type = map(map(object({
+    ami_version_pattern: string,
+    instance_type: string,
+    lvm_block_devices: list(object({
+      aws_volume_size_gb: string,
+      filesystem_resize_tool: string,
+      lvm_logical_volume_device_node: string,
+      lvm_physical_volume_device_node: string,
+    })),
+    node_count: number,
+    root_volume_size: number
+  })))
+}

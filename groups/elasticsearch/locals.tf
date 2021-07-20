@@ -18,4 +18,20 @@ locals {
 
   administration_cidrs = concat(local.internal_cidrs, local.vpn_cidrs)
   placement_subnet_ids_by_availability_zone = values(zipmap(local.placement_subnet_availability_zones, local.placement_subnet_ids))
+
+
+  # ------------------------------------------------------------------------------
+  # Scaling Group Variables
+  # ------------------------------------------------------------------------------
+  asg_availability_zones = toset(local.placement_subnet_availability_zones)
+  asg_subnet_ids_by_availability_zone = zipmap(local.placement_subnet_availability_zones, local.placement_subnet_ids)
+
+  ami_version_patterns = setunion(
+    toset([var.ami_version_pattern]),
+    toset(flatten([
+      for availability_zone, node_type in var.scaling_group_configuration : [
+        for configuration in node_type : configuration.ami_version_pattern
+      ]
+    ]))
+  )
 }

@@ -41,7 +41,7 @@ data "template_cloudinit_config" "data_cold" {
     content_type = "text/cloud-config"
     content = templatefile("${path.module}/cloud-init/templates/bootstrap-commands.yml.tpl", {
       lvm_block_devices       = var.data_cold_lvm_block_devices
-      root_volume_device_node = data.aws_ami.elasticsearch.root_device_name
+      root_volume_device_node = data.aws_ami.elasticsearch[var.ami_version_pattern].root_device_name
     })
     merge_type = var.user_data_merge_strategy
   }
@@ -50,7 +50,7 @@ data "template_cloudinit_config" "data_cold" {
 resource "aws_instance" "data_cold" {
   count                  = var.data_cold_instance_count
 
-  ami                    = data.aws_ami.elasticsearch.id
+  ami                    = data.aws_ami.elasticsearch[var.ami_version_pattern].id
   iam_instance_profile   = data.aws_iam_instance_profile.elastic_search_node.name
   instance_type          = var.data_cold_instance_type
   key_name               = var.ssh_keyname

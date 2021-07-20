@@ -12,6 +12,7 @@ module "elasticsearch" {
 
   ami_owner_id                  = var.ami_owner_id
   ami_version_pattern           = var.ami_version_pattern
+  ami_version_patterns          = local.ami_version_patterns
   availability_zones            = sort(local.placement_subnet_availability_zones)
 
   data_cold_instance_count      = var.data_cold_instance_count
@@ -43,6 +44,7 @@ module "elasticsearch" {
   master_lvm_block_devices      = var.master_lvm_block_devices
   region                        = var.region
   route53_available             = local.route53_available
+  scaling_group_configuration   = var.scaling_group_configuration
   service                       = var.service
   service_group                 = var.service_group
   service_user                  = var.service_user
@@ -50,4 +52,8 @@ module "elasticsearch" {
   ssh_keyname                   = local.ssh_keyname
   subnet_ids                    = local.placement_subnet_ids_by_availability_zone
   user_data_merge_strategy      = var.user_data_merge_strategy
+
+  # Auto Scaling Group Variables
+  asg_availability_zones                = local.asg_availability_zones
+  asg_subnet_ids_by_availability_zone   = local.asg_subnet_ids_by_availability_zone
 }

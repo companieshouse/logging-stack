@@ -57,6 +57,42 @@ scaling_group_configuration = {
       }],
       node_count: 1,
       root_volume_size: 10
+    },
+    "hot" = {
+      ami_version_pattern: "\\d.\\d.\\d",
+      instance_type = "t3.medium",
+      lvm_block_devices = [{
+        aws_volume_size_gb: "10",
+        filesystem_resize_tool: "xfs_growfs",
+        lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+        lvm_physical_volume_device_node: "/dev/xvdb"
+      }],
+      node_count: 1,
+      root_volume_size: 10
+    },
+    "master" = {
+      ami_version_pattern: "\\d.\\d.\\d",
+      instance_type = "t3.medium",
+      lvm_block_devices = [{
+        aws_volume_size_gb: "10",
+        filesystem_resize_tool: "xfs_growfs",
+        lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+        lvm_physical_volume_device_node: "/dev/xvdb"
+      }],
+      node_count: 1,
+      root_volume_size: 10
+    },
+    "warm" = {
+      ami_version_pattern: "\\d.\\d.\\d",
+      instance_type = "t3.medium",
+      lvm_block_devices = [{
+        aws_volume_size_gb: "10",
+        filesystem_resize_tool: "xfs_growfs",
+        lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+        lvm_physical_volume_device_node: "/dev/xvdb"
+      }],
+      node_count: 1,
+      root_volume_size: 10
     }
   },
   "eu-west-2b" = {
@@ -71,6 +107,42 @@ scaling_group_configuration = {
       }],
       node_count: 0,
       root_volume_size: 0
+    },
+    "hot" = {
+      ami_version_pattern: "\\d.\\d.\\d",
+      instance_type = "t3.medium",
+      lvm_block_devices = [{
+        aws_volume_size_gb: "10",
+        filesystem_resize_tool: "xfs_growfs",
+        lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+        lvm_physical_volume_device_node: "/dev/xvdb"
+      }],
+      node_count: 0,
+      root_volume_size: 10
+    },
+    "master" = {
+      ami_version_pattern: "\\d.\\d.\\d",
+      instance_type = "t3.medium",
+      lvm_block_devices = [{
+        aws_volume_size_gb: "10",
+        filesystem_resize_tool: "xfs_growfs",
+        lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+        lvm_physical_volume_device_node: "/dev/xvdb"
+      }],
+      node_count: 1,
+      root_volume_size: 10
+    },
+    "warm" = {
+      ami_version_pattern: "\\d.\\d.\\d",
+      instance_type = "t3.medium",
+      lvm_block_devices = [{
+        aws_volume_size_gb: "10",
+        filesystem_resize_tool: "xfs_growfs",
+        lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+        lvm_physical_volume_device_node: "/dev/xvdb"
+      }],
+      node_count: 0,
+      root_volume_size: 10
     }
   },
   "eu-west-2c" = {
@@ -85,6 +157,42 @@ scaling_group_configuration = {
       }],
       node_count: 0,
       root_volume_size: 0
+    },
+    "hot" = {
+      ami_version_pattern: "\\d.\\d.\\d",
+      instance_type = "t3.medium",
+      lvm_block_devices = [{
+        aws_volume_size_gb: "10",
+        filesystem_resize_tool: "xfs_growfs",
+        lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+        lvm_physical_volume_device_node: "/dev/xvdb"
+      }],
+      node_count: 0,
+      root_volume_size: 10
+    },
+    "master" = {
+      ami_version_pattern: "\\d.\\d.\\d",
+      instance_type = "t3.medium",
+      lvm_block_devices = [{
+        aws_volume_size_gb: "10",
+        filesystem_resize_tool: "xfs_growfs",
+        lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+        lvm_physical_volume_device_node: "/dev/xvdb"
+      }],
+      node_count: 1,
+      root_volume_size: 10
+    },
+    "warm" = {
+      ami_version_pattern: "\\d.\\d.\\d",
+      instance_type = "t3.medium",
+      lvm_block_devices = [{
+        aws_volume_size_gb: "10",
+        filesystem_resize_tool: "xfs_growfs",
+        lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+        lvm_physical_volume_device_node: "/dev/xvdb"
+      }],
+      node_count: 0,
+      root_volume_size: 10
     }
   }
 }

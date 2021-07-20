@@ -174,8 +174,10 @@ variable "role_tags" {
   default = {
     data_cold       = "ElasticSearchColdNode",
     data_content    = "ElasticSearchContentNode",
-    master          = "ElasticSearchMasterNode",
+    data_hot        = "ElasticSearchHotNode",
+    data_warm       = "ElasticSearchWarmNode",
     ingest          = "ElasticSearchIngestNode"
+    master          = "ElasticSearchMasterNode",
   }
   description = "A map defining what tag should be applied for a given role"
 }

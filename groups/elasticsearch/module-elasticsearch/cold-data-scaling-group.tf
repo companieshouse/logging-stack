@@ -7,7 +7,7 @@ resource "aws_launch_configuration" "cold_data" {
   iam_instance_profile = data.aws_iam_instance_profile.elastic_search_node.name
   key_name             = var.ssh_keyname
   security_groups      = [data.aws_security_group.elasticsearch.id]
-  user_data_base64     = data.template_cloudinit_config.cold_data[each.value].rendered
+  user_data_base64     = data.template_cloudinit_config.cold_data_asg[each.value].rendered
 
   root_block_device {
     volume_size = var.scaling_group_configuration[each.value].cold.root_volume_size != 0 ? var.scaling_group_configuration[each.value].cold.root_volume_size : local.ami_root_block_device_by_pattern[var.scaling_group_configuration[each.value].cold.ami_version_pattern].ebs.volume_size

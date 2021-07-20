@@ -74,7 +74,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{job=\"master_nodes\",mode=\"idle\"}[5m])) * 100)",
+            "expr": "100 - (avg by (private_ip) (rate(node_cpu_seconds_total{job=\"master_nodes\",mode=\"idle\"}[5m])) * 100)",
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"
@@ -177,7 +177,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{job=\"hot_nodes\",mode=\"idle\"}[5m])) * 100)",
+            "expr": "100 - (avg by (private_ip) (rate(node_cpu_seconds_total{job=\"hot_nodes\",mode=\"idle\"}[5m])) * 100)",
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "B"
@@ -279,7 +279,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{job=\"warm_nodes\",mode=\"idle\"}[5m])) * 100)",
+            "expr": "100 - (avg by (private_ip) (rate(node_cpu_seconds_total{job=\"warm_nodes\",mode=\"idle\"}[5m])) * 100)",
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"
@@ -381,7 +381,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{job=\"cold_nodes\",mode=\"idle\"}[5m])) * 100)",
+            "expr": "100 - (avg by (private_ip) (rate(node_cpu_seconds_total{job=\"cold_nodes\",mode=\"idle\"}[5m])) * 100)",
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"

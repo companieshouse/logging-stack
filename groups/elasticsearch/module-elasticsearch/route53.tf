@@ -46,7 +46,7 @@ resource "aws_route53_record" "data_warm" {
 }
 
 resource "aws_route53_record" "ingest" {
-  count   = var.route53_available ? 1 : 0
+  count   = var.route53_available && var.data_hot_instance_count > 0 ? 1 : 0
 
   zone_id = data.aws_route53_zone.zone[0].zone_id
   name    = "${var.service}-${var.environment}-sniffing.${var.dns_zone_name}"

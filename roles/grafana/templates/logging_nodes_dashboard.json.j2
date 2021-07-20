@@ -65,7 +65,7 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-master-.*/",
+            "alias": "/.*/",
             "color": "#73BF69"
           }
         ],
@@ -74,9 +74,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{hostname=~\"logging-{{ item.environment }}-master-.*\",job=\"nodes\",mode=\"idle\"}[5m])) * 100)",
+            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{job=\"master_nodes\",mode=\"idle\"}[5m])) * 100)",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"
           }
         ],
@@ -168,7 +168,7 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-data-hot-.*/",
+            "alias": "/.*/",
             "color": "#C4162A"
           }
         ],
@@ -177,9 +177,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{hostname=~\"logging-{{ item.environment }}-data-hot-.*\",job=\"nodes\",mode=\"idle\"}[5m])) * 100)",
+            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{job=\"hot_nodes\",mode=\"idle\"}[5m])) * 100)",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "B"
           }
         ],
@@ -270,7 +270,7 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-data-warm-.*/",
+            "alias": "/.*/",
             "color": "#E0B400"
           }
         ],
@@ -279,9 +279,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{hostname=~\"logging-{{ item.environment }}-data-warm-.*\",job=\"nodes\",mode=\"idle\"}[5m])) * 100)",
+            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{job=\"warm_nodes\",mode=\"idle\"}[5m])) * 100)",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"
           }
         ],
@@ -372,7 +372,7 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-data-cold-.*/",
+            "alias": "/.*/",
             "color": "#1F60C4"
           }
         ],
@@ -381,9 +381,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{hostname=~\"logging-{{ item.environment }}-data-cold-.*\",job=\"nodes\",mode=\"idle\"}[5m])) * 100)",
+            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{job=\"cold_nodes\",mode=\"idle\"}[5m])) * 100)",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"
           }
         ],
@@ -578,7 +578,7 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-master-.*/",
+            "alias": "/.*/",
             "color": "#73BF69"
           }
         ],
@@ -587,9 +587,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_memory_MemFree_bytes{hostname=~\"logging-{{ item.environment }}-master-.*\", job=\"nodes\"}/1073741824",
+            "expr": "node_memory_MemFree_bytes{job=\"master_nodes\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "D"
           }
         ],
@@ -681,7 +681,7 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-data-hot-.*/",
+            "alias": "/.*/",
             "color": "#C4162A"
           }
         ],
@@ -690,9 +690,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_memory_MemFree_bytes{hostname=~\"logging-{{ item.environment }}-data-hot-.*\", job=\"nodes\"}/1073741824",
+            "expr": "node_memory_MemFree_bytes{job=\"hot_nodes\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "D"
           }
         ],
@@ -784,7 +784,7 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-data-warm-.*/",
+            "alias": "/.*/",
             "color": "#E0B400"
           }
         ],
@@ -793,9 +793,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_memory_MemFree_bytes{hostname=~\"logging-{{ item.environment }}-data-warm-.*\", job=\"nodes\"}/1073741824",
+            "expr": "node_memory_MemFree_bytes{job=\"warm_nodes\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"
           }
         ],
@@ -886,7 +886,7 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-data-cold-.*/",
+            "alias": "/.*/",
             "color": "#1F60C4"
           }
         ],
@@ -895,9 +895,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_memory_MemFree_bytes{hostname=~\"logging-{{ item.environment }}-data-cold-.*\", job=\"nodes\"}/1073741824",
+            "expr": "node_memory_MemFree_bytes{job=\"cold_nodes\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"
           }
         ],
@@ -1090,11 +1090,11 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-master-.*.(elasticsearch_data.)/",
+            "alias": "/.*.(elasticsearch_data.)/",
             "color": "#73BF69"
           },
           {
-            "alias": "/logging-.*-master-.*.(root.)/",
+            "alias": "/.*.(root.)/",
             "color": "#C8F2C2"
           }
         ],
@@ -1103,15 +1103,15 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-master-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{job=\"master_nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}} (elasticsearch_data){% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}} (elasticsearch_data){% endraw %}",
             "refId": "A"
           },
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-master-.*\", job=\"nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{job=\"master_nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}} (root){% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}} (root){% endraw %}",
             "refId": "B"
           }
         ],
@@ -1203,11 +1203,11 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-data-hot-.*.(elasticsearch_data.)/",
+            "alias": "/.*.(elasticsearch_data.)/",
             "color": "#C4162A"
           },
           {
-            "alias": "/logging-.*-data-hot-.*.(root.)/",
+            "alias": "/.*.(root.)/",
             "color": "#FF7383"
           }
         ],
@@ -1216,15 +1216,15 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-data-hot-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{job=\"hot_nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}} (elasticsearch_data){% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}} (elasticsearch_data){% endraw %}",
             "refId": "A"
           },
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-data-hot-.*\", job=\"nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{job=\"hot_nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}} (root){% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}} (root){% endraw %}",
             "refId": "B"
           }
         ],
@@ -1316,11 +1316,11 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-data-warm-.*.(elasticsearch_data.)/",
+            "alias": "/.*.(elasticsearch_data.)/",
             "color": "#E0B400"
           },
           {
-            "alias": "/logging-.*-data-warm-.*.(root.)/",
+            "alias": "/.*.(root.)/",
             "color": "#FFEE52"
           }
         ],
@@ -1329,15 +1329,15 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-data-warm-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{job=\"warm_nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}} (elasticsearch_data){% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}} (elasticsearch_data){% endraw %}",
             "refId": "A"
           },
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-data-warm-.*\", job=\"nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{job=\"warm_nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}} (root){% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}} (root){% endraw %}",
             "refId": "B"
           }
         ],
@@ -1429,11 +1429,11 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-data-cold-.*.(elasticsearch_data.)/",
+            "alias": "/.*.(elasticsearch_data.)/",
             "color": "#1F60C4"
           },
           {
-            "alias": "/logging-.*-data-cold-.* .(root.)/",
+            "alias": "/.*.(root.)/",
             "color": "#8AB8FF"
           }
         ],
@@ -1442,15 +1442,15 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-data-cold-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{job=\"cold_nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}} (elasticsearch_data){% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}} (elasticsearch_data){% endraw %}",
             "refId": "A"
           },
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-data-cold-.*\", job=\"nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{job=\"cold_nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}} (root){% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}} (root){% endraw %}",
             "refId": "B"
           }
         ],
@@ -1655,7 +1655,7 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-master-.*/",
+            "alias": "/.*/",
             "color": "#73BF69"
           }
         ],
@@ -1664,9 +1664,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "irate(node_network_receive_bytes_total{hostname=~\"logging-{{ item.environment }}-master-.*\", job=\"nodes\",device=\"eth0\"}[5m])",
+            "expr": "irate(node_network_receive_bytes_total{job=\"master_nodes\",device=\"eth0\"}[5m])",
             "interval": "",
-            "legendFormat": "{% raw %}{{device}} receive ({{hostname}}){% endraw %}",
+            "legendFormat": "{% raw %}{{device}} receive ({{private_ip}}){% endraw %}",
             "refId": "A"
           }
         ],
@@ -1757,7 +1757,7 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-data-hot-.*/",
+            "alias": "/.*/",
             "color": "#C4162A"
           }
         ],
@@ -1766,9 +1766,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "irate(node_network_receive_bytes_total{hostname=~\"logging-{{ item.environment }}-data-hot-.*\", job=\"nodes\",device=\"eth0\"}[5m])",
+            "expr": "irate(node_network_receive_bytes_total{job=\"master_nodes\",device=\"eth0\"}[5m])",
             "interval": "",
-            "legendFormat": "{% raw %}{{device}} receive ({{hostname}}){% endraw %}",
+            "legendFormat": "{% raw %}{{device}} receive ({{private_ip}}){% endraw %}",
             "refId": "A"
           }
         ],
@@ -1859,7 +1859,7 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-data-warm-.*/",
+            "alias": "/.*/",
             "color": "#E0B400"
           }
         ],
@@ -1868,9 +1868,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "irate(node_network_receive_bytes_total{hostname=~\"logging-{{ item.environment }}-data-warm-.*\", job=\"nodes\",device=\"eth0\"}[5m])",
+            "expr": "irate(node_network_receive_bytes_total{job=\"warm_nodes\",device=\"eth0\"}[5m])",
             "interval": "",
-            "legendFormat": "{% raw %}{{device}} receive ({{hostname}}){% endraw %}",
+            "legendFormat": "{% raw %}{{device}} receive ({{private_ip}}){% endraw %}",
             "refId": "A"
           }
         ],
@@ -1961,7 +1961,7 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-data-cold-.*/",
+            "alias": "/.*/",
             "color": "#1F60C4"
           }
         ],
@@ -1970,9 +1970,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "irate(node_network_receive_bytes_total{hostname=~\"logging-{{ item.environment }}-data-cold-.*\", job=\"nodes\",device=\"eth0\"}[5m])",
+            "expr": "irate(node_network_receive_bytes_total{job=\"cold_nodes\",device=\"eth0\"}[5m])",
             "interval": "",
-            "legendFormat": "{% raw %}{{device}} receive ({{hostname}}){% endraw %}",
+            "legendFormat": "{% raw %}{{device}} receive ({{private_ip}}){% endraw %}",
             "refId": "A"
           }
         ],

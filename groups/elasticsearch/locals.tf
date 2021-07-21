@@ -5,6 +5,7 @@ data "vault_generic_secret" "secrets" {
 locals {
   secrets = data.vault_generic_secret.secrets.data
 
+  certificate_arn = contains(keys(local.secrets), "certificate_arn") ? local.secrets.certificate_arn : null
   concourse_worker_cidrs = jsondecode(local.secrets.concourse_worker_cidrs)
   discovery_availability_zones = join(",", list("${var.region}a", "${var.region}b", "${var.region}c"))
   dns_zone_name = local.secrets.dns_zone_name

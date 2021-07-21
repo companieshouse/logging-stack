@@ -13,6 +13,11 @@ variable "availability_zones" {
   type          = list(string)
 }
 
+variable "certificate_arn" {
+  description = "The ARN of the certificate we'll use"
+  type        = string
+}
+
 variable "data_cold_instance_count" {
   type        = number
   description = "The number of cold data instances to provision"

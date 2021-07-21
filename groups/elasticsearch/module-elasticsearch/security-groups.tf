@@ -9,8 +9,8 @@ resource "aws_security_group" "elasticsearch_api_load_balancer" {
 
   ingress {
     description = "Elasticsearch HTTP"
-    from_port   = 9200
-    to_port     = 9200
+    from_port   = 443
+    to_port     = 443
     protocol    = "tcp"
     cidr_blocks = var.elastic_search_api_cidrs
   }

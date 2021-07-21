@@ -54,8 +54,9 @@ resource "aws_autoscaling_attachment" "elasticsearch_api" {
 
 resource "aws_lb_listener" "elasticsearch_api" {
   load_balancer_arn = aws_lb.elasticsearch_api.arn
-  port              = 9200
-  protocol          = "HTTP"
+  port              = 443
+  protocol          = "HTTPS"
+  certificate_arn   = local.certificate_arn
 
   default_action {
     type             = "forward"

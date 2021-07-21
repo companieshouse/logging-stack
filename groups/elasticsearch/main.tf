@@ -14,6 +14,7 @@ module "elasticsearch" {
   ami_version_pattern           = var.ami_version_pattern
   ami_version_patterns          = local.ami_version_patterns
   availability_zones            = sort(local.placement_subnet_availability_zones)
+  certificate_arn               = local.certificate_arn
 
   data_cold_instance_count      = var.data_cold_instance_count
   data_cold_instance_type       = var.data_cold_instance_type

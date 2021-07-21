@@ -1766,7 +1766,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "irate(node_network_receive_bytes_total{job=\"master_nodes\",device=\"eth0\"}[5m])",
+            "expr": "irate(node_network_receive_bytes_total{job=\"hot_nodes\",device=\"eth0\"}[5m])",
             "interval": "",
             "legendFormat": "{% raw %}{{device}} receive ({{private_ip}}){% endraw %}",
             "refId": "A"

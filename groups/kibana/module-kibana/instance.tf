@@ -85,6 +85,7 @@ resource "aws_instance" "kibana" {
   }
 
   tags = {
+    Application = "kibana"
     Environment = var.environment
     HostName    = "${var.service}-${var.environment}-kibana-${count.index + 1}.${var.dns_zone_name}"
     Name        = "${var.service}-${var.environment}-kibana-${count.index + 1}"

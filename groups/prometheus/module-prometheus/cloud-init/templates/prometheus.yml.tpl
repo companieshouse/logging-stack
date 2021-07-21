@@ -13,7 +13,7 @@ write_files:
           static_configs:
           - targets: ['localhost:9090','localhost:9100']
 
-        - job_name: nodes
+        - job_name: kibana
           scrape_interval: 60s
           scrape_timeout: 30s
           metrics_path: /metrics
@@ -21,12 +21,89 @@ write_files:
           ec2_sd_configs:
             - region: ${region}
               port: ${prometheus_metrics_port}
+              filters:
+                - name: tag:Application
+                  values: [kibana]
+                - name: tag:Environment
+                  values: [${environment}]
+                - name: tag:Service
+                  values: [logging]
           relabel_configs:
-            - source_labels: [__meta_ec2_tag_Service]
-              regex: logging
-              action: keep
-            - source_labels: [__meta_ec2_tag_Environment]
-              regex: ${environment}
-              action: keep
-            - source_labels: [__meta_ec2_tag_HostName]
-              target_label: hostname
+            - source_labels: [__meta_ec2_private_ip]
+              target_label: private_ip
+
+        - job_name: cold_nodes
+          scrape_interval: 60s
+          scrape_timeout: 30s
+          metrics_path: /metrics
+          scheme: http
+          ec2_sd_configs:
+            - region: ${region}
+              port: ${prometheus_metrics_port}
+              filters:
+                - name: tag:Environment
+                  values: [${environment}]
+                - name: tag:Service
+                  values: [logging]
+                - name: tag:ElasticSearchColdNode
+                  values: [true]
+          relabel_configs:
+            - source_labels: [__meta_ec2_private_ip]
+              target_label: private_ip
+
+        - job_name: warm_nodes
+          scrape_interval: 60s
+          scrape_timeout: 30s
+          metrics_path: /metrics
+          scheme: http
+          ec2_sd_configs:
+            - region: ${region}
+              port: ${prometheus_metrics_port}
+              filters:
+                - name: tag:Environment
+                  values: [${environment}]
+                - name: tag:Service
+                  values: [logging]
+                - name: tag:ElasticSearchWarmNode
+                  values: [true]
+          relabel_configs:
+            - source_labels: [__meta_ec2_private_ip]
+              target_label: private_ip
+
+        - job_name: hot_nodes
+          scrape_interval: 60s
+          scrape_timeout: 30s
+          metrics_path: /metrics
+          scheme: http
+          ec2_sd_configs:
+            - region: ${region}
+              port: ${prometheus_metrics_port}
+              filters:
+                - name: tag:Environment
+                  values: [${environment}]
+                - name: tag:Service
+                  values: [logging]
+                - name: tag:ElasticSearchHotNode
+                  values: [true]
+          relabel_configs:
+            - source_labels: [__meta_ec2_private_ip]
+              target_label: private_ip
+
+        - job_name: master_nodes
+          scrape_interval: 60s
+          scrape_timeout: 30s
+          metrics_path: /metrics
+          scheme: http
+          ec2_sd_configs:
+            - region: ${region}
+              port: ${prometheus_metrics_port}
+              filters:
+                - name: tag:Environment
+                  values: [${environment}]
+                - name: tag:Service
+                  values: [logging]
+                - name: tag:ElasticSearchMasterNode
+                  values: [true]
+          relabel_configs:
+            - source_labels: [__meta_ec2_private_ip]
+              target_label: private_ip

@@ -475,7 +475,7 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-kibana-.*/",
+            "alias": "/.*/",
             "color": "#8F3BB8"
           }
         ],
@@ -484,9 +484,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "100 - (avg by (hostname) (rate(node_cpu_seconds_total{hostname=~\"logging-{{ item.environment }}-kibana-.*\",job=\"nodes\",mode=\"idle\"}[5m])) * 100)",
+            "expr": "100 - (avg by (private_ip) (rate(node_cpu_seconds_total{job=\"kibana\",mode=\"idle\"}[5m])) * 100)",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"
           }
         ],
@@ -988,7 +988,7 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-kibana-.*/",
+            "alias": "/.*/",
             "color": "#8F3BB8"
           }
         ],
@@ -997,9 +997,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_memory_MemFree_bytes{hostname=~\"logging-{{ item.environment }}-kibana-.*\", job=\"nodes\"}/1073741824",
+            "expr": "node_memory_MemFree_bytes{job=\"kibana\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}}{% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"
           }
         ],
@@ -1542,11 +1542,11 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-kibana-.*.(elasticsearch_data.)/",
+            "alias": "/.*.(elasticsearch_data.)/",
             "color": "#8F3BB8"
           },
           {
-            "alias": "/logging-.*-kibana-.* .(root.)/",
+            "alias": "/.*.(root.)/",
             "color": "#DEB6F2"
           }
         ],
@@ -1555,15 +1555,15 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-kibana-.*\", job=\"nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{job=\"kibana\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}} (elasticsearch_data){% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}} (elasticsearch_data){% endraw %}",
             "refId": "A"
           },
           {
-            "expr": "node_filesystem_avail_bytes{hostname=~\"logging-{{ item.environment }}-kibana-.*\", job=\"nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
+            "expr": "node_filesystem_avail_bytes{job=\"kibana\", device=\"/dev/nvme0n1p1\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{hostname}} (root){% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}} (root){% endraw %}",
             "refId": "B"
           }
         ],
@@ -2063,7 +2063,7 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/logging-.*-kibana-.*/",
+            "alias": "/.*/",
             "color": "#8F3BB8"
           }
         ],
@@ -2072,9 +2072,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "irate(node_network_receive_bytes_total{hostname=~\"logging-{{ item.environment }}-kibana-.*\", job=\"nodes\",device=\"eth0\"}[5m])",
+            "expr": "irate(node_network_receive_bytes_total{job=\"kibana\",device=\"eth0\"}[5m])",
             "interval": "",
-            "legendFormat": "{% raw %}{{device}} receive ({{hostname}}){% endraw %}",
+            "legendFormat": "{% raw %}{{device}} receive ({{private_ip}}){% endraw %}",
             "refId": "A"
           }
         ],

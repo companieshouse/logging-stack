@@ -13,6 +13,11 @@ variable "availability_zones" {
   type          = list(string)
 }
 
+variable "certificate_arn" {
+  description = "The ARN of the certificate we'll use"
+  type        = string
+}
+
 variable "data_cold_instance_count" {
   type        = number
   description = "The number of cold data instances to provision"
@@ -111,6 +116,11 @@ variable "discovery_availability_zones" {
 variable "dns_zone_name" {
   type        = string
   description = "The name of the DNS zone we're using"
+}
+
+variable "elastic_search_api_cidrs" {
+  type        = list(string)
+  description = "A list of CIDR blocks to permit ElasticSearch API access from"
 }
 
 variable "environment" {
@@ -220,6 +230,11 @@ variable "subnet_ids" {
 variable "user_data_merge_strategy" {
   type        = string
   description = "Merge strategy to apply to user-data sections for cloud-init"
+}
+
+variable "vpc_id" {
+  type        = string
+  description = "The VPC ID in which to create resources"
 }
 
 # ------------------------------------------------------------------------------

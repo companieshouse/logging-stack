@@ -46,7 +46,7 @@ resource "aws_lb_target_group" "elasticsearch_api" {
 }
 
 resource "aws_autoscaling_attachment" "elasticsearch_api" {
-  for_each = aws_autoscaling_group.hot_data
+  for_each = aws_autoscaling_group.cold_data
 
   autoscaling_group_name = each.value.id
   alb_target_group_arn   = aws_lb_target_group.elasticsearch_api.arn

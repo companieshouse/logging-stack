@@ -13,7 +13,7 @@ write_files:
           static_configs:
           - targets: ['localhost:9090','localhost:9100']
 
-        - job_name: nodes
+        - job_name: kibana
           scrape_interval: 60s
           scrape_timeout: 30s
           metrics_path: /metrics
@@ -22,13 +22,15 @@ write_files:
             - region: ${region}
               port: ${prometheus_metrics_port}
               filters:
+                - name: tag:Application
+                  values: [kibana]
                 - name: tag:Environment
                   values: [${environment}]
                 - name: tag:Service
                   values: [logging]
           relabel_configs:
-            - source_labels: [__meta_ec2_tag_HostName]
-              target_label: hostname
+            - source_labels: [__meta_ec2_private_ip]
+              target_label: private_ip
 
         - job_name: cold_nodes
           scrape_interval: 60s

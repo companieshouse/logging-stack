@@ -113,6 +113,11 @@ variable "dns_zone_name" {
   description = "The name of the DNS zone we're using"
 }
 
+variable "elastic_search_api_cidrs" {
+  type        = list(string)
+  description = "A list of CIDR blocks to permit ElasticSearch API access from"
+}
+
 variable "environment" {
   type        = string
   description = "The environment name to be used when creating AWS resources"
@@ -220,6 +225,11 @@ variable "subnet_ids" {
 variable "user_data_merge_strategy" {
   type        = string
   description = "Merge strategy to apply to user-data sections for cloud-init"
+}
+
+variable "vpc_id" {
+  type        = string
+  description = "The VPC ID in which to create resources"
 }
 
 # ------------------------------------------------------------------------------

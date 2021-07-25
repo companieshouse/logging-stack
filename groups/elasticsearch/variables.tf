@@ -9,28 +9,27 @@ variable "ami_owner_id" {
 }
 
 variable "ami_version_pattern" {
-  type        = string
-  default     = "\\d.\\d.\\d"
+  type        = map(string)
   description = "The pattern with which to match elasticsearch AMIs"
 }
 
 variable "data_cold_instance_count" {
-  type        = number
+  type        = map(number)
   description = "The number of cold data instances to provision"
 }
 
 variable "data_cold_instance_type" {
-  type        = string
+  type        = map(string)
   description = "The instance type to use for cold data nodes"
 }
 
 variable "data_cold_lvm_block_devices" {
-  type = list(object({
+  type = map(list(object({
     aws_volume_size_gb: string,
     filesystem_resize_tool: string,
     lvm_logical_volume_device_node: string,
     lvm_physical_volume_device_node: string,
-  }))
+  })))
   description = "LVM block devices for cold data nodes"
 }
 
@@ -44,28 +43,27 @@ variable "data_cold_roles" {
 }
 
 variable "data_cold_root_volume_size" {
-  type        = number
-  default     = 0
+  type        = map(number)
   description = "The size of the root volume for cold data nodes in GiB; set this value to 0 to preserve the size specified in the AMI metadata. This value should not be smaller than the size specified in the AMI metadata and used by the root volume snapshot. The filesystem will be expanded automatically to use all available space for the volume and an XFS filesystem is assumed"
 }
 
 variable "data_hot_instance_count" {
-  type        = number
+  type        = map(number)
   description = "The number of hot data instances to provision"
 }
 
 variable "data_hot_instance_type" {
-  type        = string
+  type        = map(string)
   description = "The instance type to use for hot data nodes"
 }
 
 variable "data_hot_lvm_block_devices" {
-  type = list(object({
+  type = map(list(object({
     aws_volume_size_gb: string,
     filesystem_resize_tool: string,
     lvm_logical_volume_device_node: string,
     lvm_physical_volume_device_node: string,
-  }))
+  })))
   description = "LVM block devices for hot data nodes"
 }
 
@@ -79,28 +77,27 @@ variable "data_hot_roles" {
 }
 
 variable "data_hot_root_volume_size" {
-  type        = number
-  default     = 0
+  type        = map(number)
   description = "The size of the root volume for hot data nodes in GiB; set this value to 0 to preserve the size specified in the AMI metadata. This value should not be smaller than the size specified in the AMI metadata and used by the root volume snapshot. The filesystem will be expanded automatically to use all available space for the volume and an XFS filesystem is assumed"
 }
 
 variable "data_warm_instance_count" {
-  type        = number
+  type        = map(number)
   description = "The number of warm data instances to provision"
 }
 
 variable "data_warm_instance_type" {
-  type        = string
+  type        = map(string)
   description = "The instance type to use for warm data nodes"
 }
 
 variable "data_warm_lvm_block_devices" {
-  type = list(object({
+  type = map(list(object({
     aws_volume_size_gb: string,
     filesystem_resize_tool: string,
     lvm_logical_volume_device_node: string,
     lvm_physical_volume_device_node: string,
-  }))
+  })))
   description = "LVM block devices for warm data nodes"
 }
 
@@ -113,9 +110,14 @@ variable "data_warm_roles" {
 }
 
 variable "data_warm_root_volume_size" {
-  type        = number
-  default     = 0
+  type        = map(number)
   description = "The size of the root volume for warm data nodes in GiB; set this value to 0 to preserve the size specified in the AMI metadata. This value should not be smaller than the size specified in the AMI metadata and used by the root volume snapshot. The filesystem will be expanded automatically to use all available space for the volume and an XFS filesystem is assumed"
+}
+
+variable "deployments" {
+  default       = ["blue","green"]
+  description   = "The list of deployments to provision"
+  type          = list(string)
 }
 
 variable "environment" {
@@ -125,23 +127,22 @@ variable "environment" {
 
 # Warning: Never go below 3!
 variable "master_instance_count" {
-  type        = number
-  default     = 3
+  type        = map(number)
   description = "The number of master instances to provision"
 }
 
 variable "master_instance_type" {
-  type        = string
+  type        = map(string)
   description = "The instance type to use for master nodes"
 }
 
 variable "master_lvm_block_devices" {
-  type = list(object({
+  type = map(list(object({
     aws_volume_size_gb: string,
     filesystem_resize_tool: string,
     lvm_logical_volume_device_node: string,
     lvm_physical_volume_device_node: string,
-  }))
+  })))
   description = "LVM block devices for master nodes"
 }
 
@@ -154,8 +155,7 @@ variable "master_roles" {
 }
 
 variable "master_root_volume_size" {
-  type        = number
-  default     = 0
+  type        = map(number)
   description = "The size of the root volume for master nodes in GiB; set this value to 0 to preserve the size specified in the AMI metadata. This value should not be smaller than the size specified in the AMI metadata and used by the root volume snapshot. The filesystem will be expanded automatically to use all available space for the volume and an XFS filesystem is assumed"
 }
 

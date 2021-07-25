@@ -1,5 +1,5 @@
 data "template_cloudinit_config" "data_warm" {
-  count         = "${var.data_warm_instance_count}"
+  count         = var.data_warm_instance_count
 
   gzip          = true
   base64_encode = true
@@ -7,7 +7,7 @@ data "template_cloudinit_config" "data_warm" {
   part {
     content_type = "text/cloud-config"
     content = templatefile("${path.module}/cloud-init/templates/system-config.yml.tpl", {
-      instance_fqdn = "${var.service}-${var.environment}-data-warm-${count.index + 1}.${var.dns_zone_name}"
+      instance_fqdn = "${var.service}-${var.environment}-${var.deployment}-data-warm-${count.index + 1}.${var.dns_zone_name}"
     })
     merge_type = var.user_data_merge_strategy
   }
@@ -82,8 +82,8 @@ resource "aws_instance" "data_warm" {
     },
     {
       Environment   = var.environment
-      HostName      = "${var.service}-${var.environment}-data-warm-${count.index + 1}.${var.dns_zone_name}"
-      Name          = "${var.service}-${var.environment}-data-warm-${count.index + 1}"
+      HostName      = "${var.service}-${var.environment}-${var.deployment}-data-warm-${count.index + 1}.${var.dns_zone_name}"
+      Name          = "${var.service}-${var.environment}-${var.deployment}-data-warm-${count.index + 1}"
       Service       = var.service
     }
   )

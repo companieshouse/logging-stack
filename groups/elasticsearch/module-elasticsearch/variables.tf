@@ -103,6 +103,11 @@ variable "data_warm_root_volume_size" {
   description = "The size of the root volume for warm data nodes in GiB; set this value to 0 to preserve the size specified in the AMI metadata. This value should not be smaller than the size specified in the AMI metadata and used by the root volume snapshot. The filesystem will be expanded automatically to use all available space for the volume and an XFS filesystem is assumed"
 }
 
+variable "deployment" {
+  description   = "The name of the deployment. E.g. blue or green"
+  type          = string
+}
+
 variable "discovery_availability_zones" {
   type        = string
   description = "A list of availability zones in which to search for master nodes"

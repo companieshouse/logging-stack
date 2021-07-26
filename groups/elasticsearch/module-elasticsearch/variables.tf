@@ -161,6 +161,7 @@ variable "master_root_volume_size" {
 variable "instance_type_heap_allocation" {
   type          = map(string)
   default       = {
+    "c5.large"  = "2",
     "t3.small"  = "1",
     "t3.medium" = "2",
     "t3.large"  = "4"

@@ -59,7 +59,7 @@ resource "aws_route53_record" "elasticsearch_api_load_balancer" {
   count   = var.route53_available ? 1 : 0
 
   zone_id = data.aws_route53_zone.zone[0].zone_id
-  name    = "${var.service}-${var.environment}-elasticsearch-api.${var.dns_zone_name}"
+  name    = "${var.service}-${var.environment}-${var.deployment}-elasticsearch-api.${var.dns_zone_name}"
   type    = "A"
 
   alias {

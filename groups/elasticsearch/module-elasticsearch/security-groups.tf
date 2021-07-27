@@ -4,7 +4,7 @@ data "aws_security_group" "elasticsearch" {
 
 resource "aws_security_group" "elasticsearch_api_load_balancer" {
   description = "Restricts access to the ElasticSearch api load balancer"
-  name = "${var.service}-${var.environment}-elasticsearch-api-load-balancer"
+  name = "${var.service}-${var.environment}-${var.deployment}-elasticsearch-api-load-balancer"
   vpc_id = var.vpc_id
 
   ingress {

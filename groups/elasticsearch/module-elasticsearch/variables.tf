@@ -118,6 +118,11 @@ variable "dns_zone_name" {
   description = "The name of the DNS zone we're using"
 }
 
+variable "elasticsearch_api_target_group_arn" {
+  type        = string
+  description = "The Elasticsearch API application load balancer target group ARN"
+}
+
 variable "environment" {
   type        = string
   description = "The environment name to be used when creating AWS resources"
@@ -178,8 +183,12 @@ variable "region" {
 variable "role_tags" {
   type = map(string)
   default = {
-    master = "ElasticSearchMasterNode",
-    ingest = "ElasticSearchIngestNode"
+    data_cold       = "ElasticSearchColdNode",
+    data_content    = "ElasticSearchContentNode",
+    data_hot        = "ElasticSearchHotNode",
+    data_warm       = "ElasticSearchWarmNode",
+    ingest          = "ElasticSearchIngestNode",
+    master          = "ElasticSearchMasterNode"
   }
   description = "A map defining what tag should be applied for a given role"
 }

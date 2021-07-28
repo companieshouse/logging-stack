@@ -7,10 +7,28 @@ terraform {
   backend "s3" {}
 }
 
+module "alb" {
+  source = "./module-alb"
+
+  certificate_arn               = local.certificate_arn
+  dns_zone_name                 = local.dns_zone_name
+  elastic_search_api_cidrs      = local.elastic_search_api_cidrs
+  environment                   = var.environment
+  route53_available             = local.secrets.route53_available
+  service                       = var.service
+  subnet_ids                    = local.placement_subnet_ids_by_availability_zone
+  vpc_id                        = data.aws_vpc.vpc.id
+}
+
 module "elasticsearch" {
   for_each = toset(var.deployments)
 
   source = "./module-elasticsearch"
+
+  #may not be required because of output - to test
+  depends_on = [
+    module.alb
+  ]
 
   ami_owner_id                  = var.ami_owner_id
   ami_version_pattern           = var.ami_version_pattern[each.value]
@@ -37,6 +55,7 @@ module "elasticsearch" {
   deployment                    = each.value
   discovery_availability_zones  = local.discovery_availability_zones
   dns_zone_name                 = local.dns_zone_name
+  elasticsearch_api_target_group_arn     = module.alb.elasticsearch_api_target_group_arn
   environment                   = var.environment
   master_instance_count         = var.master_instance_count[each.value]
   master_instance_profile_name  = data.aws_iam_instance_profile.elastic_search_node.name

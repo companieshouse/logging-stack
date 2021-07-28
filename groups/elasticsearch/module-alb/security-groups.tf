@@ -1,14 +1,14 @@
 resource "aws_security_group" "elasticsearch_api_load_balancer" {
   description = "Restricts access to the ElasticSearch api load balancer"
   name = "${var.service}-${var.environment}-elasticsearch-api-load-balancer"
-  vpc_id = data.aws_vpc.vpc.id
+  vpc_id = var.vpc_id
 
   ingress {
     description = "Elasticsearch HTTP"
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = local.elastic_search_api_cidrs
+    cidr_blocks = var.elastic_search_api_cidrs
   }
 
   egress {

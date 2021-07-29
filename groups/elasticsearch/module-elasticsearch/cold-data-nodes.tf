@@ -91,8 +91,9 @@ resource "aws_instance" "data_cold" {
 }
 
 resource "aws_lb_target_group_attachment" "elasticsearch_api" {
-  count            = var.data_cold_instance_count
-  target_group_arn = var.elasticsearch_api_target_group_arn
-  target_id        = aws_instance.data_cold[count.index].private_ip
-  port             = 9200
+  count             = var.data_cold_instance_count
+
+  target_group_arn  = var.elasticsearch_api_target_group_arn
+  target_id         = aws_instance.data_cold[count.index].private_ip
+  port              = 9200
 }

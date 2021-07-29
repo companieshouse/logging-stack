@@ -9,13 +9,13 @@ variable "dns_zone_name" {
 }
 
 variable "elastic_search_api_cidrs" {
-  type        = list(string)
   description = "A list of CIDR blocks to permit ElasticSearch API access from"
+  type        = list(string)
 }
 
 variable "environment" {
-  type        = string
   description = "The environment name to be used when creating AWS resources"
+  type        = string
 }
 
 variable "route53_available" {
@@ -24,17 +24,17 @@ variable "route53_available" {
 }
 
 variable "service" {
-  type        = string
   default     = "logging"
   description = "The service name to be used when creating AWS resources"
+  type        = string
 }
 
 variable "subnet_ids" {
-  type        = list(string)
   description = "The ids of the subnets into which we'll place instances"
+  type        = list(string)
 }
 
 variable "vpc_id" {
-  type        = string
   description = "The VPC ID in which to create resources"
+  type        = string
 }

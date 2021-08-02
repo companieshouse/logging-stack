@@ -29,6 +29,16 @@ data "template_cloudinit_config" "master" {
 
   part {
     content_type = "text/cloud-config"
+    content = templatefile("${path.module}/cloud-init/templates/jvm.options.tpl", {
+      heap_size_gigabytes   = var.instance_type_heap_allocation[var.master_instance_type]
+      service_group         = var.service_group
+      service_user          = var.service_user
+    })
+    merge_type = var.user_data_merge_strategy
+  }
+
+  part {
+    content_type = "text/cloud-config"
     content = templatefile("${path.module}/cloud-init/templates/bootstrap-commands.yml.tpl", {
       lvm_block_devices       = var.master_lvm_block_devices
       root_volume_device_node = data.aws_ami.elasticsearch.root_device_name

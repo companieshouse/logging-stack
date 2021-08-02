@@ -1,5 +1,5 @@
 data "aws_subnet_ids" "placement_subnets" {
-  vpc_id = "${data.aws_vpc.vpc.id}"
+  vpc_id = data.aws_vpc.vpc.id
 
   filter {
     name = "tag:Name"

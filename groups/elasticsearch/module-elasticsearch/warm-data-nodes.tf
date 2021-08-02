@@ -81,10 +81,11 @@ resource "aws_instance" "data_warm" {
         lookup(var.role_tags, role) => true if contains(keys(var.role_tags), role)
     },
     {
-      Environment   = var.environment
-      HostName      = "${var.service}-${var.environment}-${var.deployment}-data-warm-${count.index + 1}.${var.dns_zone_name}"
-      Name          = "${var.service}-${var.environment}-${var.deployment}-data-warm-${count.index + 1}"
-      Service       = var.service
+      ElasticSearchWarmNode  = "true"
+      Environment            = var.environment
+      HostName               = "${var.service}-${var.environment}-${var.deployment}-data-warm-${count.index + 1}.${var.dns_zone_name}"
+      Name                   = "${var.service}-${var.environment}-${var.deployment}-data-warm-${count.index + 1}"
+      Service                = var.service
     }
   )
 }

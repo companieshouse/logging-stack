@@ -7,6 +7,19 @@ terraform {
   backend "s3" {}
 }
 
+module "alb" {
+  source = "./module-alb"
+
+  certificate_arn               = local.certificate_arn
+  dns_zone_name                 = local.dns_zone_name
+  elastic_search_api_cidrs      = local.elastic_search_api_cidrs
+  environment                   = var.environment
+  route53_available             = local.secrets.route53_available
+  service                       = var.service
+  subnet_ids                    = local.placement_subnet_ids_by_availability_zone
+  vpc_id                        = data.aws_vpc.vpc.id
+}
+
 module "elasticsearch" {
   for_each = toset(var.deployments)
 
@@ -34,23 +47,24 @@ module "elasticsearch" {
   data_warm_roles               = var.data_warm_roles
   data_warm_root_volume_size    = var.data_warm_root_volume_size[each.value]
 
-  deployment                    = each.value
-  discovery_availability_zones  = local.discovery_availability_zones
-  dns_zone_name                 = local.dns_zone_name
-  environment                   = var.environment
-  master_instance_count         = var.master_instance_count[each.value]
-  master_instance_profile_name  = data.aws_iam_instance_profile.elastic_search_node.name
-  master_instance_type          = var.master_instance_type[each.value]
-  master_roles                  = var.master_roles
-  master_root_volume_size       = var.master_root_volume_size[each.value]
-  master_lvm_block_devices      = var.master_lvm_block_devices[each.value]
-  region                        = var.region
-  route53_available             = local.route53_available
-  service                       = var.service
-  service_group                 = var.service_group
-  service_user                  = var.service_user
-  ssh_cidrs                     = local.administration_cidrs
-  ssh_keyname                   = local.ssh_keyname
-  subnet_ids                    = local.placement_subnet_ids_by_availability_zone
-  user_data_merge_strategy      = var.user_data_merge_strategy
+  deployment                            = each.value
+  discovery_availability_zones          = local.discovery_availability_zones
+  dns_zone_name                         = local.dns_zone_name
+  elasticsearch_api_target_group_arn    = module.alb.elasticsearch_api_target_group_arn
+  environment                           = var.environment
+  master_instance_count                 = var.master_instance_count[each.value]
+  master_instance_profile_name          = data.aws_iam_instance_profile.elastic_search_node.name
+  master_instance_type                  = var.master_instance_type[each.value]
+  master_roles                          = var.master_roles
+  master_root_volume_size               = var.master_root_volume_size[each.value]
+  master_lvm_block_devices              = var.master_lvm_block_devices[each.value]
+  region                                = var.region
+  route53_available                     = local.route53_available
+  service                               = var.service
+  service_group                         = var.service_group
+  service_user                          = var.service_user
+  ssh_cidrs                             = local.administration_cidrs
+  ssh_keyname                           = local.ssh_keyname
+  subnet_ids                            = local.placement_subnet_ids_by_availability_zone
+  user_data_merge_strategy              = var.user_data_merge_strategy
 }

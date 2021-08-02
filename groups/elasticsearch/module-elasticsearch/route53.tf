@@ -44,13 +44,3 @@ resource "aws_route53_record" "data_warm" {
   ttl     = "300"
   records = [element(aws_instance.data_warm.*.private_ip, count.index)]
 }
-
-resource "aws_route53_record" "ingest" {
-  count   = var.route53_available && var.data_hot_instance_count > 0 ? 1 : 0
-
-  zone_id = data.aws_route53_zone.zone[0].zone_id
-  name    = "${var.service}-${var.environment}-${var.deployment}-sniffing.${var.dns_zone_name}"
-  type    = "A"
-  ttl     = "300"
-  records = aws_instance.data_hot.*.private_ip
-}

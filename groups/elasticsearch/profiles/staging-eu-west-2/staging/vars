@@ -1,42 +1,131 @@
-data_cold_instance_count = 3
-data_cold_instance_type = "t3.medium"
-data_cold_lvm_block_devices = [{
-  aws_volume_size_gb: "100",
-  filesystem_resize_tool: "xfs_growfs",
-  lvm_logical_volume_device_node: "/dev/elasticsearch/data",
-  lvm_physical_volume_device_node: "/dev/xvdb"
-}]
+ami_version_pattern = {
+  "blue": "\\d.\\d.\\d",
+  "green": "\\d.\\d.\\d"
+}
 
-data_hot_instance_count = 3
-data_hot_instance_type = "t3.medium"
-data_hot_lvm_block_devices = [{
-  aws_volume_size_gb: "80",
-  filesystem_resize_tool: "xfs_growfs",
-  lvm_logical_volume_device_node: "/dev/elasticsearch/data",
-  lvm_physical_volume_device_node: "/dev/xvdb"
-}]
+data_cold_instance_count = {
+  "blue": 3,
+  "green": 0
+}
 
-data_warm_instance_count = 3
-data_warm_instance_type = "t3.medium"
-data_warm_lvm_block_devices = [{
-  aws_volume_size_gb: "50",
-  filesystem_resize_tool: "xfs_growfs",
-  lvm_logical_volume_device_node: "/dev/elasticsearch/data",
-  lvm_physical_volume_device_node: "/dev/xvdb"
-}]
+data_cold_instance_type = {
+  "blue": "t3.medium",
+  "green": "t3.medium"
+}
 
-master_instance_count = 3
-master_instance_type = "c5.large"
-master_lvm_block_devices = [{
-  aws_volume_size_gb: "10",
-  filesystem_resize_tool: "xfs_growfs",
-  lvm_logical_volume_device_node: "/dev/elasticsearch/data",
-  lvm_physical_volume_device_node: "/dev/xvdb"
-}]
+data_cold_lvm_block_devices = {
+  "blue": [{
+    aws_volume_size_gb: "100",
+    filesystem_resize_tool: "xfs_growfs",
+    lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+    lvm_physical_volume_device_node: "/dev/xvdb"
+  }],
+  "green": [{
+    aws_volume_size_gb: "100",
+    filesystem_resize_tool: "xfs_growfs",
+    lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+    lvm_physical_volume_device_node: "/dev/xvdb"
+  }]
+}
+
+data_cold_root_volume_size = {
+  "blue": 0,
+  "green": 0
+}
+
+data_hot_instance_count = {
+  "blue": 3,
+  "green": 0
+}
+
+data_hot_instance_type = {
+  "blue": "t3.large",
+  "green": "t3.large"
+}
+
+data_hot_lvm_block_devices = {
+  "blue": [{
+    aws_volume_size_gb: "80",
+    filesystem_resize_tool: "xfs_growfs",
+    lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+    lvm_physical_volume_device_node: "/dev/xvdb"
+  }],
+  "green": [{
+    aws_volume_size_gb: "80",
+    filesystem_resize_tool: "xfs_growfs",
+    lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+    lvm_physical_volume_device_node: "/dev/xvdb"
+  }]
+}
+
+data_hot_root_volume_size = {
+  "blue": 0,
+  "green": 0
+}
+
+data_warm_instance_count = {
+  "blue": 3,
+  "green": 0
+}
+
+data_warm_instance_type = {
+  "blue": "t3.medium",
+  "green": "t3.medium"
+}
+
+data_warm_lvm_block_devices = {
+  "blue": [{
+    aws_volume_size_gb: "50",
+    filesystem_resize_tool: "xfs_growfs",
+    lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+    lvm_physical_volume_device_node: "/dev/xvdb"
+  }],
+  "green": [{
+    aws_volume_size_gb: "50",
+    filesystem_resize_tool: "xfs_growfs",
+    lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+    lvm_physical_volume_device_node: "/dev/xvdb"
+  }]
+}
+
+data_warm_root_volume_size = {
+  "blue": 0,
+  "green": 0
+}
+
+master_instance_count = {
+  "blue": 3,
+  "green": 0
+}
+
+master_instance_type = {
+  "blue": "c5.large",
+  "green": "c5.large"
+}
+
+master_lvm_block_devices = {
+  "blue": [{
+    aws_volume_size_gb: "10",
+    filesystem_resize_tool: "xfs_growfs",
+    lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+    lvm_physical_volume_device_node: "/dev/xvdb"
+  }],
+  "green": [{
+    aws_volume_size_gb: "10",
+    filesystem_resize_tool: "xfs_growfs",
+    lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+    lvm_physical_volume_device_node: "/dev/xvdb"
+  }]
+}
+
+master_root_volume_size = {
+  "blue": 0,
+  "green": 0
+}
 
 team = "platform"
 
 # TODO - Remove these once they're provided automatically
-account_name = "staging"
-environment = "staging"
+account_name    = "staging"
+environment     = "staging"
 repository_name = "logging-stack"

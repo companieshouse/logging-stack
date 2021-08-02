@@ -1,5 +1,5 @@
 data "template_cloudinit_config" "master" {
-  count         = "${var.master_instance_count}"
+  count         = var.master_instance_count
 
   gzip          = true
   base64_encode = true
@@ -7,7 +7,7 @@ data "template_cloudinit_config" "master" {
   part {
     content_type = "text/cloud-config"
     content = templatefile("${path.module}/cloud-init/templates/system-config.yml.tpl", {
-      instance_fqdn = "${var.service}-${var.environment}-master-${count.index + 1}.${var.dns_zone_name}"
+      instance_fqdn = "${var.service}-${var.environment}-${var.deployment}-master-${count.index + 1}.${var.dns_zone_name}"
     })
     merge_type = var.user_data_merge_strategy
   }
@@ -23,6 +23,16 @@ data "template_cloudinit_config" "master" {
       roles                         = var.master_roles
       service_group                 = var.service_group
       service_user                  = var.service_user
+    })
+    merge_type = var.user_data_merge_strategy
+  }
+
+  part {
+    content_type = "text/cloud-config"
+    content = templatefile("${path.module}/cloud-init/templates/jvm.options.tpl", {
+      heap_size_gigabytes   = var.instance_type_heap_allocation[var.master_instance_type]
+      service_group         = var.service_group
+      service_user          = var.service_user
     })
     merge_type = var.user_data_merge_strategy
   }
@@ -71,9 +81,9 @@ resource "aws_instance" "master" {
     },
     {
       Environment             = var.environment
-      HostName                = "${var.service}-${var.environment}-master-${count.index + 1}.${var.dns_zone_name}"
+      HostName                = "${var.service}-${var.environment}-${var.deployment}-master-${count.index + 1}.${var.dns_zone_name}"
       ElasticSearchMasterNode = "true"
-      Name                    = "${var.service}-${var.environment}-master-${count.index + 1}"
+      Name                    = "${var.service}-${var.environment}-${var.deployment}-master-${count.index + 1}"
       Service                 = var.service
     }
   )

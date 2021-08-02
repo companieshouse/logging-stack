@@ -1,5 +1,5 @@
 data "aws_ami" "kibana" {
-  owners      = ["${var.ami_owner_id}"]
+  owners      = [var.ami_owner_id]
   most_recent = true
   name_regex  = "^kibana-ami-${var.ami_version_pattern}$"
 
@@ -10,7 +10,7 @@ data "aws_ami" "kibana" {
 }
 
 data "template_cloudinit_config" "kibana" {
-  count         = "${var.instance_count}"
+  count         = var.instance_count
 
   gzip          = true
   base64_encode = true
@@ -85,6 +85,7 @@ resource "aws_instance" "kibana" {
   }
 
   tags = {
+    Application = "kibana"
     Environment = var.environment
     HostName    = "${var.service}-${var.environment}-kibana-${count.index + 1}.${var.dns_zone_name}"
     Name        = "${var.service}-${var.environment}-kibana-${count.index + 1}"

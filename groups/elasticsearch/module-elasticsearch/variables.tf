@@ -103,6 +103,11 @@ variable "data_warm_root_volume_size" {
   description = "The size of the root volume for warm data nodes in GiB; set this value to 0 to preserve the size specified in the AMI metadata. This value should not be smaller than the size specified in the AMI metadata and used by the root volume snapshot. The filesystem will be expanded automatically to use all available space for the volume and an XFS filesystem is assumed"
 }
 
+variable "deployment" {
+  description   = "The name of the deployment. E.g. blue or green"
+  type          = string
+}
+
 variable "discovery_availability_zones" {
   type        = string
   description = "A list of availability zones in which to search for master nodes"
@@ -111,6 +116,11 @@ variable "discovery_availability_zones" {
 variable "dns_zone_name" {
   type        = string
   description = "The name of the DNS zone we're using"
+}
+
+variable "elasticsearch_api_target_group_arn" {
+  type        = string
+  description = "The Elasticsearch API application load balancer target group ARN"
 }
 
 variable "environment" {
@@ -156,6 +166,7 @@ variable "master_root_volume_size" {
 variable "instance_type_heap_allocation" {
   type          = map(string)
   default       = {
+    "c5.large"  = "2",
     "t3.small"  = "1",
     "t3.medium" = "2",
     "t3.large"  = "4"
@@ -172,8 +183,12 @@ variable "region" {
 variable "role_tags" {
   type = map(string)
   default = {
-    master = "ElasticSearchMasterNode",
-    ingest = "ElasticSearchIngestNode"
+    data_cold       = "ElasticSearchColdNode",
+    data_content    = "ElasticSearchContentNode",
+    data_hot        = "ElasticSearchHotNode",
+    data_warm       = "ElasticSearchWarmNode",
+    ingest          = "ElasticSearchIngestNode",
+    master          = "ElasticSearchMasterNode"
   }
   description = "A map defining what tag should be applied for a given role"
 }

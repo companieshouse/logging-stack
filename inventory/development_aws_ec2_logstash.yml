@@ -5,8 +5,8 @@ regions:
   - eu-west-2
 
 filters:
-  tag:Service: chs
   tag:AnsibleGroup: logstash
+  tag:Service: chs
   tag:Environment: devops1
 
 hostnames: private-ip-address

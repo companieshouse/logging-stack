@@ -5,7 +5,7 @@
   roles:
     - sshkey
 
-- hosts: aws_ec2
+- hosts: "{{ lookup('env', 'ENVIRONMENT_NAME') }}"
   serial: 1
   remote_user: ec2-user
   become: yes

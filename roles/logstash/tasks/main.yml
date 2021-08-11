@@ -3,4 +3,4 @@
 - name: Manage service logstash
   ansible.builtin.service:
     name: logstash
-    state: "{{ lookup('env', 'STATE') }}"
+    state: "{{ state }}"

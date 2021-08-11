@@ -3,7 +3,7 @@
 - name: Retrieve SSH private key for AWS instance(s) from Hashicorp Vault
   set_fact:
     aws: "{{ lookup('community.hashi_vault.hashi_vault', 'applications/{{ profile }}/chs/{{ environment_name }}/aws') }}"
-  no_log: True
+  # no_log: True
 
 - name: Ensure SSH directory exists
   file:
@@ -17,7 +17,7 @@
   copy:
     content: "{{ aws['ssh_private_key'] }}"
     dest: /root/.ssh/ansible_remote
-  no_log: True
+  # no_log: True
 
 - name: Set SSH private key permissions
   file:

@@ -1,0 +1,15 @@
+plugin: aws_ec2
+boto_profile: development-eu-west-2
+
+regions:
+  - eu-west-2
+
+filters:
+  tag:AnsibleGroup: gateways
+  tag:Service: chs
+
+keyed_groups:
+  - key: tags.Environment
+    separator: ''
+
+hostnames: private-ip-address

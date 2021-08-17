@@ -75,13 +75,13 @@ data_warm_instance_type = {
 
 data_warm_lvm_block_devices = {
   "blue": [{
-    aws_volume_size_gb: "200",
+    aws_volume_size_gb: "700",
     filesystem_resize_tool: "xfs_growfs",
     lvm_logical_volume_device_node: "/dev/elasticsearch/data",
     lvm_physical_volume_device_node: "/dev/xvdb"
   }],
   "green": [{
-    aws_volume_size_gb: "200",
+    aws_volume_size_gb: "700",
     filesystem_resize_tool: "xfs_growfs",
     lvm_logical_volume_device_node: "/dev/elasticsearch/data",
     lvm_physical_volume_device_node: "/dev/xvdb"

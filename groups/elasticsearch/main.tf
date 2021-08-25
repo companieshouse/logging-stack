@@ -25,27 +25,27 @@ module "elasticsearch" {
 
   source = "./module-elasticsearch"
 
-  ami_owner_id                  = var.ami_owner_id
-  ami_version_pattern           = var.ami_version_pattern[each.value]
-  availability_zones            = sort(local.placement_subnet_availability_zones)
+  ami_owner_id                          = var.ami_owner_id
+  ami_version_pattern                   = var.ami_version_pattern[each.value]
+  availability_zones                    = sort(local.placement_subnet_availability_zones)
 
-  data_cold_instance_count      = var.data_cold_instance_count[each.value]
-  data_cold_instance_type       = var.data_cold_instance_type[each.value]
-  data_cold_lvm_block_devices   = var.data_cold_lvm_block_devices[each.value]
-  data_cold_roles               = var.data_cold_roles
-  data_cold_root_volume_size    = var.data_cold_root_volume_size[each.value]
+  data_cold_instance_count              = var.data_cold_instance_count[each.value]
+  data_cold_instance_type               = var.data_cold_instance_type[each.value]
+  data_cold_lvm_block_devices           = var.data_cold_lvm_block_devices[each.value]
+  data_cold_roles                       = var.data_cold_roles
+  data_cold_root_volume_size            = var.data_cold_root_volume_size[each.value]
 
-  data_hot_instance_count       = var.data_hot_instance_count[each.value]
-  data_hot_instance_type        = var.data_hot_instance_type[each.value]
-  data_hot_lvm_block_devices    = var.data_hot_lvm_block_devices[each.value]
-  data_hot_roles                = var.data_hot_roles
-  data_hot_root_volume_size     = var.data_hot_root_volume_size[each.value]
+  data_hot_instance_count               = var.data_hot_instance_count[each.value]
+  data_hot_instance_type                = var.data_hot_instance_type[each.value]
+  data_hot_lvm_block_devices            = var.data_hot_lvm_block_devices[each.value]
+  data_hot_roles                        = var.data_hot_roles
+  data_hot_root_volume_size             = var.data_hot_root_volume_size[each.value]
 
-  data_warm_instance_count      = var.data_warm_instance_count[each.value]
-  data_warm_instance_type       = var.data_warm_instance_type[each.value]
-  data_warm_lvm_block_devices   = var.data_warm_lvm_block_devices[each.value]
-  data_warm_roles               = var.data_warm_roles
-  data_warm_root_volume_size    = var.data_warm_root_volume_size[each.value]
+  data_warm_instance_count              = var.data_warm_instance_count[each.value]
+  data_warm_instance_type               = var.data_warm_instance_type[each.value]
+  data_warm_lvm_block_devices           = var.data_warm_lvm_block_devices[each.value]
+  data_warm_roles                       = var.data_warm_roles
+  data_warm_root_volume_size            = var.data_warm_root_volume_size[each.value]
 
   deployment                            = each.value
   discovery_availability_zones          = local.discovery_availability_zones

@@ -41,7 +41,7 @@ data "template_cloudinit_config" "data_hot" {
     content_type = "text/cloud-config"
     content = templatefile("${path.module}/cloud-init/templates/bootstrap-commands.yml.tpl", {
       lvm_block_devices       = var.data_hot_lvm_block_devices
-      root_volume_device_node = data.aws_ami.elasticsearch.root_device_name
+      root_volume_device_node = data.aws_ami.elasticsearch[var.data_hot_ami_version_pattern].root_device_name
     })
     merge_type = var.user_data_merge_strategy
   }
@@ -50,7 +50,7 @@ data "template_cloudinit_config" "data_hot" {
 resource "aws_instance" "data_hot" {
   count                  = var.data_hot_instance_count
 
-  ami                    = data.aws_ami.elasticsearch.id
+  ami                    = data.aws_ami.elasticsearch[var.data_hot_ami_version_pattern].id
   iam_instance_profile   = data.aws_iam_instance_profile.elastic_search_node.name
   instance_type          = var.data_hot_instance_type
   key_name               = var.ssh_keyname
@@ -59,11 +59,11 @@ resource "aws_instance" "data_hot" {
   vpc_security_group_ids = [data.aws_security_group.elasticsearch.id]
 
   root_block_device {
-    volume_size = var.data_hot_root_volume_size != 0 ? var.data_hot_root_volume_size : local.ami_root_block_device.ebs.volume_size
+    volume_size = var.data_hot_root_volume_size != 0 ? var.data_hot_root_volume_size : local.ami_root_block_device[var.data_hot_ami_version_pattern].ebs.volume_size
   }
 
   dynamic "ebs_block_device" {
-    for_each = local.ami_lvm_block_devices
+    for_each = local.ami_lvm_block_devices[var.data_hot_ami_version_pattern]
     iterator = block_device
     content {
       device_name = block_device.value.device_name

@@ -1,4 +1,4 @@
-ami_version_pattern = {
+data_cold_ami_version_pattern = {
   "blue": "\\d.\\d.\\d",
   "green": "\\d.\\d.\\d"
 }
@@ -33,6 +33,11 @@ data_cold_root_volume_size = {
   "green": 0
 }
 
+data_hot_ami_version_pattern = {
+  "blue": "\\d.\\d.\\d",
+  "green": "\\d.\\d.\\d"
+}
+
 data_hot_instance_count = {
   "blue": 3,
   "green": 0
@@ -63,6 +68,11 @@ data_hot_root_volume_size = {
   "green": 0
 }
 
+data_warm_ami_version_pattern = {
+  "blue": "\\d.\\d.\\d",
+  "green": "\\d.\\d.\\d"
+}
+
 data_warm_instance_count = {
   "blue": 3,
   "green": 0
@@ -91,6 +101,11 @@ data_warm_lvm_block_devices = {
 data_warm_root_volume_size = {
   "blue": 0,
   "green": 0
+}
+
+master_ami_version_pattern = {
+  "blue": "\\d.\\d.\\d",
+  "green": "\\d.\\d.\\d"
 }
 
 master_instance_count = {

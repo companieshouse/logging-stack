@@ -8,9 +8,9 @@ variable "ami_owner_id" {
   description = "The ID of the AMI owner"
 }
 
-variable "ami_version_pattern" {
+variable "data_cold_ami_version_pattern" {
   type        = map(string)
-  description = "The pattern with which to match elasticsearch AMIs"
+  description = "The patterns with which to match elasticsearch AMIs for cold data instances"
 }
 
 variable "data_cold_instance_count" {
@@ -47,6 +47,11 @@ variable "data_cold_root_volume_size" {
   description = "The size of the root volume for cold data nodes in GiB; set this value to 0 to preserve the size specified in the AMI metadata. This value should not be smaller than the size specified in the AMI metadata and used by the root volume snapshot. The filesystem will be expanded automatically to use all available space for the volume and an XFS filesystem is assumed"
 }
 
+variable "data_hot_ami_version_pattern" {
+  type        = map(string)
+  description = "The patterns with which to match elasticsearch AMIs for hot data instances"
+}
+
 variable "data_hot_instance_count" {
   type        = map(number)
   description = "The number of hot data instances to provision"
@@ -79,6 +84,11 @@ variable "data_hot_roles" {
 variable "data_hot_root_volume_size" {
   type        = map(number)
   description = "The size of the root volume for hot data nodes in GiB; set this value to 0 to preserve the size specified in the AMI metadata. This value should not be smaller than the size specified in the AMI metadata and used by the root volume snapshot. The filesystem will be expanded automatically to use all available space for the volume and an XFS filesystem is assumed"
+}
+
+variable "data_warm_ami_version_pattern" {
+  type        = map(string)
+  description = "The patterns with which to match elasticsearch AMIs for warm data instances"
 }
 
 variable "data_warm_instance_count" {
@@ -123,6 +133,11 @@ variable "deployments" {
 variable "environment" {
   type        = string
   description = "The environment name to be used when creating AWS resources"
+}
+
+variable "master_ami_version_pattern" {
+  type        = map(string)
+  description = "The patterns with which to match elasticsearch AMIs for master instances"
 }
 
 # Warning: Never go below 3!

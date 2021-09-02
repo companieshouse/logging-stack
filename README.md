@@ -20,3 +20,5 @@ This repository comprises the following groups
 | [kibana](groups/kibana/README.md)               | Provisions Kibana                                                 | `bootstrap`  |
 | [prometheus](groups/prometheus/README.md)       | Provisions Prometheus                                             | -            |
 | [shared](groups/shared/README.md)               | Provisions infrastructure shared by the other groups              | -            |
+
+**Note:** In the table above `Dependencies` indicates that the group will fail to provision if the required group hasn’t been provisioned in advance. It should be noted that while the grafana group makes use of infrastructure provisioned in the prometheus group, it does not need it to be provisioned successfully

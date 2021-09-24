@@ -18,6 +18,9 @@ locals {
   vpn_cidrs = values(data.terraform_remote_state.networking.outputs.vpn_cidrs)
 
   administration_cidrs = concat(local.internal_cidrs, local.vpn_cidrs)
-  placement_subnet_ids = [for subnet in values(data.aws_subnet.placement) : lookup(subnet, "id")]
+  placement_subnet_ids = [for subnet in values(data.aws_subnet.placement) : subnet.id]
+  placement_subnet_cidrs = [for subnet in values(data.aws_subnet.placement) : subnet.cidr_block]
   placement_subnet_ids_by_availability_zone = values(zipmap(local.placement_subnet_availability_zones, local.placement_subnet_ids))
+
+  prometheus_cidrs = concat(local.administration_cidrs, local.placement_subnet_cidrs)
 }

@@ -18,7 +18,7 @@ module "prometheus" {
   environment                   = var.environment
   instance_count                = var.prometheus_instance_count
   instance_type                 = var.prometheus_instance_type
-  prometheus_cidrs              = local.administration_cidrs
+  prometheus_cidrs              = local.prometheus_cidrs
   prometheus_service_group      = var.prometheus_service_group
   prometheus_service_user       = var.prometheus_service_user
   lvm_block_devices             = var.prometheus_lvm_block_devices

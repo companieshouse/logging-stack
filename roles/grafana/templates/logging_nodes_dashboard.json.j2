@@ -22,11 +22,12 @@
     "links": [],
     "panels": [
       {
+        "aliasColors": {},
         "bars": false,
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
-        "description": "Logging {{ item.environment }} master nodes CPU",
+        "description": "Logging {{ item.environment }} master CPU",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -84,7 +85,7 @@
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
-        "title": "Master Nodes CPU",
+        "title": "Master CPU",
         "tooltip": {
           "shared": true,
           "sort": 0,
@@ -100,7 +101,6 @@
         },
         "yaxes": [
           {
-            "$$hashKey": "object:763",
             "decimals": null,
             "format": "percent",
             "label": null,
@@ -110,7 +110,6 @@
             "show": true
           },
           {
-            "$$hashKey": "object:764",
             "format": "Misc",
             "label": null,
             "logBase": 1,
@@ -125,11 +124,12 @@
         }
       },
       {
+        "aliasColors": {},
         "bars": false,
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
-        "description": "Logging {{ item.environment }} hot nodes CPU",
+        "description": "Logging {{ item.environment }} hot CPU",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -170,6 +170,10 @@
           {
             "alias": "/.*/",
             "color": "#C4162A"
+          },
+          {
+            "alias": "average",
+            "color": "#FFA6B0"
           }
         ],
         "spaceLength": 10,
@@ -187,7 +191,7 @@
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
-        "title": "Hot Nodes CPU",
+        "title": "Hot CPU",
         "tooltip": {
           "shared": true,
           "sort": 0,
@@ -203,7 +207,6 @@
         },
         "yaxes": [
           {
-            "$$hashKey": "object:1105",
             "format": "percent",
             "label": null,
             "logBase": 1,
@@ -212,7 +215,6 @@
             "show": true
           },
           {
-            "$$hashKey": "object:1106",
             "format": "short",
             "label": null,
             "logBase": 1,
@@ -227,11 +229,12 @@
         }
       },
       {
+        "aliasColors": {},
         "bars": false,
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
-        "description": "Logging {{ item.environment }} warm nodes CPU",
+        "description": "Logging {{ item.environment }} warm CPU",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -289,7 +292,7 @@
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
-        "title": "Warm Nodes CPU",
+        "title": "Warm CPU",
         "tooltip": {
           "shared": true,
           "sort": 0,
@@ -305,7 +308,6 @@
         },
         "yaxes": [
           {
-            "$$hashKey": "object:1024",
             "format": "percent",
             "label": null,
             "logBase": 1,
@@ -314,7 +316,6 @@
             "show": true
           },
           {
-            "$$hashKey": "object:1025",
             "format": "short",
             "label": null,
             "logBase": 1,
@@ -329,11 +330,12 @@
         }
       },
       {
+        "aliasColors": {},
         "bars": false,
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
-        "description": "Logging {{ item.environment }} cold nodes CPU",
+        "description": "Logging {{ item.environment }} cold CPU",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -391,7 +393,7 @@
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
-        "title": "Cold Nodes CPU",
+        "title": "Cold CPU",
         "tooltip": {
           "shared": true,
           "sort": 0,
@@ -407,7 +409,6 @@
         },
         "yaxes": [
           {
-            "$$hashKey": "object:763",
             "decimals": null,
             "format": "percent",
             "label": null,
@@ -417,7 +418,6 @@
             "show": true
           },
           {
-            "$$hashKey": "object:764",
             "format": "Misc",
             "label": null,
             "logBase": 1,
@@ -432,11 +432,12 @@
         }
       },
       {
+        "aliasColors": {},
         "bars": false,
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
-        "description": "Logging {{ item.environment }} kibana nodes CPU",
+        "description": "Logging {{ item.environment }} kibana CPU",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -494,7 +495,7 @@
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
-        "title": "Kibana Nodes CPU",
+        "title": "Kibana CPU",
         "tooltip": {
           "shared": true,
           "sort": 0,
@@ -510,7 +511,6 @@
         },
         "yaxes": [
           {
-            "$$hashKey": "object:763",
             "decimals": null,
             "format": "percent",
             "label": null,
@@ -520,7 +520,6 @@
             "show": true
           },
           {
-            "$$hashKey": "object:764",
             "format": "Misc",
             "label": null,
             "logBase": 1,
@@ -535,11 +534,12 @@
         }
       },
       {
+        "aliasColors": {},
         "bars": false,
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
-        "description": "Logging {{ item.environment }} master nodes free memory",
+        "description": "Logging {{ item.environment }} master free memory",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -597,7 +597,7 @@
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
-        "title": "Master Nodes Memory Free",
+        "title": "Master Memory Free",
         "tooltip": {
           "shared": true,
           "sort": 0,
@@ -613,17 +613,15 @@
         },
         "yaxes": [
           {
-            "$$hashKey": "object:933",
             "decimals": null,
             "format": "gbytes",
             "label": null,
             "logBase": 1,
-            "max": null,
+            "max": "{{ item.master_memory_scale_max }}",
             "min": "0",
             "show": true
           },
           {
-            "$$hashKey": "object:934",
             "format": "short",
             "label": null,
             "logBase": 1,
@@ -638,11 +636,12 @@
         }
       },
       {
+        "aliasColors": {},
         "bars": false,
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
-        "description": "Logging {{ item.environment }} hot nodes free memory",
+        "description": "Logging {{ item.environment }} hot free memory",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -700,7 +699,7 @@
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
-        "title": "Hot Nodes Memory Free",
+        "title": "Hot Memory Free",
         "tooltip": {
           "shared": true,
           "sort": 0,
@@ -716,17 +715,15 @@
         },
         "yaxes": [
           {
-            "$$hashKey": "object:933",
             "decimals": null,
             "format": "gbytes",
             "label": null,
             "logBase": 1,
-            "max": null,
+            "max": "{{ item.hot_memory_scale_max }}",
             "min": "0",
             "show": true
           },
           {
-            "$$hashKey": "object:934",
             "format": "short",
             "label": null,
             "logBase": 1,
@@ -741,11 +738,12 @@
         }
       },
       {
+        "aliasColors": {},
         "bars": false,
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
-        "description": "Logging {{ item.environment }} warm nodes free memory",
+        "description": "Logging {{ item.environment }} warm free memory",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -803,7 +801,7 @@
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
-        "title": "Warm Nodes Memory Free",
+        "title": "Warm Memory Free",
         "tooltip": {
           "shared": true,
           "sort": 0,
@@ -819,16 +817,14 @@
         },
         "yaxes": [
           {
-            "$$hashKey": "object:933",
             "format": "gbytes",
             "label": null,
             "logBase": 1,
-            "max": null,
+            "max": "{{ item.warm_memory_scale_max }}",
             "min": "0",
             "show": true
           },
           {
-            "$$hashKey": "object:934",
             "format": "short",
             "label": null,
             "logBase": 1,
@@ -843,11 +839,12 @@
         }
       },
       {
+        "aliasColors": {},
         "bars": false,
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
-        "description": "Logging {{ item.environment }} cold nodes free memory",
+        "description": "Logging {{ item.environment }} cold free memory",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -905,7 +902,7 @@
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
-        "title": "Cold Nodes Memory Free",
+        "title": "Cold Memory Free",
         "tooltip": {
           "shared": true,
           "sort": 0,
@@ -921,16 +918,14 @@
         },
         "yaxes": [
           {
-            "$$hashKey": "object:933",
             "format": "gbytes",
             "label": null,
             "logBase": 1,
-            "max": null,
+            "max": "{{ item.cold_memory_scale_max }}",
             "min": "0",
             "show": true
           },
           {
-            "$$hashKey": "object:934",
             "format": "short",
             "label": null,
             "logBase": 1,
@@ -945,11 +940,12 @@
         }
       },
       {
+        "aliasColors": {},
         "bars": false,
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
-        "description": "Logging {{ item.environment }} kibana nodes free memory",
+        "description": "Logging {{ item.environment }} kibana free memory",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -1007,7 +1003,7 @@
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
-        "title": "Kibana Nodes Memory Free",
+        "title": "Kibana Memory Free",
         "tooltip": {
           "shared": true,
           "sort": 0,
@@ -1023,16 +1019,14 @@
         },
         "yaxes": [
           {
-            "$$hashKey": "object:933",
             "format": "gbytes",
             "label": null,
             "logBase": 1,
-            "max": null,
+            "max": "{{ item.kibana_memory_scale_max }}",
             "min": "0",
             "show": true
           },
           {
-            "$$hashKey": "object:934",
             "format": "short",
             "label": null,
             "logBase": 1,
@@ -1047,11 +1041,12 @@
         }
       },
       {
+        "aliasColors": {},
         "bars": false,
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
-        "description": "Logging {{ item.environment }} master nodes disk space free",
+        "description": "Logging {{ item.environment }} master root disk free",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -1090,12 +1085,8 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/.*.(elasticsearch_data.)/",
+            "alias": "/.*/",
             "color": "#73BF69"
-          },
-          {
-            "alias": "/.*.(root.)/",
-            "color": "#C8F2C2"
           }
         ],
         "spaceLength": 10,
@@ -1103,15 +1094,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{job=\"master_nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
-            "interval": "",
-            "legendFormat": "{% raw %}{{private_ip}} (elasticsearch_data){% endraw %}",
-            "refId": "A"
-          },
-          {
             "expr": "node_filesystem_avail_bytes{job=\"master_nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{private_ip}} (root){% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "B"
           }
         ],
@@ -1119,7 +1104,7 @@
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
-        "title": "Master Nodes Disk Space Free",
+        "title": "Master Root Disk Free",
         "tooltip": {
           "shared": true,
           "sort": 0,
@@ -1135,17 +1120,15 @@
         },
         "yaxes": [
           {
-            "$$hashKey": "object:1681",
             "decimals": null,
             "format": "gbytes",
             "label": null,
-            "logBase": 10,
-            "max": null,
+            "logBase": 1,
+            "max": "{{ item.master_root_scale_max }}",
             "min": "0",
             "show": true
           },
           {
-            "$$hashKey": "object:1682",
             "format": "short",
             "label": null,
             "logBase": 1,
@@ -1160,11 +1143,12 @@
         }
       },
       {
+        "aliasColors": {},
         "bars": false,
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
-        "description": "Logging {{ item.environment }} hot nodes disk space free",
+        "description": "Logging {{ item.environment }} hot root disk free",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -1203,12 +1187,8 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/.*.(elasticsearch_data.)/",
+            "alias": "/.*/",
             "color": "#C4162A"
-          },
-          {
-            "alias": "/.*.(root.)/",
-            "color": "#FF7383"
           }
         ],
         "spaceLength": 10,
@@ -1216,15 +1196,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{job=\"hot_nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
-            "interval": "",
-            "legendFormat": "{% raw %}{{private_ip}} (elasticsearch_data){% endraw %}",
-            "refId": "A"
-          },
-          {
             "expr": "node_filesystem_avail_bytes{job=\"hot_nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{private_ip}} (root){% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "B"
           }
         ],
@@ -1232,7 +1206,7 @@
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
-        "title": "Hot Nodes Disk Space Free",
+        "title": "Hot Root Disk Free",
         "tooltip": {
           "shared": true,
           "sort": 0,
@@ -1248,17 +1222,15 @@
         },
         "yaxes": [
           {
-            "$$hashKey": "object:1681",
             "decimals": null,
             "format": "gbytes",
             "label": null,
-            "logBase": 10,
-            "max": null,
+            "logBase": 1,
+            "max": "{{ item.hot_root_scale_max }}",
             "min": "0",
             "show": true
           },
           {
-            "$$hashKey": "object:1682",
             "format": "short",
             "label": null,
             "logBase": 1,
@@ -1273,11 +1245,12 @@
         }
       },
       {
+        "aliasColors": {},
         "bars": false,
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
-        "description": "Logging {{ item.environment }} warm nodes disk space free",
+        "description": "Logging {{ item.environment }} warm root disk free",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -1316,12 +1289,8 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/.*.(elasticsearch_data.)/",
+            "alias": "/.*/",
             "color": "#E0B400"
-          },
-          {
-            "alias": "/.*.(root.)/",
-            "color": "#FFEE52"
           }
         ],
         "spaceLength": 10,
@@ -1329,15 +1298,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{job=\"warm_nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
-            "interval": "",
-            "legendFormat": "{% raw %}{{private_ip}} (elasticsearch_data){% endraw %}",
-            "refId": "A"
-          },
-          {
             "expr": "node_filesystem_avail_bytes{job=\"warm_nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{private_ip}} (root){% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "B"
           }
         ],
@@ -1345,7 +1308,7 @@
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
-        "title": "Warm Nodes Disk Space Free",
+        "title": "Warm Root Disk Free",
         "tooltip": {
           "shared": true,
           "sort": 0,
@@ -1361,17 +1324,15 @@
         },
         "yaxes": [
           {
-            "$$hashKey": "object:1681",
             "decimals": null,
             "format": "gbytes",
             "label": null,
-            "logBase": 10,
-            "max": null,
+            "logBase": 1,
+            "max": "{{ item.warm_root_scale_max }}",
             "min": "0",
             "show": true
           },
           {
-            "$$hashKey": "object:1682",
             "format": "short",
             "label": null,
             "logBase": 1,
@@ -1386,11 +1347,12 @@
         }
       },
       {
+        "aliasColors": {},
         "bars": false,
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
-        "description": "Logging {{ item.environment }} cold nodes disk space free",
+        "description": "Logging {{ item.environment }} cold root disk free",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -1429,12 +1391,8 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/.*.(elasticsearch_data.)/",
+            "alias": "/.*/",
             "color": "#1F60C4"
-          },
-          {
-            "alias": "/.*.(root.)/",
-            "color": "#8AB8FF"
           }
         ],
         "spaceLength": 10,
@@ -1442,15 +1400,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{job=\"cold_nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
-            "interval": "",
-            "legendFormat": "{% raw %}{{private_ip}} (elasticsearch_data){% endraw %}",
-            "refId": "A"
-          },
-          {
             "expr": "node_filesystem_avail_bytes{job=\"cold_nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{private_ip}} (root){% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "B"
           }
         ],
@@ -1458,7 +1410,7 @@
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
-        "title": "Cold Nodes Disk Space Free",
+        "title": "Cold Root Disk Free",
         "tooltip": {
           "shared": true,
           "sort": 0,
@@ -1474,17 +1426,15 @@
         },
         "yaxes": [
           {
-            "$$hashKey": "object:1681",
             "decimals": null,
             "format": "gbytes",
             "label": null,
-            "logBase": 10,
-            "max": null,
+            "logBase": 1,
+            "max": "{{ item.cold_root_scale_max }}",
             "min": "0",
             "show": true
           },
           {
-            "$$hashKey": "object:1682",
             "format": "short",
             "label": null,
             "logBase": 1,
@@ -1499,11 +1449,12 @@
         }
       },
       {
+        "aliasColors": {},
         "bars": false,
         "dashLength": 10,
         "dashes": false,
         "datasource": "logging-{{ item.environment }}",
-        "description": "Logging {{ item.environment }} kibana nodes disk space free",
+        "description": "Logging {{ item.environment }} kibana root disk free",
         "fieldConfig": {
           "defaults": {
             "custom": {}
@@ -1542,12 +1493,8 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/.*.(elasticsearch_data.)/",
+            "alias": "/.*/",
             "color": "#8F3BB8"
-          },
-          {
-            "alias": "/.*.(root.)/",
-            "color": "#DEB6F2"
           }
         ],
         "spaceLength": 10,
@@ -1555,15 +1502,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "node_filesystem_avail_bytes{job=\"kibana\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
-            "interval": "",
-            "legendFormat": "{% raw %}{{private_ip}} (elasticsearch_data){% endraw %}",
-            "refId": "A"
-          },
-          {
             "expr": "node_filesystem_avail_bytes{job=\"kibana\", device=\"/dev/nvme0n1p1\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{private_ip}} (root){% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "B"
           }
         ],
@@ -1571,7 +1512,7 @@
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
-        "title": "Kibana Nodes Disk Space Free",
+        "title": "Kibana Root Disk Free",
         "tooltip": {
           "shared": true,
           "sort": 0,
@@ -1587,17 +1528,15 @@
         },
         "yaxes": [
           {
-            "$$hashKey": "object:1681",
             "decimals": null,
             "format": "gbytes",
             "label": null,
-            "logBase": 10,
-            "max": null,
+            "logBase": 1,
+            "max": "{{ item.kibana_root_scale_max }}",
             "min": "0",
             "show": true
           },
           {
-            "$$hashKey": "object:1682",
             "format": "short",
             "label": null,
             "logBase": 1,
@@ -1612,6 +1551,517 @@
         }
       },
       {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": "logging-{{ item.environment }}",
+        "description": "Logging {{ item.environment }} master data disk free",
+        "fieldConfig": {
+          "defaults": {
+            "custom": {}
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 6,
+          "w": 4,
+          "x": 0,
+          "y": 18
+        },
+        "hiddenSeries": false,
+        "id": 35,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": false,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "7.2.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "alias": "/.*/",
+            "color": "#73BF69"
+          }
+        ],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "expr": "node_filesystem_avail_bytes{job=\"master_nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "interval": "",
+            "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Master Data Disk Free",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "decimals": null,
+            "format": "gbytes",
+            "label": null,
+            "logBase": 1,
+            "max": "{{ item.master_data_scale_max }}",
+            "min": "0",
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": "logging-{{ item.environment }}",
+        "description": "Logging {{ item.environment }} hot data disk free",
+        "fieldConfig": {
+          "defaults": {
+            "custom": {}
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 6,
+          "w": 4,
+          "x": 4,
+          "y": 18
+        },
+        "hiddenSeries": false,
+        "id": 36,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": false,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "7.2.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "alias": "/.*/",
+            "color": "#C4162A"
+          }
+        ],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "expr": "node_filesystem_avail_bytes{job=\"hot_nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "interval": "",
+            "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Hot Data Disk Free",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "decimals": null,
+            "format": "gbytes",
+            "label": null,
+            "logBase": 1,
+            "max": "{{ item.hot_data_scale_max }}",
+            "min": "0",
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": "logging-{{ item.environment }}",
+        "description": "Logging {{ item.environment }} warm data disk free",
+        "fieldConfig": {
+          "defaults": {
+            "custom": {}
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 6,
+          "w": 4,
+          "x": 8,
+          "y": 18
+        },
+        "hiddenSeries": false,
+        "id": 37,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": false,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "7.2.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "alias": "/.*/",
+            "color": "#E0B400"
+          }
+        ],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "expr": "node_filesystem_avail_bytes{job=\"warm_nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "interval": "",
+            "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Warm Data Disk Free",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "decimals": null,
+            "format": "gbytes",
+            "label": null,
+            "logBase": 1,
+            "max": "{{ item.warm_data_scale_max }}",
+            "min": "0",
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": "logging-{{ item.environment }}",
+        "description": "Logging {{ item.environment }} cold data disk free",
+        "fieldConfig": {
+          "defaults": {
+            "custom": {}
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 6,
+          "w": 4,
+          "x": 12,
+          "y": 18
+        },
+        "hiddenSeries": false,
+        "id": 38,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": false,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "7.2.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "alias": "/.*/",
+            "color": "#1F60C4"
+          }
+        ],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "expr": "node_filesystem_avail_bytes{job=\"cold_nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "interval": "",
+            "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Cold Data Disk Free",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "decimals": null,
+            "format": "gbytes",
+            "label": null,
+            "logBase": 1,
+            "max": "{{ item.cold_data_scale_max }}",
+            "min": "0",
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
+        "bars": false,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": "logging-{{ item.environment }}",
+        "description": "Logging {{ item.environment }} kibana data disk free",
+        "fieldConfig": {
+          "defaults": {
+            "custom": {}
+          },
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 6,
+          "w": 4,
+          "x": 16,
+          "y": 18
+        },
+        "hiddenSeries": false,
+        "id": 39,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": false,
+          "total": false,
+          "values": false
+        },
+        "lines": true,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": true
+        },
+        "percentage": false,
+        "pluginVersion": "7.2.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "alias": "/.*/",
+            "color": "#8F3BB8"
+          }
+        ],
+        "spaceLength": 10,
+        "stack": false,
+        "steppedLine": false,
+        "targets": [
+          {
+            "expr": "node_filesystem_avail_bytes{job=\"kibana\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
+            "interval": "",
+            "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
+            "refId": "A"
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Kibana Data Disk Free",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "decimals": null,
+            "format": "gbytes",
+            "label": null,
+            "logBase": 1,
+            "max": "{{ item.kibana_data_scale_max }}",
+            "min": "0",
+            "show": true
+          },
+          {
+            "format": "short",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": null,
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "aliasColors": {},
         "bars": false,
         "dashLength": 10,
         "dashes": false,
@@ -1629,7 +2079,7 @@
           "h": 6,
           "w": 4,
           "x": 0,
-          "y": 16
+          "y": 24
         },
         "hiddenSeries": false,
         "id": 30,
@@ -1674,7 +2124,7 @@
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
-        "title": "Master Nodes Network Traffic",
+        "title": "Master Network Traffic",
         "tooltip": {
           "shared": true,
           "sort": 0,
@@ -1690,7 +2140,6 @@
         },
         "yaxes": [
           {
-            "$$hashKey": "object:2335",
             "format": "KBs",
             "label": null,
             "logBase": 1,
@@ -1699,7 +2148,6 @@
             "show": true
           },
           {
-            "$$hashKey": "object:2336",
             "format": "short",
             "label": null,
             "logBase": 1,
@@ -1714,6 +2162,7 @@
         }
       },
       {
+        "aliasColors": {},
         "bars": false,
         "dashLength": 10,
         "dashes": false,
@@ -1731,7 +2180,7 @@
           "h": 6,
           "w": 4,
           "x": 4,
-          "y": 16
+          "y": 24
         },
         "hiddenSeries": false,
         "id": 26,
@@ -1776,7 +2225,7 @@
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
-        "title": "Hot Nodes Network Traffic",
+        "title": "Hot Network Traffic",
         "tooltip": {
           "shared": true,
           "sort": 0,
@@ -1792,7 +2241,6 @@
         },
         "yaxes": [
           {
-            "$$hashKey": "object:2335",
             "format": "KBs",
             "label": null,
             "logBase": 1,
@@ -1801,7 +2249,6 @@
             "show": true
           },
           {
-            "$$hashKey": "object:2336",
             "format": "short",
             "label": null,
             "logBase": 1,
@@ -1816,6 +2263,7 @@
         }
       },
       {
+        "aliasColors": {},
         "bars": false,
         "dashLength": 10,
         "dashes": false,
@@ -1833,7 +2281,7 @@
           "h": 6,
           "w": 4,
           "x": 8,
-          "y": 16
+          "y": 24
         },
         "hiddenSeries": false,
         "id": 25,
@@ -1878,7 +2326,7 @@
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
-        "title": "Warm Nodes Network Traffic",
+        "title": "Warm Network Traffic",
         "tooltip": {
           "shared": true,
           "sort": 0,
@@ -1894,7 +2342,6 @@
         },
         "yaxes": [
           {
-            "$$hashKey": "object:2335",
             "format": "KBs",
             "label": null,
             "logBase": 1,
@@ -1903,7 +2350,6 @@
             "show": true
           },
           {
-            "$$hashKey": "object:2336",
             "format": "short",
             "label": null,
             "logBase": 1,
@@ -1918,6 +2364,7 @@
         }
       },
       {
+        "aliasColors": {},
         "bars": false,
         "dashLength": 10,
         "dashes": false,
@@ -1935,7 +2382,7 @@
           "h": 6,
           "w": 4,
           "x": 12,
-          "y": 16
+          "y": 24
         },
         "hiddenSeries": false,
         "id": 24,
@@ -1980,7 +2427,7 @@
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
-        "title": "Cold Nodes Network Traffic",
+        "title": "Cold Network Traffic",
         "tooltip": {
           "shared": true,
           "sort": 0,
@@ -1996,7 +2443,6 @@
         },
         "yaxes": [
           {
-            "$$hashKey": "object:2335",
             "format": "KBs",
             "label": null,
             "logBase": 1,
@@ -2005,7 +2451,6 @@
             "show": true
           },
           {
-            "$$hashKey": "object:2336",
             "format": "short",
             "label": null,
             "logBase": 1,
@@ -2020,6 +2465,7 @@
         }
       },
       {
+        "aliasColors": {},
         "bars": false,
         "dashLength": 10,
         "dashes": false,
@@ -2037,7 +2483,7 @@
           "h": 6,
           "w": 4,
           "x": 16,
-          "y": 16
+          "y": 24
         },
         "hiddenSeries": false,
         "id": 34,
@@ -2082,7 +2528,7 @@
         "timeFrom": null,
         "timeRegions": [],
         "timeShift": null,
-        "title": "Kibana Nodes Network Traffic",
+        "title": "Kibana Network Traffic",
         "tooltip": {
           "shared": true,
           "sort": 0,
@@ -2098,7 +2544,6 @@
         },
         "yaxes": [
           {
-            "$$hashKey": "object:2335",
             "format": "KBs",
             "label": null,
             "logBase": 1,
@@ -2107,7 +2552,6 @@
             "show": true
           },
           {
-            "$$hashKey": "object:2336",
             "format": "short",
             "label": null,
             "logBase": 1,

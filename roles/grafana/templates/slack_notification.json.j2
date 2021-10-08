@@ -1,0 +1,26 @@
+{
+    "disableResolveMessage": false,
+    "frequency": "6h",
+    "isDefault": false,
+    "name": "slack_notification",
+    "secureFields": {
+       "url": true
+    },
+    "sendReminder": true,
+    "settings": {
+       "autoResolve": true,
+       "httpMethod": "POST",
+       "iconEmoji": "",
+       "iconUrl": "",
+       "mentionGroups": "",
+       "mentionUsers": "",
+       "recipient": "#platform-alerts",
+       "severity": "critical",
+       "token": "",
+       "uploadImage": false,
+       "url": "{{ item.slack_webhook }}",
+       "username": "Logging {{ item.environment }}"
+    },
+    "type": "slack",
+    "uid": "slack_notification"
+}

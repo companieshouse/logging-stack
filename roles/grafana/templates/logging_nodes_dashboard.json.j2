@@ -68,6 +68,10 @@
           {
             "alias": "/.*/",
             "color": "#73BF69"
+          },
+          {
+            "alias": "average",
+            "color": "#C8F2C2"
           }
         ],
         "spaceLength": 10,
@@ -79,6 +83,12 @@
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"
+          },
+          {
+            "expr": "avg(100 - (avg by (private_ip) (rate(node_cpu_seconds_total{job=\"master_nodes\",mode=\"idle\"}[5m])) * 100))",
+            "interval": "",
+            "legendFormat": "average",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -184,6 +194,12 @@
             "expr": "100 - (avg by (private_ip) (rate(node_cpu_seconds_total{job=\"hot_nodes\",mode=\"idle\"}[5m])) * 100)",
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
+            "refId": "A"
+          },
+          {
+            "expr": "avg(100 - (avg by (private_ip) (rate(node_cpu_seconds_total{job=\"hot_nodes\",mode=\"idle\"}[5m])) * 100))",
+            "interval": "",
+            "legendFormat": "average",
             "refId": "B"
           }
         ],
@@ -275,6 +291,10 @@
           {
             "alias": "/.*/",
             "color": "#E0B400"
+          },
+          {
+            "alias": "average",
+            "color": "#FFF899"
           }
         ],
         "spaceLength": 10,
@@ -286,6 +306,12 @@
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"
+          },
+          {
+            "expr": "avg(100 - (avg by (private_ip) (rate(node_cpu_seconds_total{job=\"warm_nodes\",mode=\"idle\"}[5m])) * 100))",
+            "interval": "",
+            "legendFormat": "average",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -376,6 +402,10 @@
           {
             "alias": "/.*/",
             "color": "#1F60C4"
+          },
+          {
+            "alias": "average",
+            "color": "#C0D8FF"
           }
         ],
         "spaceLength": 10,
@@ -387,6 +417,12 @@
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"
+          },
+          {
+            "expr": "avg(100 - (avg by (private_ip) (rate(node_cpu_seconds_total{job=\"cold_nodes\",mode=\"idle\"}[5m])) * 100))",
+            "interval": "",
+            "legendFormat": "average",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -478,6 +514,10 @@
           {
             "alias": "/.*/",
             "color": "#8F3BB8"
+          },
+          {
+            "alias": "average",
+            "color": "#DEB6F2"
           }
         ],
         "spaceLength": 10,
@@ -489,6 +529,12 @@
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"
+          },
+          {
+            "expr": "avg(100 - (avg by (private_ip) (rate(node_cpu_seconds_total{job=\"kibana\",mode=\"idle\"}[5m])) * 100))",
+            "interval": "",
+            "legendFormat": "average",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -580,6 +626,10 @@
           {
             "alias": "/.*/",
             "color": "#73BF69"
+          },
+          {
+            "alias": "average",
+            "color": "#C8F2C2"
           }
         ],
         "spaceLength": 10,
@@ -590,7 +640,13 @@
             "expr": "node_memory_MemFree_bytes{job=\"master_nodes\"}/1073741824",
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
-            "refId": "D"
+            "refId": "A"
+          },
+          {
+            "expr": "avg(node_memory_MemFree_bytes{job=\"master_nodes\"}/1073741824)",
+            "interval": "",
+            "legendFormat": "average",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -682,6 +738,10 @@
           {
             "alias": "/.*/",
             "color": "#C4162A"
+          },
+          {
+            "alias": "average",
+            "color": "#FFA6B0"
           }
         ],
         "spaceLength": 10,
@@ -692,7 +752,13 @@
             "expr": "node_memory_MemFree_bytes{job=\"hot_nodes\"}/1073741824",
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
-            "refId": "D"
+            "refId": "A"
+          },
+          {
+            "expr": "avg(node_memory_MemFree_bytes{job=\"hot_nodes\"}/1073741824)",
+            "interval": "",
+            "legendFormat": "average",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -784,6 +850,10 @@
           {
             "alias": "/.*/",
             "color": "#E0B400"
+          },
+          {
+            "alias": "average",
+            "color": "#FFF899"
           }
         ],
         "spaceLength": 10,
@@ -795,6 +865,12 @@
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"
+          },
+          {
+            "expr": "avg(node_memory_MemFree_bytes{job=\"warm_nodes\"}/1073741824)",
+            "interval": "",
+            "legendFormat": "average",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -885,6 +961,10 @@
           {
             "alias": "/.*/",
             "color": "#1F60C4"
+          },
+          {
+            "alias": "average",
+            "color": "#C0D8FF"
           }
         ],
         "spaceLength": 10,
@@ -896,6 +976,12 @@
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"
+          },
+          {
+            "expr": "avg(node_memory_MemFree_bytes{job=\"cold_nodes\"}/1073741824)",
+            "interval": "",
+            "legendFormat": "average",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -986,6 +1072,10 @@
           {
             "alias": "/.*/",
             "color": "#8F3BB8"
+          },
+          {
+            "alias": "average",
+            "color": "#DEB6F2"
           }
         ],
         "spaceLength": 10,
@@ -997,6 +1087,12 @@
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"
+          },
+          {
+            "expr": "avg(node_memory_MemFree_bytes{job=\"kibana\"}/1073741824)",
+            "interval": "",
+            "legendFormat": "average",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -1087,6 +1183,10 @@
           {
             "alias": "/.*/",
             "color": "#73BF69"
+          },
+          {
+            "alias": "average",
+            "color": "#C8F2C2"
           }
         ],
         "spaceLength": 10,
@@ -1097,6 +1197,12 @@
             "expr": "node_filesystem_avail_bytes{job=\"master_nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
+            "refId": "A"
+          },
+          {
+            "expr": "avg(node_filesystem_avail_bytes{job=\"master_nodes\", device=\"/dev/nvme0n1p1\"}/1073741824)",
+            "interval": "",
+            "legendFormat": "average",
             "refId": "B"
           }
         ],
@@ -1189,6 +1295,10 @@
           {
             "alias": "/.*/",
             "color": "#C4162A"
+          },
+          {
+            "alias": "average",
+            "color": "#FFA6B0"
           }
         ],
         "spaceLength": 10,
@@ -1199,6 +1309,12 @@
             "expr": "node_filesystem_avail_bytes{job=\"hot_nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
+            "refId": "A"
+          },
+          {
+            "expr": "avg(node_filesystem_avail_bytes{job=\"hot_nodes\", device=\"/dev/nvme0n1p1\"}/1073741824)",
+            "interval": "",
+            "legendFormat": "average",
             "refId": "B"
           }
         ],
@@ -1291,6 +1407,10 @@
           {
             "alias": "/.*/",
             "color": "#E0B400"
+          },
+          {
+            "alias": "average",
+            "color": "#FFF899"
           }
         ],
         "spaceLength": 10,
@@ -1301,6 +1421,12 @@
             "expr": "node_filesystem_avail_bytes{job=\"warm_nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
+            "refId": "A"
+          },
+          {
+            "expr": "avg(node_filesystem_avail_bytes{job=\"warm_nodes\", device=\"/dev/nvme0n1p1\"}/1073741824)",
+            "interval": "",
+            "legendFormat": "average",
             "refId": "B"
           }
         ],
@@ -1393,6 +1519,10 @@
           {
             "alias": "/.*/",
             "color": "#1F60C4"
+          },
+          {
+            "alias": "average",
+            "color": "#C0D8FF"
           }
         ],
         "spaceLength": 10,
@@ -1403,6 +1533,12 @@
             "expr": "node_filesystem_avail_bytes{job=\"cold_nodes\", device=\"/dev/nvme0n1p1\"}/1073741824",
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
+            "refId": "A"
+          },
+          {
+            "expr": "avg(node_filesystem_avail_bytes{job=\"cold_nodes\", device=\"/dev/nvme0n1p1\"}/1073741824)",
+            "interval": "",
+            "legendFormat": "average",
             "refId": "B"
           }
         ],
@@ -1495,6 +1631,10 @@
           {
             "alias": "/.*/",
             "color": "#8F3BB8"
+          },
+          {
+            "alias": "average",
+            "color": "#DEB6F2"
           }
         ],
         "spaceLength": 10,
@@ -1505,6 +1645,12 @@
             "expr": "node_filesystem_avail_bytes{job=\"kibana\", device=\"/dev/nvme0n1p1\"}/1073741824",
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
+            "refId": "A"
+          },
+          {
+            "expr": "avg(node_filesystem_avail_bytes{job=\"kibana\", device=\"/dev/nvme0n1p1\"}/1073741824)",
+            "interval": "",
+            "legendFormat": "average",
             "refId": "B"
           }
         ],
@@ -1597,6 +1743,10 @@
           {
             "alias": "/.*/",
             "color": "#73BF69"
+          },
+          {
+            "alias": "average",
+            "color": "#C8F2C2"
           }
         ],
         "spaceLength": 10,
@@ -1608,6 +1758,12 @@
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"
+          },
+          {
+            "expr": "avg(node_filesystem_avail_bytes{job=\"master_nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824)",
+            "interval": "",
+            "legendFormat": "average",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -1699,6 +1855,10 @@
           {
             "alias": "/.*/",
             "color": "#C4162A"
+          },
+          {
+            "alias": "average",
+            "color": "#FFA6B0"
           }
         ],
         "spaceLength": 10,
@@ -1710,6 +1870,12 @@
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"
+          },
+          {
+            "expr": "avg(node_filesystem_avail_bytes{job=\"hot_nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824)",
+            "interval": "",
+            "legendFormat": "average",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -1801,6 +1967,10 @@
           {
             "alias": "/.*/",
             "color": "#E0B400"
+          },
+          {
+            "alias": "average",
+            "color": "#FFF899"
           }
         ],
         "spaceLength": 10,
@@ -1812,6 +1982,12 @@
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"
+          },
+          {
+            "expr": "avg(node_filesystem_avail_bytes{job=\"warm_nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824)",
+            "interval": "",
+            "legendFormat": "average",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -1903,6 +2079,10 @@
           {
             "alias": "/.*/",
             "color": "#1F60C4"
+          },
+          {
+            "alias": "average",
+            "color": "#C0D8FF"
           }
         ],
         "spaceLength": 10,
@@ -1914,6 +2094,12 @@
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"
+          },
+          {
+            "expr": "avg(node_filesystem_avail_bytes{job=\"cold_nodes\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824)",
+            "interval": "",
+            "legendFormat": "average",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -2005,6 +2191,10 @@
           {
             "alias": "/.*/",
             "color": "#8F3BB8"
+          },
+          {
+            "alias": "average",
+            "color": "#DEB6F2"
           }
         ],
         "spaceLength": 10,
@@ -2016,6 +2206,12 @@
             "interval": "",
             "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
             "refId": "A"
+          },
+          {
+            "expr": "avg(node_filesystem_avail_bytes{job=\"kibana\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824)",
+            "interval": "",
+            "legendFormat": "average",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -2107,6 +2303,10 @@
           {
             "alias": "/.*/",
             "color": "#73BF69"
+          },
+          {
+            "alias": "average",
+            "color": "#C8F2C2"
           }
         ],
         "spaceLength": 10,
@@ -2118,6 +2318,12 @@
             "interval": "",
             "legendFormat": "{% raw %}{{device}} receive ({{private_ip}}){% endraw %}",
             "refId": "A"
+          },
+          {
+            "expr": "avg(irate(node_network_receive_bytes_total{job=\"master_nodes\",device=\"eth0\"}[5m]))",
+            "interval": "",
+            "legendFormat": "average",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -2208,6 +2414,10 @@
           {
             "alias": "/.*/",
             "color": "#C4162A"
+          },
+          {
+            "alias": "average",
+            "color": "#FFA6B0"
           }
         ],
         "spaceLength": 10,
@@ -2219,6 +2429,12 @@
             "interval": "",
             "legendFormat": "{% raw %}{{device}} receive ({{private_ip}}){% endraw %}",
             "refId": "A"
+          },
+          {
+            "expr": "avg(irate(node_network_receive_bytes_total{job=\"hot_nodes\",device=\"eth0\"}[5m]))",
+            "interval": "",
+            "legendFormat": "average",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -2309,6 +2525,10 @@
           {
             "alias": "/.*/",
             "color": "#E0B400"
+          },
+          {
+            "alias": "average",
+            "color": "#FFF899"
           }
         ],
         "spaceLength": 10,
@@ -2320,6 +2540,12 @@
             "interval": "",
             "legendFormat": "{% raw %}{{device}} receive ({{private_ip}}){% endraw %}",
             "refId": "A"
+          },
+          {
+            "expr": "avg(irate(node_network_receive_bytes_total{job=\"warm_nodes\",device=\"eth0\"}[5m]))",
+            "interval": "",
+            "legendFormat": "average",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -2410,6 +2636,10 @@
           {
             "alias": "/.*/",
             "color": "#1F60C4"
+          },
+          {
+            "alias": "average",
+            "color": "#C0D8FF"
           }
         ],
         "spaceLength": 10,
@@ -2421,6 +2651,12 @@
             "interval": "",
             "legendFormat": "{% raw %}{{device}} receive ({{private_ip}}){% endraw %}",
             "refId": "A"
+          },
+          {
+            "expr": "avg(irate(node_network_receive_bytes_total{job=\"cold_nodes\",device=\"eth0\"}[5m]))",
+            "interval": "",
+            "legendFormat": "average",
+            "refId": "B"
           }
         ],
         "thresholds": [],
@@ -2511,6 +2747,10 @@
           {
             "alias": "/.*/",
             "color": "#8F3BB8"
+          },
+          {
+            "alias": "average",
+            "color": "#DEB6F2"
           }
         ],
         "spaceLength": 10,
@@ -2522,6 +2762,12 @@
             "interval": "",
             "legendFormat": "{% raw %}{{device}} receive ({{private_ip}}){% endraw %}",
             "refId": "A"
+          },
+          {
+            "expr": "avg(irate(node_network_receive_bytes_total{job=\"kibana\",device=\"eth0\"}[5m]))",
+            "interval": "",
+            "legendFormat": "average",
+            "refId": "B"
           }
         ],
         "thresholds": [],

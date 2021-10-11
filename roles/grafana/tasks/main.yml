@@ -36,6 +36,41 @@
     ("logging-" + item.environment not in environments)
   no_log: True
 
+- name: Get slack notification channel list
+  uri:
+    url: "{{ grafana_url }}/api/alert-notifications/lookup"
+    method: GET
+    url_username: "{{ item.grafana_admin_user }}"
+    url_password: "{{ item.grafana_admin_password }}"
+    status_code: 200
+    force_basic_auth: yes
+    headers:
+      Content-Type: application/json
+  with_items:
+    "{{ logging_variables }}"
+  register: alert_response
+
+- set_fact:
+    alert_list: "{{ alert_response | json_query('results[*].json[].name') | list }}"
+
+- name: Create slack notification channel
+  uri:
+    url: "{{ grafana_url }}/api/alert-notifications"
+    method: POST
+    url_username: "{{ item.grafana_admin_user }}"
+    url_password: "{{ item.grafana_admin_password }}"
+    body: "{{ lookup('template', 'roles/grafana/templates/slack_notification.json.j2') }}"
+    status_code: 200
+    body_format: json
+    force_basic_auth: yes
+    headers:
+      Content-Type: application/json
+  with_items:
+    "{{ logging_variables }}"
+  when:
+    ("slack_notification" not in alert_list)
+  no_log: True
+
 - name: Create logging nodes dashboard
   uri:
     url: "{{ grafana_url }}/api/dashboards/db"

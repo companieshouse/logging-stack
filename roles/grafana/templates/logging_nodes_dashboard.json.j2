@@ -2842,6 +2842,29 @@
                 "type": "avg"
               },
               "type": "query"
+            },
+            {
+              "evaluator": {
+                "params": [
+                  {{ item.kibana_data_threshold }}
+                ],
+                "type": "lt"
+              },
+              "operator": {
+                "type": "and"
+              },
+              "query": {
+                "params": [
+                  "D",
+                  "5m",
+                  "now"
+                ]
+              },
+              "reducer": {
+                "params": [],
+                "type": "avg"
+              },
+              "type": "query"
             }
           ],
           "executionErrorState": "alerting",
@@ -2901,12 +2924,20 @@
         "renderer": "flot",
         "seriesOverrides": [
           {
-            "alias": "/.*/",
+            "alias": "/.*.(elasticsearch_data.)/",
             "color": "#8F3BB8"
           },
           {
-            "alias": "average",
+            "alias": "average (elasticsearch_data)",
             "color": "#DEB6F2"
+          },
+          {
+            "alias": "/.*.(kibana_data.)/",
+            "color": "#1F60C4"
+          },
+          {
+            "alias": "average (kibana_data)",
+            "color": "#C0D8FF"
           }
         ],
         "spaceLength": 10,
@@ -2916,14 +2947,26 @@
           {
             "expr": "node_filesystem_avail_bytes{job=\"kibana\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824",
             "interval": "",
-            "legendFormat": "{% raw %}{{private_ip}}{% endraw %}",
+            "legendFormat": "{% raw %}{{private_ip}} (elasticsearch_data){% endraw %}",
             "refId": "A"
           },
           {
             "expr": "avg(node_filesystem_avail_bytes{job=\"kibana\", mountpoint=\"/var/lib/elasticsearch\"}/1073741824)",
             "interval": "",
-            "legendFormat": "average",
+            "legendFormat": "{% raw %}average (elasticsearch_data){% endraw %}",
             "refId": "B"
+          },
+          {
+            "expr": "node_filesystem_avail_bytes{job=\"kibana\", mountpoint=\"/var/lib/kibana\"}/1073741824",
+            "interval": "",
+            "legendFormat": "{% raw %}{{private_ip}} (kibana_data){% endraw %}",
+            "refId": "C"
+          },
+          {
+            "expr": "avg(node_filesystem_avail_bytes{job=\"kibana\", mountpoint=\"/var/lib/kibana\"}/1073741824)",
+            "interval": "",
+            "legendFormat": "{% raw %}average (kibana_data){% endraw %}",
+            "refId": "D"
           }
         ],
         "thresholds": [

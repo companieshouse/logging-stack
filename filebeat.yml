@@ -1,0 +1,13 @@
+---
+
+- hosts: localhost
+  become: yes
+  roles:
+    - sshkey
+
+- hosts: "{{ environment_name }}"
+  serial: 1
+  remote_user: "{{ remote_user }}"
+  become: yes
+  roles:
+    - filebeat

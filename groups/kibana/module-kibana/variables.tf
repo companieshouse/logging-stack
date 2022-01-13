@@ -13,6 +13,12 @@ variable "certificate_arn" {
   type        = string
 }
 
+variable "cloudwatch_log_retention" {
+  description = "Number of days to retain log files"
+  default     = 1
+  type        = number
+}
+
 variable "discovery_availability_zones" {
   type        = string
   description = "A list of availability zones in which to search for master nodes"

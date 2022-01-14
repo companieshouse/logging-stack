@@ -9,7 +9,7 @@ write_files:
           "metrics_collected": {
             "cpu": {
               "append_dimensions": {
-                "Role": "web"
+                "Role": "kibana"
               },
               "measurement": [
                 "usage_active",
@@ -26,7 +26,7 @@ write_files:
             },
             "mem": {
               "append_dimensions": {
-                "Role": "web"
+                "Role": "kibana"
               },
               "measurement": [
                 "available",
@@ -40,7 +40,7 @@ write_files:
             },
             "disk": {
               "append_dimensions": {
-                "Role": "web"
+                "Role": "kibana"
               },
               "measurement": [
                 "free",
@@ -55,7 +55,7 @@ write_files:
             },
             "swap": {
               "append_dimensions": {
-                "Role": "web"
+                "Role": "kibana"
               },
               "measurement": [
                 "free",

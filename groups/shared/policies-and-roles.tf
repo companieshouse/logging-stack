@@ -71,13 +71,13 @@ resource "aws_iam_role" "elastic_search_node" {
 }
 
 resource "aws_iam_role_policy" "cloudwatch_execution" {
-  name   = "cloudwatch_execution"
+  name   = "cloudwatch-execution"
   role   = aws_iam_role.elastic_search_node.id
   policy = data.aws_iam_policy_document.cloudwatch_execution.json
 }
 
 resource "aws_iam_role_policy" "node_discovery" {
-  name   = "node_discovery"
+  name   = "node-discovery"
   role   = aws_iam_role.elastic_search_node.id
   policy = data.aws_iam_policy_document.discovery_execution.json
 }

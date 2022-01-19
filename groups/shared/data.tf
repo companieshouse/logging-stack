@@ -6,3 +6,5 @@ data "terraform_remote_state" "networking" {
     region = var.region
   }
 }
+
+data "aws_caller_identity" "current" {}

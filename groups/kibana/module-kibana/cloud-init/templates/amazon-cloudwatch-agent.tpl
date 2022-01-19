@@ -16,7 +16,7 @@ write_files:
             "files": {
               "collect_list": [
                 {
-                  "file_path": "/var/log/messages",
+                  "file_path": "/var/log/kibana",
                   "log_group_name": "${log_group_name}",
                   "log_stream_name": "{instance_id}_{hostname}",
                   "timezone": "Local"

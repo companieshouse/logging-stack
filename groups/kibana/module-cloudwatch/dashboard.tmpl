@@ -1,0 +1,34 @@
+{
+  "widgets": [
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 0,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "metrics": [
+          [{
+            "expression": "SEARCH('{${service}-${environment}-kibana,ImageId,InstanceId,InstanceType,Role,cpu} Role=\"kibana\" MetricName=\"cpu_usage_active\" cpu=\"cpu-total\"', 'Average', 300)",
+            "id": "cpu_total",
+            "period": 300
+          }]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "${region}",
+        "stat": "Average",
+        "period": 300,
+        "title": "Kibana CPU",
+        "yAxis": {
+          "left": {
+            "label": "Percent",
+            "min": 0,
+            "showUnits": false
+          }
+        },
+        "liveData": true
+      }
+    }
+  ]
+}

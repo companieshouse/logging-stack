@@ -7,6 +7,14 @@ terraform {
   backend "s3" {}
 }
 
+module "cloudwatch" {
+  source      = "./module-cloudwatch"
+
+  environment = var.environment
+  region      = var.region
+  service     = var.service
+}
+
 module "kibana" {
   source = "./module-kibana"
 

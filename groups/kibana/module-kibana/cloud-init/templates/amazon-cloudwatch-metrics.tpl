@@ -49,9 +49,20 @@ write_files:
                 "used_percent"
               ],
               "resources": [
-                "/"
+                "/",
+                "/var/lib/kibana",
+                "/var/lib/elasticsearch"
               ],
               "drop_device": true
+            },
+            "net": {
+              "append_dimensions": {
+                "Role": "kibana"
+              },
+              "measurement": [
+                "net_bytes_recv",
+                "net_bytes_sent"
+              ]
             },
             "swap": {
               "append_dimensions": {

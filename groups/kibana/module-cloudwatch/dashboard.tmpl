@@ -29,6 +29,128 @@
         },
         "liveData": true
       }
+    },
+    {
+      "type": "metric",
+      "x": 12,
+      "y": 0,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "metrics": [
+          [{
+            "expression": "SEARCH('{${service}-${environment}-kibana,ImageId,InstanceId,InstanceType,Role,interface} Role=\"kibana\" MetricName=\"net_bytes_recv\" interface=\"eth0\"', 'Average', 300)",
+            "id": "net_bytes_recv",
+            "period": 300
+          }]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "${region}",
+        "stat": "Maximum",
+        "period": 60,
+        "title": "Kibana Network Received Bytes",
+        "yAxis": {
+          "left": {
+            "label": "Bytes",
+            "min": 0,
+            "showUnits": false
+          }
+        },
+        "liveData": true
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 6,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "metrics": [
+          [{
+            "expression": "SEARCH('{${service}-${environment}-kibana,ImageId,InstanceId,InstanceType,Role} Role=\"kibana\" MetricName=\"mem_free\"', 'Average', 300)",
+            "id": "mem_free",
+            "period": 300
+          }]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "${region}",
+        "stat": "Average",
+        "period": 300,
+        "title": "Kibana Memory Free",
+        "yAxis": {
+          "left": {
+            "min": 0,
+            "showUnits": false
+          }
+        },
+        "liveData": true
+      }
+    },
+    {
+      "type": "metric",
+      "x": 12,
+      "y": 6,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "metrics": [
+          [{
+            "expression": "SEARCH('{${service}-${environment}-kibana,ImageId,InstanceId,InstanceType,Role,fstype,path} Role=\"kibana\" MetricName=\"disk_free\" fstype=\"xfs\" path=\"/\"', 'Average', 60)",
+            "id": "root",
+            "period": 300
+          }]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "${region}",
+        "stat": "Average",
+        "period": 300,
+        "title": "Kibana Root Disk Free",
+        "yAxis": {
+          "left": {
+            "min": 0,
+            "showUnits": false
+          }
+        },
+        "liveData": true
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 12,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "metrics": [
+          [{
+            "expression": "SEARCH('{${service}-${environment}-kibana,ImageId,InstanceId,InstanceType,Role,fstype,path} Role=\"kibana\" MetricName=\"disk_free\" fstype=\"xfs\" path=\"/var/lib/kibana\"', 'Average', 60)",
+            "id": "kibana_data",
+            "period": 300
+          }],
+          [{
+            "expression": "SEARCH('{${service}-${environment}-kibana,ImageId,InstanceId,InstanceType,Role,fstype,path} Role=\"kibana\" MetricName=\"disk_free\" fstype=\"xfs\" path=\"/var/lib/elasticsearch\"', 'Average', 60)",
+            "id": "elasticsearch_data",
+            "period": 300
+          }]
+        ],
+        "view": "timeSeries",
+        "stacked": false,
+        "region": "${region}",
+        "stat": "Average",
+        "period": 300,
+        "title": "Kibana Data Disk Free",
+        "yAxis": {
+          "left": {
+            "min": 0,
+            "showUnits": false
+          }
+        },
+        "liveData": true
+      }
     }
   ]
 }

@@ -5,7 +5,7 @@ data_cold_ami_version_pattern = {
 
 data_cold_instance_count = {
   "blue": 9,
-  "green": 0
+  "green": 9
 }
 
 data_cold_instance_type = {
@@ -21,7 +21,7 @@ data_cold_lvm_block_devices = {
     lvm_physical_volume_device_node: "/dev/xvdb"
   }],
   "green": [{
-    aws_volume_size_gb: "1400",
+    aws_volume_size_gb: "2000",
     filesystem_resize_tool: "xfs_growfs",
     lvm_logical_volume_device_node: "/dev/elasticsearch/data",
     lvm_physical_volume_device_node: "/dev/xvdb"

@@ -5,7 +5,7 @@ data_cold_ami_version_pattern = {
 
 data_cold_instance_count = {
   "blue": 9,
-  "green": 9
+  "green": 0
 }
 
 data_cold_instance_type = {

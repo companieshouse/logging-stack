@@ -24,6 +24,23 @@ data "template_cloudinit_config" "kibana" {
 
   part {
     content_type = "text/cloud-config"
+    content = templatefile("${path.module}/cloud-init/templates/amazon-cloudwatch-agent.tpl", {
+      region         = var.region
+      log_group_name = local.log_group_name
+    })
+    merge_type = var.user_data_merge_strategy
+  }
+
+  part {
+    content_type = "text/cloud-config"
+    content      = templatefile("${path.module}/cloud-init/templates/amazon-cloudwatch-metrics.tpl", {
+      metrics_namespace = "${var.service}-${var.environment}-kibana"
+    })
+    merge_type = var.user_data_merge_strategy
+  }
+
+  part {
+    content_type = "text/cloud-config"
     content = templatefile("${path.module}/cloud-init/templates/elasticsearch.yml.tpl", {
       discovery_availability_zones  = var.discovery_availability_zones
       elastic_search_service_user   = var.elastic_search_service_user

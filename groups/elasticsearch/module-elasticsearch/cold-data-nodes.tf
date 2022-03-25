@@ -39,6 +39,24 @@ data "template_cloudinit_config" "data_cold" {
 
   part {
     content_type = "text/cloud-config"
+    content = templatefile("${path.module}/cloud-init/templates/amazon-cloudwatch-agent.tpl", {
+      environment    = var.environment
+      region         = var.region
+      log_group_name = local.cold_nodes_log_group_name
+    })
+    merge_type = var.user_data_merge_strategy
+  }
+
+  part {
+    content_type = "text/cloud-config"
+    content      = templatefile("${path.module}/cloud-init/templates/amazon-cloudwatch-metrics.tpl", {
+      metrics_namespace = "${var.service}-${var.environment}-cold-nodes"
+    })
+    merge_type = var.user_data_merge_strategy
+  }
+
+  part {
+    content_type = "text/cloud-config"
     content = templatefile("${path.module}/cloud-init/templates/bootstrap-commands.yml.tpl", {
       lvm_block_devices       = var.data_cold_lvm_block_devices
       root_volume_device_node = data.aws_ami.elasticsearch[var.data_cold_ami_version_pattern].root_device_name

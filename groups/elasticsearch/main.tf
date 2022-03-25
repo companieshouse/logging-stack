@@ -71,3 +71,10 @@ module "elasticsearch" {
   subnet_ids                            = local.placement_subnet_ids_by_availability_zone
   user_data_merge_strategy              = var.user_data_merge_strategy
 }
+
+module "logging" {
+  source = "./module-logging"
+
+  environment                           = var.environment
+  service                               = var.service
+}

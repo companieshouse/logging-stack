@@ -17,4 +17,9 @@ locals {
     for pattern in local.ami_version_patterns : pattern =>
       tolist(data.aws_ami.elasticsearch[pattern].block_device_mappings)[index(data.aws_ami.elasticsearch[pattern].block_device_mappings.*.device_name, data.aws_ami.elasticsearch[pattern].root_device_name)]
   }
+
+  cold_nodes_log_group_name = "${var.service}-${var.environment}-cold-nodes"
+  hot_nodes_log_group_name = "${var.service}-${var.environment}-hot-nodes"
+  master_nodes_log_group_name = "${var.service}-${var.environment}-master-nodes"
+  warm_nodes_log_group_name = "${var.service}-${var.environment}-warm-nodes"
 }

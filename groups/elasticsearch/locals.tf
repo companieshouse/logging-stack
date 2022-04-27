@@ -17,4 +17,7 @@ locals {
   administration_cidrs = concat(local.internal_cidrs, local.vpn_cidrs)
   elastic_search_api_cidrs = concat(local.concourse_worker_cidrs, local.internal_cidrs, local.vpn_cidrs)
   placement_subnet_ids_by_availability_zone = values(zipmap(local.placement_subnet_availability_zones, local.placement_subnet_ids))
+  placement_subnets_by_availability_zone = {
+    for subnet in data.aws_subnet.placement : subnet.availability_zone => subnet
+  }
 }

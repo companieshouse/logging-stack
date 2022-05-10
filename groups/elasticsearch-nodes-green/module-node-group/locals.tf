@@ -20,7 +20,7 @@ locals {
         for id, specification in instances : specification.ami_version_pattern
           if contains(keys(specification), "ami_version_pattern")
       ]]),
-      ["\\d.\\d.\\d"]
+      [var.default_ami_version_pattern]
     )
   )
 

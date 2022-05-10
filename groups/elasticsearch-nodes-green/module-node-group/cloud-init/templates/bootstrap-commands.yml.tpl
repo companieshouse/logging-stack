@@ -10,6 +10,6 @@ runcmd:
   - xfs_growfs ${root_volume_device_node}
   - rm /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
   - systemctl enable amazon-cloudwatch-agent
-  - systemctl start amazon-cloudwatch-agent  
+  - systemctl start amazon-cloudwatch-agent
   - systemctl enable elasticsearch
   - systemctl start elasticsearch

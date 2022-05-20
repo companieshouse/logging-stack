@@ -21,3 +21,17 @@ resource "aws_route53_record" "elasticsearch_api_load_balancer" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_record" "elasticsearch_cluster_load_balancer" {
+  count   = var.route53_available ? 1 : 0
+
+  zone_id = data.aws_route53_zone.zone[0].zone_id
+  name    = "${var.service}-${var.environment}-elasticsearch-cluster.${local.dns_zone_name}"
+  type    = "A"
+
+  alias {
+    name                   = aws_lb.elasticsearch_cluster.dns_name
+    zone_id                = aws_lb.elasticsearch_cluster.zone_id
+    evaluate_target_health = false
+  }
+}

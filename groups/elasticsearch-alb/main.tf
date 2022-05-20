@@ -26,7 +26,7 @@ resource "aws_acm_certificate_validation" "certificate" {
 }
 
 resource "aws_lb" "elasticsearch_api" {
-  name                       = "${var.service}-${var.environment}-elasticsearch"
+  name                       = "${var.service}-${var.environment}-es-api"
   internal                   = true
   load_balancer_type         = "application"
   security_groups            = [aws_security_group.elasticsearch_api_load_balancer.id]
@@ -41,8 +41,40 @@ resource "aws_lb" "elasticsearch_api" {
   }
 }
 
+resource "aws_lb" "elasticsearch_cluster" {
+  name                       = "${var.service}-${var.environment}-es-cluster"
+  internal                   = true
+  load_balancer_type         = "application"
+  security_groups            = [aws_security_group.elasticsearch_cluster_load_balancer.id]
+  subnets                    = local.placement_subnet_ids
+  enable_deletion_protection = false
+
+  tags = {
+    Environment = var.environment
+    Service     = var.service
+    Name        = "${var.service}-${var.environment}-elasticsearch-cluster"
+    Type        = "ApplicationLoadBalancer"
+  }
+}
+
 resource "aws_lb_target_group" "elasticsearch_api" {
-  name        = "${var.service}-${var.environment}-elasticsearch"
+  name        = "${var.service}-${var.environment}-es-api"
+  port        = 9200
+  protocol    = "HTTP"
+  target_type = "ip"
+  vpc_id      = local.placement_vpc_id
+
+  health_check {
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
+    timeout             = 3
+    path                = "/_cat/health"
+    interval            = 60
+  }
+}
+
+resource "aws_lb_target_group" "elasticsearch_cluster" {
+  name        = "${var.service}-${var.environment}-es-cluster"
   port        = 9200
   protocol    = "HTTP"
   target_type = "ip"
@@ -66,5 +98,16 @@ resource "aws_lb_listener" "elasticsearch_api" {
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.elasticsearch_api.arn
+  }
+}
+
+resource "aws_lb_listener" "elasticsearch_cluster" {
+  load_balancer_arn = aws_lb.elasticsearch_cluster.arn
+  port              = 9200
+  protocol          = "HTTP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.elasticsearch_cluster.arn
   }
 }

@@ -80,6 +80,12 @@ variable "elasticsearch_api_target_group_arn" {
   type        = string
 }
 
+variable "elasticsearch_cluster_target_group_arn" {
+  default     = null
+  description = "The Elasticsearch cluster application load balancer target group ARN. Null if no attachment is wanted"
+  type        = string
+}
+
 variable "environment" {
   description = "The environment name to be used when creating AWS resources"
   type        = string

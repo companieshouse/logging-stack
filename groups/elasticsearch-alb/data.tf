@@ -9,12 +9,21 @@ data "aws_route53_zone" "zone" {
   private_zone = false
 }
 
+data "aws_security_group" "elasticsearch" {
+  name = "${var.service}-${var.environment}-elasticsearch"
+}
+
 data "aws_subnet" "automation" {
   provider = aws.development_eu_west_1
 
   for_each = data.aws_subnet_ids.automation.ids
 
   id = each.value
+}
+
+data "aws_subnet" "logstash" {
+  for_each = data.aws_subnet_ids.logstash.ids
+  id       = each.value
 }
 
 data "aws_subnet" "placement" {
@@ -33,6 +42,15 @@ data "aws_subnet_ids" "automation" {
   }
 }
 
+data "aws_subnet_ids" "logstash" {
+  vpc_id = data.aws_vpc.logstash.id
+
+  filter {
+    name = "tag:Name"
+    values = [local.logstash_subnets_pattern]
+  }
+}
+
 data "aws_subnet_ids" "placement" {
   vpc_id = data.aws_vpc.placement.id
 
@@ -48,6 +66,13 @@ data "aws_vpc" "automation" {
   filter {
     name   = "tag:Name"
     values = [local.automation_vpc_pattern]
+  }
+}
+
+data "aws_vpc" "logstash" {
+  filter {
+    name   = "tag:Name"
+    values = [local.logstash_vpc_pattern]
   }
 }
 

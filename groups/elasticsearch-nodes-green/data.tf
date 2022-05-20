@@ -3,7 +3,11 @@ data "aws_iam_instance_profile" "elastic_search_node" {
 }
 
 data "aws_lb_target_group" "elasticsearch_api" {
-  name = "${var.service}-${var.environment}-elasticsearch"
+  name = "${var.service}-${var.environment}-es-api"
+}
+
+data "aws_lb_target_group" "elasticsearch_cluster" {
+  name = "${var.service}-${var.environment}-es-cluster"
 }
 
 data "aws_route53_zone" "zone" {

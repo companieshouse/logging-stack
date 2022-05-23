@@ -48,3 +48,11 @@ resource "aws_lb_target_group_attachment" "elasticsearch_api" {
   target_id         = aws_instance.nodes[each.key].private_ip
   port              = 9200
 }
+
+resource "aws_lb_target_group_attachment" "elasticsearch_cluster" {
+  for_each = var.elasticsearch_cluster_target_group_arn == null ? {} : local.instance_definitions
+
+  target_group_arn  = var.elasticsearch_cluster_target_group_arn
+  target_id         = aws_instance.nodes[each.key].private_ip
+  port              = 9200
+}

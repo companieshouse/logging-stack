@@ -68,21 +68,21 @@ data "template_cloudinit_config" "configs" {
     merge_type = var.bootstrap_user_data_merge_strategy
   }
 
-  # part {
-  #   content_type = "text/cloud-config"
-  #   content = templatefile("${path.module}/cloud-init/templates/amazon-cloudwatch-agent.tpl", {
-  #     environment    = var.environment
-  #     region         = var.region
-  #     log_group_name = local.log_group_name
-  #   })
-  #   merge_type = var.user_data_merge_strategy
-  # }
-  #
-  # part {
-  #   content_type = "text/cloud-config"
-  #   content      = templatefile("${path.module}/cloud-init/templates/amazon-cloudwatch-metrics.tpl", {
-  #     metrics_namespace = "${var.service}-${var.environment}-${var.deployment}-${var.group_name}-nodes"
-  #   })
-  #   merge_type = var.user_data_merge_strategy
-  # }
+  part {
+    content_type = "text/cloud-config"
+    content = templatefile("${path.module}/cloud-init/templates/amazon-cloudwatch-agent.tpl", {
+      environment    = var.environment
+      region         = var.region
+      log_group_name = local.log_group_name
+    })
+    merge_type = var.user_data_merge_strategy
+  }
+
+  part {
+    content_type = "text/cloud-config"
+    content      = templatefile("${path.module}/cloud-init/templates/amazon-cloudwatch-metrics.tpl", {
+      metrics_namespace = "${var.service}-${var.environment}-${var.deployment}-${var.group_name}-nodes"
+    })
+    merge_type = var.user_data_merge_strategy
+  }
 }

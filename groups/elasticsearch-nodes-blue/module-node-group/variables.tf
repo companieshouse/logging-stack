@@ -18,11 +18,11 @@ variable "box_type" {
   type        = string
 }
 
-# variable "cloudwatch_log_retention_days" {
-#   description = "Number of days to retain log files"
-#   default     = 1
-#   type        = number
-# }
+variable "cloudwatch_log_retention_days" {
+  description = "Number of days to retain log files"
+  default     = 1
+  type        = number
+}
 
 variable "deployment" {
   description   = "The name of the deployment. E.g. blue or green"
@@ -77,6 +77,12 @@ variable "dns_zone_name" {
 variable "elasticsearch_api_target_group_arn" {
   default     = null
   description = "The Elasticsearch API application load balancer target group ARN. Null if no attachment is wanted"
+  type        = string
+}
+
+variable "elasticsearch_cluster_target_group_arn" {
+  default     = null
+  description = "The Elasticsearch cluster application load balancer target group ARN. Null if no attachment is wanted"
   type        = string
 }
 

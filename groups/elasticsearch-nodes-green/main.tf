@@ -20,8 +20,6 @@ module "master" {
   deployment                              = "green"
   discovery_availability_zones            = local.discovery_availability_zones
   dns_zone_name                           = local.dns_zone_name
-  elasticsearch_api_target_group_arn      = data.aws_lb_target_group.elasticsearch_api.arn
-  elasticsearch_cluster_target_group_arn  = data.aws_lb_target_group.elasticsearch_cluster.arn
   environment                             = var.environment
   group_name                              = "master"
   instance_count                          = var.master_instance_count
@@ -136,6 +134,8 @@ module "data_cold" {
   deployment                          = "green"
   discovery_availability_zones        = local.discovery_availability_zones
   dns_zone_name                       = local.dns_zone_name
+  elasticsearch_api_target_group_arn      = data.aws_lb_target_group.elasticsearch_api.arn
+  elasticsearch_cluster_target_group_arn  = data.aws_lb_target_group.elasticsearch_cluster.arn
   environment                         = var.environment
   group_name                          = "data-cold"
   instance_count                      = var.data_cold_instance_count

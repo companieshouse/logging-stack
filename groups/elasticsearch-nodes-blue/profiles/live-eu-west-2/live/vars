@@ -1,146 +1,139 @@
-data_cold_ami_version_pattern = {
-  "blue": "\\d.\\d.\\d",
-  "green": "\\d.\\d.\\d"
-}
-
-data_cold_instance_count = {
-  "blue": 9,
-  "green": 0
-}
-
-data_cold_instance_type = {
-  "blue": "t3.medium",
-  "green": "t3.medium"
-}
-
-data_cold_lvm_block_devices = {
-  "blue": [{
-    aws_volume_size_gb: "2000",
-    filesystem_resize_tool: "xfs_growfs",
-    lvm_logical_volume_device_node: "/dev/elasticsearch/data",
-    lvm_physical_volume_device_node: "/dev/xvdb"
-  }],
-  "green": [{
-    aws_volume_size_gb: "2000",
-    filesystem_resize_tool: "xfs_growfs",
-    lvm_logical_volume_device_node: "/dev/elasticsearch/data",
-    lvm_physical_volume_device_node: "/dev/xvdb"
-  }]
-}
-
-data_cold_root_volume_size = {
-  "blue": 0,
-  "green": 0
-}
-
-data_hot_ami_version_pattern = {
-  "blue": "\\d.\\d.\\d",
-  "green": "\\d.\\d.\\d"
-}
-
-data_hot_instance_count = {
-  "blue": 3,
-  "green": 0
-}
-
-data_hot_instance_type = {
-  "blue": "r5.large",
-  "green": "r5.large"
-}
-
-data_hot_lvm_block_devices = {
-  "blue": [{
-    aws_volume_size_gb: "350",
-    filesystem_resize_tool: "xfs_growfs",
-    lvm_logical_volume_device_node: "/dev/elasticsearch/data",
-    lvm_physical_volume_device_node: "/dev/xvdb"
-  }],
-  "green": [{
-    aws_volume_size_gb: "350",
-    filesystem_resize_tool: "xfs_growfs",
-    lvm_logical_volume_device_node: "/dev/elasticsearch/data",
-    lvm_physical_volume_device_node: "/dev/xvdb"
-  }]
-}
-
-data_hot_root_volume_size = {
-  "blue": 0,
-  "green": 0
-}
-
-data_warm_ami_version_pattern = {
-  "blue": "\\d.\\d.\\d",
-  "green": "\\d.\\d.\\d"
-}
-
-data_warm_instance_count = {
-  "blue": 3,
-  "green": 0
-}
-
-data_warm_instance_type = {
-  "blue": "t3.large",
-  "green": "t3.large"
-}
-
-data_warm_lvm_block_devices = {
-  "blue": [{
-    aws_volume_size_gb: "700",
-    filesystem_resize_tool: "xfs_growfs",
-    lvm_logical_volume_device_node: "/dev/elasticsearch/data",
-    lvm_physical_volume_device_node: "/dev/xvdb"
-  }],
-  "green": [{
-    aws_volume_size_gb: "700",
-    filesystem_resize_tool: "xfs_growfs",
-    lvm_logical_volume_device_node: "/dev/elasticsearch/data",
-    lvm_physical_volume_device_node: "/dev/xvdb"
-  }]
-}
-
-data_warm_root_volume_size = {
-  "blue": 0,
-  "green": 0
-}
-
-master_ami_version_pattern = {
-  "blue": "\\d.\\d.\\d",
-  "green": "\\d.\\d.\\d"
-}
-
-master_instance_count = {
-  "blue": 3,
-  "green": 0
-}
-
-master_instance_type = {
-  "blue": "c5.large",
-  "green": "c5.large"
-}
-
-master_lvm_block_devices = {
-  "blue": [{
-    aws_volume_size_gb: "20",
-    filesystem_resize_tool: "xfs_growfs",
-    lvm_logical_volume_device_node: "/dev/elasticsearch/data",
-    lvm_physical_volume_device_node: "/dev/xvdb"
-  }],
-  "green": [{
-    aws_volume_size_gb: "20",
-    filesystem_resize_tool: "xfs_growfs",
-    lvm_logical_volume_device_node: "/dev/elasticsearch/data",
-    lvm_physical_volume_device_node: "/dev/xvdb"
-  }]
-}
-
-master_root_volume_size = {
-  "blue": 0,
-  "green": 0
-}
-
 team = "platform"
-
 # TODO - Remove these once they're provided automatically
 account_name    = "live"
 environment     = "live"
 repository_name = "logging-stack"
+# Master Nodes
+master_ami_version_pattern = "1.1.0"
+master_instance_count = 0
+master_instance_type = "c5.large"
+master_lvm_block_devices = [{
+  aws_volume_size_gb: "20",
+  filesystem_resize_tool: "xfs_growfs",
+  lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+  lvm_physical_volume_device_node: "/dev/xvdb"
+}]
+master_root_volume_size = 0
+# Hot Nodes
+data_hot_ami_version_pattern = "1.1.0"
+data_hot_instance_count = 0
+data_hot_instance_type = "r5.large"
+data_hot_lvm_block_devices = [{
+  aws_volume_size_gb: "350",
+  filesystem_resize_tool: "xfs_growfs",
+  lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+  lvm_physical_volume_device_node: "/dev/xvdb"
+}]
+data_hot_root_volume_size = 0
+# Warm Nodes
+data_warm_ami_version_pattern = "1.1.0"
+data_warm_instance_count = 0
+data_warm_instance_type = "t3.large"
+data_warm_lvm_block_devices = [{
+  aws_volume_size_gb: "700",
+  filesystem_resize_tool: "xfs_growfs",
+  lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+  lvm_physical_volume_device_node: "/dev/xvdb"
+}]
+data_warm_root_volume_size = 0
+# Cold Nodes
+data_cold_ami_version_pattern = "1.1.0"
+data_cold_instance_count = 0
+data_cold_instance_type = "t3.medium"
+data_cold_lvm_block_devices = [{
+  aws_volume_size_gb: "2000",
+  filesystem_resize_tool: "xfs_growfs",
+  lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+  lvm_physical_volume_device_node: "/dev/xvdb"
+}]
+data_cold_root_volume_size = 0
+master_default_instance_type = "c5.large"
+master_instance_specifications = {
+  "eu-west-2a" = {
+    # "1" = {
+    #   ami_version_pattern = "1.1.0"
+    # }
+  }
+  "eu-west-2b" = {
+    # "2" = {
+    #   ami_version_pattern = "1.1.0"
+    # }
+  }
+  "eu-west-2c" = {
+    # "3" = {
+    #   ami_version_pattern = "1.1.0"
+    # }
+  }
+}
+hot_data_default_instance_type = "r5.large"
+hot_data_instance_specifications = {
+  "eu-west-2a" = {
+    # "1" = {
+    #   ami_version_pattern = "1.1.0"
+    # }
+  }
+  "eu-west-2b" = {
+    # "2" = {
+    #   ami_version_pattern = "1.1.0"
+    # }
+  }
+  "eu-west-2c" = {
+    # "3" = {
+    #   ami_version_pattern = "1.1.0"
+    # }
+  }
+}
+warm_data_default_instance_type = "t3.large"
+warm_data_instance_specifications = {
+  "eu-west-2a" = {
+    # "1" = {
+    #   ami_version_pattern = "1.1.0"
+    # }
+  }
+  "eu-west-2b" = {
+    # "2" = {
+    #   ami_version_pattern = "1.1.0"
+    # }
+  }
+  "eu-west-2c" = {
+    # "3" = {
+    #   ami_version_pattern = "1.1.0"
+    # }
+  }
+}
+cold_data_default_instance_type = "t3.medium"
+cold_data_instance_specifications = {
+  "eu-west-2a" = {
+    # "1" = {
+    #   ami_version_pattern = "1.1.0"
+    # }
+    # "4" = {
+    #   ami_version_pattern = "1.1.0"
+    # }
+    # "7" = {
+    #   ami_version_pattern = "1.1.0"
+    # }
+  }
+  "eu-west-2b" = {
+    # "2" = {
+    #   ami_version_pattern = "1.1.0"
+    # }
+    # "5" = {
+    #   ami_version_pattern = "1.1.0"
+    # }
+    # "8" = {
+    #   ami_version_pattern = "1.1.0"
+    # }
+  }
+  "eu-west-2c" = {
+    # "3" = {
+    #   ami_version_pattern = "1.1.0"
+    # }
+    # "6" = {
+    #   ami_version_pattern = "1.1.0"
+    # }
+    # "9" = {
+    #   ami_version_pattern = "1.1.0"
+    # }
+  }
+}

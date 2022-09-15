@@ -1,0 +1,107 @@
+team = "platform"
+
+# TODO - Remove these once they're provided automatically
+account_name = "staging"
+environment = "staging"
+repository_name = "logging-stack"
+
+# Cold Nodes
+data_cold_ami_version_pattern = "\\d.\\d.\\d"
+data_cold_instance_count = 0
+data_cold_instance_type = "t3.medium"
+data_cold_lvm_block_devices = [{
+  aws_volume_size_gb: "100",
+  filesystem_resize_tool: "xfs_growfs",
+  lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+  lvm_physical_volume_device_node: "/dev/xvdb"
+}]
+data_cold_root_volume_size = 0
+
+# Warm Nodes
+data_warm_ami_version_pattern = "\\d.\\d.\\d"
+data_warm_instance_count = 0
+data_warm_instance_type = "t3.medium"
+data_warm_lvm_block_devices = [{
+  aws_volume_size_gb: "50",
+  filesystem_resize_tool: "xfs_growfs",
+  lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+  lvm_physical_volume_device_node: "/dev/xvdb"
+}]
+data_warm_root_volume_size = 0
+
+# Hot Nodes
+data_hot_ami_version_pattern = "\\d.\\d.\\d"
+data_hot_instance_count = 0
+data_hot_instance_type = "t3.large"
+data_hot_lvm_block_devices = [{
+  aws_volume_size_gb: "80",
+  filesystem_resize_tool: "xfs_growfs",
+  lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+  lvm_physical_volume_device_node: "/dev/xvdb"
+}]
+data_hot_root_volume_size = 0
+
+# Master Nodes
+master_ami_version_pattern = "\\d.\\d.\\d"
+master_instance_count = 0
+master_instance_type = "c5.large"
+master_lvm_block_devices = [{
+  aws_volume_size_gb: "10",
+  filesystem_resize_tool: "xfs_growfs",
+  lvm_logical_volume_device_node: "/dev/elasticsearch/data",
+  lvm_physical_volume_device_node: "/dev/xvdb"
+}]
+master_root_volume_size = 0
+
+
+cold_data_default_instance_type = "t3.medium"
+cold_data_instance_specifications = {
+  "eu-west-2a" = {
+    "1" = {}
+  }
+  "eu-west-2b" = {
+    "2" = {}
+  }
+  "eu-west-2c" = {
+    "3" = {}
+  }
+}
+
+warm_data_default_instance_type = "t3.medium"
+warm_data_instance_specifications = {
+  "eu-west-2a" = {
+    "1" = {}
+  }
+  "eu-west-2b" = {
+    "2" = {}
+  }
+  "eu-west-2c" = {
+    "3" = {}
+  }
+}
+
+hot_data_default_instance_type = "t3.large"
+hot_data_instance_specifications = {
+  "eu-west-2a" = {
+    "1" = {}
+  }
+  "eu-west-2b" = {
+    "2" = {}
+  }
+  "eu-west-2c" = {
+    "3" = {}
+  }
+}
+
+master_default_instance_type = "c5.large"
+master_instance_specifications = {
+  "eu-west-2a" = {
+    "1" = {}
+  }
+  "eu-west-2b" = {
+    "2" = {}
+  }
+  "eu-west-2c" = {
+    "3" = {}
+  }
+}

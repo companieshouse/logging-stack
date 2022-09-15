@@ -1,1 +1,0 @@
-vault-providers/token

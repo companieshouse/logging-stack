@@ -70,13 +70,19 @@ cold_data_instance_specifications = {
 warm_data_default_instance_type = "t3.medium"
 warm_data_instance_specifications = {
   "eu-west-2a" = {
-    "1" = {}
+    "1" = {},
+    "4" = {},
+    "7" = {}
   }
   "eu-west-2b" = {
-    "2" = {}
+    "2" = {},
+    "5" = {},
+    "8" = {}
   }
   "eu-west-2c" = {
-    "3" = {}
+    "3" = {},
+    "6" = {},
+    "9" = {}
   }
 }
 

@@ -1,3 +1,5 @@
+data "aws_caller_identity" "current" {}
+
 data "aws_ec2_managed_prefix_list" "administration" {
   name = "administration-cidr-ranges"
 }
